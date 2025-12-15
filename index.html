@@ -212,7 +212,7 @@
             animation: fadeIn 0.8s ease;
         }
 
-        /* ===== HEADER ===== */
+        /* ===== HEADER AMÉLIORÉ ===== */
         .header {
             text-align: center;
             padding: var(--space-xl) var(--space-2xl);
@@ -225,6 +225,11 @@
             position: relative;
             overflow: hidden;
             animation: fadeIn 0.6s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
         }
 
         .header::before {
@@ -249,8 +254,47 @@
             z-index: -1;
         }
 
+        .school-logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            width: 100%;
+        }
+
+        .school-logo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+            border: 4px solid white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .school-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .school-logo i {
+            font-size: 4rem;
+            color: white;
+        }
+
+        .school-title-container {
+            flex: 1;
+            max-width: 800px;
+        }
+
         .school-name {
-            font-size: 3.5rem;
+            font-size: 4rem;
             background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
@@ -261,14 +305,25 @@
             font-family: var(--font-heading);
             text-shadow: 0 2px 10px rgba(0,0,0,0.1);
             line-height: 1.1;
+            text-align: center;
         }
 
         .subtitle {
-            font-size: 1.6rem;
+            font-size: 1.8rem;
             color: var(--primary-dark);
             font-weight: 600;
             margin-bottom: var(--space-lg);
             opacity: 0.9;
+            text-align: center;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            line-height: 1.8;
+            text-align: center;
         }
 
         .header-stats {
@@ -284,13 +339,14 @@
             display: flex;
             align-items: center;
             gap: var(--space-sm);
-            padding: var(--space-sm) var(--space-lg);
+            padding: var(--space-md) var(--space-xl);
             background: rgba(255, 255, 255, 0.9);
             backdrop-filter: blur(10px);
             border-radius: var(--radius-pill);
             border: 1px solid rgba(255, 255, 255, 0.3);
             box-shadow: var(--shadow-sm);
             transition: var(--transition);
+            min-width: 200px;
         }
 
         .stat-badge:hover {
@@ -299,8 +355,13 @@
         }
 
         .stat-badge i {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary);
+        }
+
+        .stat-badge span {
+            font-weight: 600;
+            font-size: 1rem;
         }
 
         /* ===== NAVIGATION ===== */
@@ -1335,7 +1396,20 @@
             body { padding: 12px; }
             .school-name { font-size: 2.5rem; }
             .subtitle { font-size: 1.4rem; }
-            .header { padding: var(--space-lg); }
+            .header { 
+                padding: var(--space-lg);
+                min-height: 300px;
+            }
+            
+            .school-logo-container {
+                flex-direction: column;
+                gap: var(--space-lg);
+            }
+            
+            .school-logo {
+                width: 100px;
+                height: 100px;
+            }
             
             .nav-tabs {
                 flex-direction: column;
@@ -1489,10 +1563,23 @@
 
     <!-- Container principal -->
     <div class="container">
-        <!-- Header -->
+        <!-- Header amélioré -->
         <header class="header">
-            <h1 class="school-name">Les Bulles de Joie</h1>
-            <p class="subtitle">Plateforme Pédagogique Professionnelle</p>
+            <div class="school-logo-container">
+                <div class="school-logo">
+                    <!-- Remplacez le chemin ci-dessous par celui de votre logo -->
+                    <!-- <img src="chemin/vers/votre-logo.png" alt="Logo Les Bulles de Joie"> -->
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="school-title-container">
+                    <h1 class="school-name">Les Bulles de Joie</h1>
+                    <p class="subtitle">Plateforme Pédagogique Professionnelle</p>
+                    <p class="hero-description">
+                        Système complet de gestion des évaluations scolaires. Suivez les progrès de vos élèves, 
+                        générez des statistiques détaillées et exportez les bulletins en un clic.
+                    </p>
+                </div>
+            </div>
             
             <div class="header-stats">
                 <div class="stat-badge">
@@ -2088,19 +2175,20 @@
                         
                         <div class="precision-container">
                             <h4 style="margin-bottom: var(--space-md); color: var(--dark);">
-                                Précision des Notes
+                                Notes Libres
                             </h4>
                             <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
-                                Choisissez le niveau de précision pour les notes
+                                L'enseignant peut saisir les notes telles qu'il le souhaite (17, 14, 12.5, etc.)
                             </p>
                             
-                            <div class="form-group">
-                                <select id="decimalPrecision" style="width: 100%; padding: 16px;">
-                                    <option value="0">Nombre entier (ex: 15)</option>
-                                    <option value="0.5" selected>Demi-point (ex: 15.5)</option>
-                                    <option value="0.25">Quart de point (ex: 15.25)</option>
-                                    <option value="0.1">Dixième de point (ex: 15.3)</option>
-                                </select>
+                            <div style="padding: var(--space-lg); background: var(--light-gray); border-radius: var(--radius-lg); text-align: center;">
+                                <i class="fas fa-edit" style="font-size: 2rem; color: var(--primary); margin-bottom: var(--space-md);"></i>
+                                <p style="color: var(--text); font-weight: 600;">
+                                    Liberté totale de saisie des notes
+                                </p>
+                                <p style="color: var(--text-light); margin-top: var(--space-sm); font-size: 0.9rem;">
+                                    Les notes sont enregistrées exactement comme saisies
+                                </p>
                             </div>
                             
                             <div class="form-group" style="margin-top: var(--space-lg);">
@@ -2274,7 +2362,6 @@
         let appState = {
             config: {
                 seuilReussite: APP_CONFIG.DEFAULT_THRESHOLD,
-                decimalPrecision: 0.5,
                 autoSave: true,
                 alertNotesBasses: true,
                 alertProgres: true
@@ -2300,7 +2387,6 @@
             // Configuration
             seuilReussite: document.getElementById('seuilReussite'),
             thresholdValue: document.getElementById('thresholdValue'),
-            decimalPrecision: document.getElementById('decimalPrecision'),
             autoSave: document.getElementById('autoSave'),
             alertNotesBasses: document.getElementById('alertNotesBasses'),
             alertProgres: document.getElementById('alertProgres'),
@@ -2437,13 +2523,8 @@
             const num = parseFloat(value);
             if (isNaN(num)) return '';
             
-            const step = appState.config.decimalPrecision;
-            if (step === 0) return Math.round(num).toString();
-            if (step === 0.5) return (Math.round(num * 2) / 2).toFixed(1);
-            if (step === 0.25) return (Math.round(num * 4) / 4).toFixed(2);
-            if (step === 0.1) return (Math.round(num * 10) / 10).toFixed(1);
-            
-            return num.toString();
+            // Retourne la note telle quelle sans contrainte de précision
+            return value;
         }
 
         function calculateMoyenne(notes) {
@@ -2634,7 +2715,6 @@
             // Configuration
             elements.seuilReussite.value = appState.config.seuilReussite;
             elements.thresholdValue.textContent = appState.config.seuilReussite.toFixed(1);
-            elements.decimalPrecision.value = appState.config.decimalPrecision;
             elements.autoSave.checked = appState.config.autoSave;
             elements.alertNotesBasses.checked = appState.config.alertNotesBasses;
             elements.alertProgres.checked = appState.config.alertProgres;
@@ -3740,7 +3820,6 @@
         function saveConfiguration() {
             appState.config = {
                 seuilReussite: parseFloat(elements.seuilReussite.value),
-                decimalPrecision: parseFloat(elements.decimalPrecision.value),
                 autoSave: elements.autoSave.checked,
                 alertNotesBasses: elements.alertNotesBasses.checked,
                 alertProgres: elements.alertProgres.checked
@@ -3827,7 +3906,6 @@
                 appState = {
                     config: {
                         seuilReussite: APP_CONFIG.DEFAULT_THRESHOLD,
-                        decimalPrecision: 0.5,
                         autoSave: true,
                         alertNotesBasses: true,
                         alertProgres: true
