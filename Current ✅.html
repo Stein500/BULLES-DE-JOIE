@@ -1,0 +1,4105 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les Bulles de Joie - Plateforme Pédagogique Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <style>
+        /* ===== VARIABLES GLOBALES ===== */
+        :root {
+            /* Palette de couleurs principale */
+            --primary: #4361ee;
+            --primary-dark: #3a56d4;
+            --primary-light: #4895ef;
+            --primary-extra-light: #e0f2fe;
+            
+            --secondary: #7209b7;
+            --secondary-dark: #560bad;
+            --secondary-light: #9d4edd;
+            
+            --accent: #f72585;
+            --accent-dark: #e01e76;
+            --accent-light: #f857a6;
+            
+            /* Couleurs de mentions */
+            --mention-excellent: #10b981;
+            --mention-excellent-light: #d1fae5;
+            --mention-good: #3b82f6;
+            --mention-good-light: #dbeafe;
+            --mention-average: #f59e0b;
+            --mention-average-light: #fef3c7;
+            --mention-weak: #ef4444;
+            --mention-weak-light: #fee2e2;
+            
+            /* Couleurs fonctionnelles */
+            --success: #4ade80;
+            --success-dark: #22c55e;
+            --warning: #f59e0b;
+            --warning-dark: #d97706;
+            --error: #ef4444;
+            --error-dark: #dc2626;
+            --info: #06b6d4;
+            --info-dark: #0891b2;
+            
+            /* Couleurs neutres */
+            --light: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #94a3b8;
+            --dark: #1e293b;
+            --text: #334155;
+            --text-light: #64748b;
+            
+            /* Dégradés */
+            --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            --gradient-success: linear-gradient(135deg, var(--success) 0%, #22c55e 100%);
+            --gradient-warning: linear-gradient(135deg, var(--warning) 0%, #fbbf24 100%);
+            --gradient-error: linear-gradient(135deg, var(--error) 0%, #f87171 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            --gradient-info: linear-gradient(135deg, var(--info) 0%, var(--info-dark) 100%);
+            
+            /* Dégradés spéciaux */
+            --gradient-bg: linear-gradient(135deg, #e0f2fe 0%, #f5f3ff 30%, #f0fdf4 70%, #fef3c7 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
+            --gradient-sunset: linear-gradient(135deg, #f72585 0%, #7209b7 50%, #4361ee 100%);
+            
+            /* Ombres */
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
+            --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
+            --shadow-xl: 0 25px 60px rgba(0,0,0,0.18);
+            --shadow-soft: 0 8px 32px rgba(0,0,0,0.08);
+            --shadow-border: 0 0 0 1px rgba(0,0,0,0.1);
+            --shadow-glow: 0 0 20px rgba(67, 97, 238, 0.15);
+            
+            /* Rayons */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-2xl: 24px;
+            --radius-full: 9999px;
+            --radius-pill: 100px;
+            
+            /* Transitions */
+            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            
+            /* Espacements */
+            --space-xs: 4px;
+            --space-sm: 8px;
+            --space-md: 16px;
+            --space-lg: 24px;
+            --space-xl: 32px;
+            --space-2xl: 48px;
+            --space-3xl: 64px;
+            
+            /* Typographie */
+            --font-heading: 'Montserrat', 'Poppins', sans-serif;
+            --font-body: 'Inter', 'Segoe UI', sans-serif;
+            --font-mono: 'Courier New', 'Fira Code', monospace;
+        }
+
+        /* ===== RÉINITIALISATION ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-body);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+            height: 100%;
+        }
+
+        body {
+            background: var(--gradient-bg);
+            background-size: 400% 400%;
+            animation: gradientShift 25s ease infinite;
+            min-height: 100vh;
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+            padding: var(--space-md);
+            position: relative;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
+            33% { transform: translateY(-40px) translateX(20px) rotate(120deg) scale(1.05); }
+            66% { transform: translateY(20px) translateX(-15px) rotate(240deg) scale(0.95); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== BULLES FLOTTANTES ===== */
+        .floating-bubbles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: float 30s infinite ease-in-out;
+            box-shadow: var(--shadow-soft);
+            opacity: 0.7;
+            filter: brightness(1.2);
+        }
+
+        .bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; animation-delay: 0s; }
+        .bubble:nth-child(2) { width: 180px; height: 180px; top: 65%; left: 80%; animation-delay: 5s; }
+        .bubble:nth-child(3) { width: 90px; height: 90px; top: 30%; left: 90%; animation-delay: 10s; }
+        .bubble:nth-child(4) { width: 140px; height: 140px; top: 80%; left: 10%; animation-delay: 15s; }
+        .bubble:nth-child(5) { width: 100px; height: 100px; top: 40%; left: 70%; animation-delay: 7s; }
+        .bubble:nth-child(6) { width: 160px; height: 160px; top: 15%; left: 60%; animation-delay: 12s; }
+
+        /* ===== CONTAINER PRINCIPAL ===== */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeIn 0.8s ease;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            padding: var(--space-xl) var(--space-2xl);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(30px);
+            border-radius: var(--radius-2xl);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--gradient-sunset);
+            border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(67, 97, 238, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .school-name {
+            font-size: 3.5rem;
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            margin-bottom: var(--space-sm);
+            letter-spacing: -0.5px;
+            font-family: var(--font-heading);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.6rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: var(--space-lg);
+            opacity: 0.9;
+        }
+
+        .header-stats {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            flex-wrap: wrap;
+            margin-top: var(--space-lg);
+            animation: fadeIn 0.8s ease 0.3s both;
+        }
+
+        .stat-badge {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .stat-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-badge i {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+            animation: fadeIn 0.8s ease 0.4s both;
+        }
+
+        .nav-tabs {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            padding: var(--space-sm);
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow-sm);
+            gap: var(--space-xs);
+        }
+
+        .nav-tab {
+            padding: var(--space-md) var(--space-xl);
+            background: transparent;
+            border: none;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--text);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+            z-index: -1;
+            border-radius: var(--radius-pill);
+        }
+
+        .nav-tab.active {
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-tab.active::before {
+            left: 0;
+        }
+
+        .nav-tab:hover:not(.active) {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+        }
+
+        /* ===== CONTENU DES ONGLETS ===== */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* ===== CARTES ===== */
+        .card {
+            background: var(--gradient-card);
+            backdrop-filter: blur(30px);
+            border-radius: var(--radius-2xl);
+            padding: var(--space-xl);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-lg);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-3px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+        }
+
+        .card-title {
+            font-size: 1.8rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+
+        .card-title i {
+            font-size: 2rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===== CONFIGURATION ===== */
+        .config-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-xl);
+            border-left: 6px solid var(--accent);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .config-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .config-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            align-items: start;
+        }
+
+        .threshold-container {
+            background: var(--gradient-glass);
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            border: 2px solid var(--primary-extra-light);
+        }
+
+        .threshold-display {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+            padding: var(--space-lg);
+            background: white;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .threshold-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            min-width: 80px;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .threshold-label {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .threshold-slider {
+            width: 100%;
+            margin: var(--space-xl) 0;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 12px;
+            background: linear-gradient(to right, var(--mention-weak), var(--mention-average), var(--mention-good), var(--mention-excellent));
+            border-radius: var(--radius-pill);
+            outline: none;
+        }
+
+        .threshold-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--primary);
+            cursor: pointer;
+            border: 4px solid white;
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+        .threshold-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-glow);
+        }
+
+        /* ===== MENTIONS ===== */
+        .mentions-container {
+            background: var(--gradient-glass);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-xl);
+        }
+
+        .mentions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .mention-card {
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+            min-height: 120px;
+            justify-content: center;
+        }
+
+        .mention-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mention-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            z-index: 1;
+        }
+
+        .mention-card.excellent {
+            background: var(--mention-excellent);
+        }
+
+        .mention-card.good {
+            background: var(--mention-good);
+        }
+
+        .mention-card.average {
+            background: var(--mention-average);
+        }
+
+        .mention-card.weak {
+            background: var(--mention-weak);
+        }
+
+        .mention-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .mention-range {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+            font-weight: 500;
+        }
+
+        .mention-icon {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            font-size: 1.8rem;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* ===== FORMULAIRES ===== */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        label.required::after {
+            content: '*';
+            color: var(--error);
+            margin-left: 4px;
+        }
+
+        input, select, textarea {
+            padding: 16px 18px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--medium-gray);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: var(--font-body);
+            color: var(--text);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
+            background: white;
+        }
+
+        /* ===== GESTION DES ÉLÈVES ===== */
+        .add-student {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: end;
+            flex-wrap: wrap;
+        }
+
+        .students-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .student-card {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--primary-extra-light);
+        }
+
+        .student-card.reussi {
+            border-left: 6px solid var(--success);
+        }
+
+        .student-card.echec {
+            border-left: 6px solid var(--error);
+        }
+
+        .student-info {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .student-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .student-details {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .student-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 1.1rem;
+        }
+
+        .student-stats {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .student-moyenne {
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .student-mention {
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: var(--radius-pill);
+            font-size: 0.85rem;
+        }
+
+        .mention-excellent { background: var(--mention-excellent-light); color: var(--mention-excellent); }
+        .mention-good { background: var(--mention-good-light); color: var(--mention-good); }
+        .mention-average { background: var(--mention-average-light); color: var(--mention-average); }
+        .mention-weak { background: var(--mention-weak-light); color: var(--mention-weak); }
+
+        .student-actions {
+            display: flex;
+            gap: var(--space-xs);
+        }
+
+        .no-students {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: var(--space-3xl);
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+
+        .no-students i {
+            font-size: 4rem;
+            margin-bottom: var(--space-lg);
+            opacity: 0.3;
+        }
+
+        /* ===== SAISIE DES NOTES ===== */
+        .student-selector {
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-xl);
+            border: 2px solid var(--medium-gray);
+            position: relative;
+        }
+
+        .student-selector select {
+            width: 100%;
+            max-width: 400px;
+            font-size: 1.1rem;
+        }
+
+        .student-stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .stat-box {
+            background: white;
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border-top: 4px solid var(--primary);
+        }
+
+        .stat-box:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: var(--space-xs);
+            line-height: 1;
+        }
+
+        .stat-value.high { color: var(--success); }
+        .stat-value.medium { color: var(--warning); }
+        .stat-value.low { color: var(--error); }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        /* ===== MATIÈRES ===== */
+        .matiere-section {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-xl);
+            border-left: 6px solid var(--primary);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .matiere-section:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .section-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-lg);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-family: var(--font-heading);
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .note-item {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-sm);
+        }
+
+        .note-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .note-input-container {
+            position: relative;
+        }
+
+        .note-input {
+            width: 100%;
+            text-align: center;
+            padding: 16px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .note-input.success {
+            border-color: var(--success);
+            background: rgba(74, 222, 128, 0.05);
+        }
+
+        .note-input.warning {
+            border-color: var(--warning);
+            background: rgba(245, 158, 11, 0.05);
+        }
+
+        .note-input.error {
+            border-color: var(--error);
+            background: rgba(239, 68, 68, 0.05);
+        }
+
+        .note-status {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+        }
+
+        .note-status.success { color: var(--success); }
+        .note-status.warning { color: var(--warning); }
+        .note-status.error { color: var(--error); }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            padding: 16px 28px;
+            border: none;
+            border-radius: var(--radius-lg);
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            transition: var(--transition);
+            font-size: 1rem;
+            box-shadow: var(--shadow-sm);
+            font-family: var(--font-body);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: var(--transition-slow);
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .btn-success {
+            background: var(--gradient-success);
+            color: white;
+        }
+
+        .btn-warning {
+            background: var(--gradient-warning);
+            color: white;
+        }
+
+        .btn-error {
+            background: var(--gradient-error);
+            color: white;
+        }
+
+        .btn-secondary {
+            background: var(--gradient-secondary);
+            color: white;
+        }
+
+        .btn-accent {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .btn-info {
+            background: var(--gradient-info);
+            color: white;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-small {
+            padding: 10px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== STATISTIQUES ===== */
+        .stats-container {
+            background: var(--gradient-glass);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .stat-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: var(--gradient-primary);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+            margin-bottom: var(--space-sm);
+        }
+
+        .stat-text {
+            font-size: 1rem;
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .stat-subtext {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-top: 4px;
+        }
+
+        /* ===== EXPORT ===== */
+        .export-section {
+            background: var(--gradient-glass);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        .export-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .export-card {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            min-height: 160px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .export-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .export-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+        }
+
+        .export-card.json { background: var(--gradient-primary); }
+        .export-card.pdf { background: var(--gradient-error); }
+        .export-card.word { background: var(--gradient-secondary); }
+        .export-card.excel { background: var(--gradient-success); }
+        .export-card.email { background: var(--gradient-info); }
+        .export-card.print { background: var(--gradient-dark); }
+        .export-card.email-individuel { background: var(--gradient-info); }
+
+        .export-icon {
+            font-size: 2.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .export-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .export-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== PRÉVISUALISATION ===== */
+        .preview-container {
+            background: white;
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
+            margin-top: var(--space-xl);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .preview-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+
+        .preview-tabs {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .preview-tab {
+            padding: var(--space-sm) var(--space-lg);
+            background: var(--light-gray);
+            border: none;
+            border-radius: var(--radius-pill);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--text);
+        }
+
+        .preview-tab.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .preview-tab:hover:not(.active) {
+            background: var(--medium-gray);
+        }
+
+        .preview-content {
+            background: #f8fafc;
+            padding: var(--space-xl);
+            border-radius: var(--radius-lg);
+            max-height: 500px;
+            overflow-y: auto;
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* ===== MODAL EMAIL ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: var(--space-md);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            width: 100%;
+            max-width: 500px;
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-xl);
+            animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: var(--transition);
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-full);
+        }
+
+        .modal-close:hover {
+            background: var(--light-gray);
+            color: var(--error);
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: var(--space-lg);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: var(--space-xl);
+            margin-top: var(--space-3xl);
+            color: var(--text-light);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius-xl);
+        }
+
+        /* ===== LOADER ===== */
+        .loader {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .loader-spinner {
+            width: 60px;
+            height: 60px;
+            border: 6px solid var(--light-gray);
+            border-top: 6px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-text {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1200px) {
+            .school-name { font-size: 3rem; }
+            .container { max-width: 95%; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding: 12px; }
+            .school-name { font-size: 2.5rem; }
+            .subtitle { font-size: 1.4rem; }
+            .header { padding: var(--space-lg); }
+            
+            .nav-tabs {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-tab {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .card { padding: var(--space-lg); }
+            .card-title { font-size: 1.6rem; }
+            
+            .config-grid,
+            .form-grid,
+            .notes-grid,
+            .stats-grid,
+            .export-grid,
+            .mentions-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .students-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .add-student {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .student-selector select {
+                max-width: 100%;
+            }
+            
+            .btn { padding: 14px 20px; }
+        }
+
+        @media (max-width: 480px) {
+            .school-name { font-size: 2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .card-title { font-size: 1.4rem; }
+            .threshold-value { font-size: 2.5rem; }
+            .stat-number { font-size: 2.5rem; }
+            
+            .header-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-badge {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .preview-tabs {
+                flex-direction: column;
+            }
+            
+            .preview-tab {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        /* ===== UTILITAIRES ===== */
+        .hidden { display: none !important; }
+        .counting { animation: countUp 0.8s ease-out; }
+        .pulse { animation: pulse 2s infinite; }
+        .slide-in { animation: slideInRight 0.5s ease; }
+        
+        .toastify {
+            font-family: var(--font-body);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg) !important;
+            padding: var(--space-md) var(--space-lg) !important;
+        }
+        
+        .success-bg { background: var(--success) !important; }
+        .error-bg { background: var(--error) !important; }
+        .warning-bg { background: var(--warning) !important; }
+        .info-bg { background: var(--info) !important; }
+    </style>
+</head>
+<body>
+    <!-- Bulles flottantes -->
+    <div class="floating-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Loader -->
+    <div class="loader hidden" id="loader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text" id="loaderText">Chargement...</div>
+    </div>
+
+    <!-- Modal Email Individuel -->
+    <div class="modal-overlay" id="emailModal">
+        <div class="modal-content">
+            <button class="modal-close" id="emailClose">&times;</button>
+            <h3 class="modal-title">
+                <i class="fas fa-paper-plane"></i> Envoyer le bulletin
+            </h3>
+            
+            <div class="form-group">
+                <label for="emailEleve" class="required">Nom de l'élève</label>
+                <input type="text" id="emailEleve" readonly style="background: var(--light-gray);">
+            </div>
+            
+            <div class="form-group">
+                <label for="emailParent" class="required">Email du parent</label>
+                <input type="email" id="emailParent" placeholder="parent@exemple.fr">
+            </div>
+            
+            <div class="form-group">
+                <label for="emailMessage">Message personnalisé</label>
+                <textarea id="emailMessage" rows="4" placeholder="Ajouter un message au parent..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" id="includeNotes" checked>
+                    Inclure les notes détaillées
+                </label>
+                <label style="margin-top: var(--space-sm);">
+                    <input type="checkbox" id="includeCommentaire" checked>
+                    Inclure le commentaire
+                </label>
+                <label style="margin-top: var(--space-sm);">
+                    <input type="checkbox" id="includeStats" checked>
+                    Inclure les statistiques
+                </label>
+            </div>
+            
+            <div style="display: flex; gap: var(--space-md); margin-top: var(--space-xl);">
+                <button class="btn btn-info" id="btnSendEmail" style="flex: 1;">
+                    <i class="fas fa-paper-plane"></i> Envoyer l'email
+                </button>
+                <button class="btn btn-outline" id="btnCancelEmail" style="flex: 1;">
+                    Annuler
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="school-name">Les Bulles de Joie</h1>
+            <p class="subtitle">Plateforme Pédagogique Professionnelle</p>
+            
+            <div class="header-stats">
+                <div class="stat-badge">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>Gestion des Évaluations</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Statistiques Avancées</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fas fa-file-export"></i>
+                    <span>Export Multi-formats</span>
+                </div>
+                <div class="stat-badge">
+                    <i class="fas fa-envelope"></i>
+                    <span>Envoi par Email</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <div class="nav-container">
+            <div class="nav-tabs">
+                <button class="nav-tab active" data-tab="accueil">
+                    <i class="fas fa-home"></i> Accueil
+                </button>
+                <button class="nav-tab" data-tab="eleves">
+                    <i class="fas fa-users"></i> Élèves
+                </button>
+                <button class="nav-tab" data-tab="evaluations">
+                    <i class="fas fa-edit"></i> Évaluations
+                </button>
+                <button class="nav-tab" data-tab="statistiques">
+                    <i class="fas fa-chart-pie"></i> Statistiques
+                </button>
+                <button class="nav-tab" data-tab="export">
+                    <i class="fas fa-file-export"></i> Export
+                </button>
+                <button class="nav-tab" data-tab="configuration">
+                    <i class="fas fa-cog"></i> Configuration
+                </button>
+            </div>
+        </div>
+
+        <!-- Onglet Accueil -->
+        <div id="accueil" class="tab-content active">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-tachometer-alt"></i> Tableau de Bord</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="statTotalEleves">0</div>
+                        <div class="stat-text">Élèves</div>
+                        <div class="stat-subtext">Total dans la classe</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statEvaluations">0</div>
+                        <div class="stat-text">Évaluations</div>
+                        <div class="stat-subtext">Saisies complètes</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statMoyenneClasse">0.0</div>
+                        <div class="stat-text">Moyenne Classe</div>
+                        <div class="stat-subtext">/20 points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="statTauxReussite">0%</div>
+                        <div class="stat-text">Taux de Réussite</div>
+                        <div class="stat-subtext">Seuil: <span id="statSeuil">10.0</span>/20</div>
+                    </div>
+                </div>
+
+                <div class="quick-actions" style="margin-top: var(--space-xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-bolt"></i> Actions Rapides
+                    </h3>
+                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                        <button class="btn btn-primary" id="btnQuickAdd">
+                            <i class="fas fa-user-plus"></i> Ajouter un élève
+                        </button>
+                        <button class="btn btn-success" id="btnQuickEval">
+                            <i class="fas fa-clipboard-check"></i> Nouvelle évaluation
+                        </button>
+                        <button class="btn btn-secondary" id="btnQuickExport">
+                            <i class="fas fa-file-export"></i> Exporter les données
+                        </button>
+                        <button class="btn btn-accent" id="btnQuickStats">
+                            <i class="fas fa-chart-bar"></i> Voir les statistiques
+                        </button>
+                    </div>
+                </div>
+
+                <div class="recent-activity" style="margin-top: var(--space-xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-history"></i> Activité Récente
+                    </h3>
+                    <div id="activityLog" style="background: var(--light-gray); padding: var(--space-lg); border-radius: var(--radius-lg); min-height: 100px;">
+                        <p style="color: var(--text-light); text-align: center; padding: var(--space-lg);">
+                            <i class="fas fa-info-circle"></i> Aucune activité récente
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-user-tie"></i> Informations Enseignant</h2>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="nomEnseignant" class="required">Nom</label>
+                        <input type="text" id="nomEnseignant" placeholder="Votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenomEnseignant" class="required">Prénom</label>
+                        <input type="text" id="prenomEnseignant" placeholder="Votre prénom">
+                    </div>
+                    <div class="form-group">
+                        <label for="classeEnseignant" class="required">Classe</label>
+                        <select id="classeEnseignant">
+                            <option value="">Sélectionnez une classe</option>
+                            <option value="CI">Classe d'Initiation (CI)</option>
+                            <option value="CP">Cours Préparatoire (CP)</option>
+                            <option value="CE1">Cours Élémentaire 1 (CE1)</option>
+                            <option value="CE2">Cours Élémentaire 2 (CE2)</option>
+                            <option value="CM1">Cours Moyen 1 (CM1)</option>
+                            <option value="CM2">Cours Moyen 2 (CM2)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="anneeScolaire">Année Scolaire</label>
+                        <input type="text" id="anneeScolaire" placeholder="Ex: 2023-2024" value="2023-2024">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Élèves -->
+        <div id="eleves" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-users"></i> Gestion des Élèves</h2>
+                
+                <div class="form-group">
+                    <label>Ajouter un élève :</label>
+                    <div class="add-student">
+                        <input type="text" id="inputEleve" placeholder="Nom et prénom de l'élève">
+                        <button class="btn btn-accent" id="btnAjouter">
+                            <i class="fas fa-plus"></i> Ajouter l'élève
+                        </button>
+                    </div>
+                </div>
+
+                <div class="students-filters" style="margin-top: var(--space-lg);">
+                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center;">
+                        <span style="font-weight: 600; color: var(--dark);">Filtrer :</span>
+                        <button class="btn btn-outline btn-small active" data-filter="all">Tous</button>
+                        <button class="btn btn-outline btn-small" data-filter="reussi">Réussite</button>
+                        <button class="btn btn-outline btn-small" data-filter="echec">À améliorer</button>
+                        <button class="btn btn-outline btn-small" data-filter="non-evalue">Non évalué</button>
+                    </div>
+                </div>
+
+                <div id="listeEleves" class="students-list" style="margin-top: var(--space-lg);">
+                    <div class="no-students">
+                        <i class="fas fa-users-slash"></i>
+                        <p>Aucun élève n'a été ajouté pour le moment</p>
+                        <p style="margin-top: var(--space-sm); font-size: 0.9rem; opacity: 0.7;">
+                            Commencez par ajouter vos élèves en utilisant le formulaire ci-dessus
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Évaluations -->
+        <div id="evaluations" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-clipboard-check"></i> Saisie des Évaluations</h2>
+                
+                <div class="student-selector">
+                    <label for="selectEleve">Sélectionner l'élève :</label>
+                    <select id="selectEleve">
+                        <option value="">Choisir un élève</option>
+                    </select>
+                    
+                    <div id="studentStatsPanel" class="student-stats-panel" style="display: none;">
+                        <div class="stat-box">
+                            <div class="stat-value high" id="statMoyenneEleve">-</div>
+                            <div class="stat-label">Moyenne /20</div>
+                        </div>
+                        <div class="stat-box">
+                            <div id="statMentionEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--primary);">-</div>
+                            <div class="stat-label">Mention</div>
+                        </div>
+                        <div class="stat-box">
+                            <div id="statReussiteEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--success);">✓</div>
+                            <div class="stat-label">Statut</div>
+                        </div>
+                        <div class="stat-box">
+                            <div id="statPositionEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--primary);">-</div>
+                            <div class="stat-label">Position</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="notesForm" style="display: none;">
+                    <!-- Matières Fondamentales -->
+                    <div class="matiere-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-book"></i>
+                            </div>
+                            <div>
+                                <h3 class="section-title">Matières Fondamentales</h3>
+                                <p style="color: var(--text-light);">Compétences académiques de base</p>
+                            </div>
+                        </div>
+                        
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Lecture</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="lecture" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Expression Écrite</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="expression-ecrite" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Dictée</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="dictee" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Éveil Scientifique (ES)</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="es" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Éveil Socio-Temporel (EST)</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="est" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Mathématiques</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="mathematiques" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>EA Dessin</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="ea-dessin" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>EA Poésie/Chant/Conte</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="ea-poesie-chant-conte" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>EPS</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="eps" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Matières Artistiques et Pratiques -->
+                    <div class="matiere-section">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div>
+                                <h3 class="section-title">Matières Artistiques et Pratiques</h3>
+                                <p style="color: var(--text-light);">Compétences créatives et pratiques</p>
+                            </div>
+                        </div>
+                        
+                        <div class="notes-grid">
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Art Oratoire</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="art-oratoire" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Anglais</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="anglais" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Musique</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="musique" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Danse</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="danse" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                            <div class="note-item">
+                                <div class="note-label">
+                                    <span>Jardinage</span>
+                                    <span class="note-max">/20</span>
+                                </div>
+                                <div class="note-input-container">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="jardinage" placeholder="00.0">
+                                    <div class="note-status"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Commentaire et sauvegarde -->
+                    <div class="form-group" style="margin-top: var(--space-xl);">
+                        <label for="commentaire">Commentaire personnalisé :</label>
+                        <textarea id="commentaire" rows="4" placeholder="Observations, points forts, axes d'amélioration..."></textarea>
+                    </div>
+
+                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl);">
+                        <button class="btn btn-success" id="btnSauvegarder">
+                            <i class="fas fa-save"></i> Sauvegarder l'évaluation
+                        </button>
+                        <button class="btn btn-primary" id="btnCalculerMoyenne">
+                            <i class="fas fa-calculator"></i> Calculer la moyenne
+                        </button>
+                        <button class="btn btn-warning" id="btnGenererCommentaire">
+                            <i class="fas fa-robot"></i> Générer un commentaire
+                        </button>
+                        <button class="btn btn-error" id="btnEffacer">
+                            <i class="fas fa-eraser"></i> Effacer
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Statistiques -->
+        <div id="statistiques" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-chart-pie"></i> Statistiques Détaillées</h2>
+                
+                <div class="stats-container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="statElevesTotal">0</div>
+                            <div class="stat-text">Élèves Total</div>
+                            <div class="stat-subtext">Inscrits dans la classe</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statEvaluationsTotal">0</div>
+                            <div class="stat-text">Évaluations</div>
+                            <div class="stat-subtext">Saisies complètes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statMoyenneGenerale">0.0</div>
+                            <div class="stat-text">Moyenne Générale</div>
+                            <div class="stat-subtext">/20 points</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="statTauxReussiteDetail">0%</div>
+                            <div class="stat-text">Taux de Réussite</div>
+                            <div class="stat-subtext">Seuil: <span id="statSeuilDetail">10.0</span>/20</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mentions-container" style="margin-top: var(--space-xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-medal"></i> Distribution des Mentions
+                    </h3>
+                    <div class="mentions-grid">
+                        <div class="mention-card excellent">
+                            <div class="mention-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="mention-name">Très Satisfaisant</div>
+                            <div class="mention-range">18 à 20 / 20</div>
+                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                        </div>
+                        <div class="mention-card good">
+                            <div class="mention-icon"><i class="fas fa-award"></i></div>
+                            <div class="mention-name">Satisfaisant</div>
+                            <div class="mention-range">14 à 17 / 20</div>
+                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                        </div>
+                        <div class="mention-card average">
+                            <div class="mention-icon"><i class="fas fa-check-circle"></i></div>
+                            <div class="mention-name">Peu Satisfaisant</div>
+                            <div class="mention-range">10 à 13 / 20</div>
+                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                        </div>
+                        <div class="mention-card weak">
+                            <div class="mention-icon"><i class="fas fa-exclamation-circle"></i></div>
+                            <div class="mention-name">Insuffisant</div>
+                            <div class="mention-range">0 à 9 / 20</div>
+                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="classement-container" style="margin-top: var(--space-xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-list-ol"></i> Classement des Élèves
+                    </h3>
+                    <div id="classementTable" style="background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: var(--light-gray);">
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Position</th>
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Élève</th>
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Moyenne</th>
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Mention</th>
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Statut</th>
+                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="classementBody">
+                                <tr>
+                                    <td colspan="6" style="padding: var(--space-xl); text-align: center; color: var(--text-light);">
+                                        <i class="fas fa-info-circle"></i> Aucune donnée disponible
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Export -->
+        <div id="export" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-file-export"></i> Export des Données</h2>
+                
+                <div class="export-section">
+                    <div class="export-grid">
+                        <div class="export-card email-individuel" id="btnEmailIndividuel">
+                            <div class="export-icon"><i class="fas fa-user-circle"></i></div>
+                            <div class="export-title">Email Individuel</div>
+                            <div class="export-desc">Envoyer chaque bulletin par email</div>
+                        </div>
+                        <div class="export-card email" id="btnExportEmail">
+                            <div class="export-icon"><i class="fas fa-paper-plane"></i></div>
+                            <div class="export-title">Email Groupe</div>
+                            <div class="export-desc">Rapport général de la classe</div>
+                        </div>
+                        <div class="export-card pdf" id="btnExportPDF">
+                            <div class="export-icon"><i class="fas fa-file-pdf"></i></div>
+                            <div class="export-title">PDF</div>
+                            <div class="export-desc">Bulletins officiels et rapports</div>
+                        </div>
+                        <div class="export-card word" id="btnExportWord">
+                            <div class="export-icon"><i class="fas fa-file-word"></i></div>
+                            <div class="export-title">Word</div>
+                            <div class="export-desc">Documents modifiables</div>
+                        </div>
+                        <div class="export-card excel" id="btnExportExcel">
+                            <div class="export-icon"><i class="fas fa-file-excel"></i></div>
+                            <div class="export-title">Excel</div>
+                            <div class="export-desc">Tableaux et statistiques</div>
+                        </div>
+                        <div class="export-card json" id="btnExportJSON">
+                            <div class="export-icon"><i class="fas fa-file-code"></i></div>
+                            <div class="export-title">JSON</div>
+                            <div class="export-desc">Format structuré pour traitement</div>
+                        </div>
+                        <div class="export-card print" id="btnExportPrint">
+                            <div class="export-icon"><i class="fas fa-print"></i></div>
+                            <div class="export-title">Imprimer</div>
+                            <div class="export-desc">Version papier</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="preview-container">
+                    <div class="preview-header">
+                        <h3 style="color: var(--primary-dark);">
+                            <i class="fas fa-eye"></i> Aperçu des Données
+                        </h3>
+                        <div class="preview-tabs">
+                            <button class="preview-tab active" data-preview="json">JSON</button>
+                            <button class="preview-tab" data-preview="stats">Statistiques</button>
+                            <button class="preview-tab" data-preview="bulletin">Bulletin</button>
+                            <button class="preview-tab" data-preview="raw">Données brutes</button>
+                        </div>
+                    </div>
+                    <div class="preview-content" id="previewContent">
+                        Sélectionnez un type d'aperçu...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Onglet Configuration -->
+        <div id="configuration" class="tab-content">
+            <div class="card">
+                <h2 class="card-title"><i class="fas fa-sliders-h"></i> Configuration du Système</h2>
+                
+                <div class="config-section">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-bullseye"></i> Paramètres d'Évaluation
+                    </h3>
+                    
+                    <div class="config-grid">
+                        <div class="threshold-container">
+                            <h4 style="margin-bottom: var(--space-md); color: var(--dark);">
+                                Seuil de Réussite
+                            </h4>
+                            <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
+                                Définissez la note minimale requise pour considérer qu'un élève a réussi
+                            </p>
+                            
+                            <input type="range" class="threshold-slider" id="seuilReussite" min="0" max="20" step="0.5" value="10">
+                            
+                            <div class="threshold-display">
+                                <div class="threshold-value" id="thresholdValue">10.0</div>
+                                <div class="threshold-label">/ 20 points</div>
+                            </div>
+                        </div>
+                        
+                        <div class="precision-container">
+                            <h4 style="margin-bottom: var(--space-md); color: var(--dark);">
+                                Précision des Notes
+                            </h4>
+                            <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
+                                Choisissez le niveau de précision pour les notes
+                            </p>
+                            
+                            <div class="form-group">
+                                <select id="decimalPrecision" style="width: 100%; padding: 16px;">
+                                    <option value="0">Nombre entier (ex: 15)</option>
+                                    <option value="0.5" selected>Demi-point (ex: 15.5)</option>
+                                    <option value="0.25">Quart de point (ex: 15.25)</option>
+                                    <option value="0.1">Dixième de point (ex: 15.3)</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group" style="margin-top: var(--space-lg);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                                    <input type="checkbox" id="autoSave" checked>
+                                    <span>Sauvegarde automatique</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm);">
+                                    <input type="checkbox" id="alertNotesBasses" checked>
+                                    <span>Alerter pour les notes sous le seuil</span>
+                                </label>
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm);">
+                                    <input type="checkbox" id="alertProgres" checked>
+                                    <span>Afficher les progrès des élèves</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mentions-container">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-medal"></i> Système de Mentions
+                    </h3>
+                    <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
+                        Les mentions sont automatiquement attribuées en fonction de la moyenne de l'élève
+                    </p>
+                    
+                    <div class="mentions-grid">
+                        <div class="mention-card excellent">
+                            <div class="mention-name">Très Satisfaisant</div>
+                            <div class="mention-range">18 à 20 / 20</div>
+                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                                Excellence académique
+                            </div>
+                        </div>
+                        <div class="mention-card good">
+                            <div class="mention-name">Satisfaisant</div>
+                            <div class="mention-range">14 à 17 / 20</div>
+                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                                Bonne maîtrise
+                            </div>
+                        </div>
+                        <div class="mention-card average">
+                            <div class="mention-name">Peu Satisfaisant</div>
+                            <div class="mention-range">10 à 13 / 20</div>
+                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                                Maîtrise à renforcer
+                            </div>
+                        </div>
+                        <div class="mention-card weak">
+                            <div class="mention-name">Insuffisant</div>
+                            <div class="mention-range">0 à 9 / 20</div>
+                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                                Difficultés importantes
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="backup-container" style="margin-top: var(--space-xl);">
+                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                        <i class="fas fa-database"></i> Gestion des Données
+                    </h3>
+                    
+                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                        <button class="btn btn-primary" id="btnBackup">
+                            <i class="fas fa-download"></i> Sauvegarder les données
+                        </button>
+                        <button class="btn btn-outline" id="btnRestore">
+                            <i class="fas fa-upload"></i> Restaurer les données
+                        </button>
+                        <button class="btn btn-error" id="btnReset">
+                            <i class="fas fa-trash"></i> Réinitialiser toutes les données
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: var(--space-lg); padding: var(--space-lg); background: var(--light-gray); border-radius: var(--radius-lg);">
+                        <div style="display: flex; align-items: center; gap: var(--space-md);">
+                            <i class="fas fa-info-circle" style="color: var(--info); font-size: 1.2rem;"></i>
+                            <div>
+                                <div style="font-weight: 600; color: var(--dark);">
+                                    Informations de stockage
+                                </div>
+                                <div style="color: var(--text-light); font-size: 0.9rem; margin-top: 4px;">
+                                    Les données sont stockées localement dans votre navigateur
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: var(--space-xl); text-align: center;">
+                    <button class="btn btn-success" id="btnSaveConfig" style="padding: var(--space-lg) var(--space-2xl);">
+                        <i class="fas fa-save"></i> Enregistrer toutes les configurations
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>© 2024 Les Bulles de Joie - Plateforme Pédagogique Professionnelle</p>
+            <p style="font-size: 0.85rem; margin-top: var(--space-sm); opacity: 0.7;">
+                Version 3.0 • 
+                <span id="dataInfo">Données stockées localement • </span>
+                <span id="lastSave">Dernière sauvegarde: jamais</span>
+            </p>
+            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-md); justify-content: center;">
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
+                    <i class="fas fa-question-circle"></i> Aide
+                </a>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
+                    <i class="fas fa-book"></i> Documentation
+                </a>
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
+                    <i class="fas fa-envelope"></i> Contact
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Input caché pour la restauration -->
+    <input type="file" id="restoreFile" accept=".json" style="display: none;">
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script>
+        // ===== CONFIGURATION GLOBALE =====
+        const APP_CONFIG = {
+            VERSION: '3.1',
+            STORAGE_KEY: 'bullesdejoie_pro_v3',
+            DEFAULT_THRESHOLD: 10,
+            MENTIONS: {
+                'Très Satisfaisant': { 
+                    min: 18, 
+                    max: 20, 
+                    color: 'var(--mention-excellent)',
+                    bgColor: 'var(--mention-excellent-light)',
+                    icon: 'fas fa-trophy',
+                    description: 'Excellence académique'
+                },
+                'Satisfaisant': { 
+                    min: 14, 
+                    max: 17, 
+                    color: 'var(--mention-good)',
+                    bgColor: 'var(--mention-good-light)',
+                    icon: 'fas fa-award',
+                    description: 'Bonne maîtrise'
+                },
+                'Peu Satisfaisant': { 
+                    min: 10, 
+                    max: 13, 
+                    color: 'var(--mention-average)',
+                    bgColor: 'var(--mention-average-light)',
+                    icon: 'fas fa-check-circle',
+                    description: 'Maîtrise à renforcer'
+                },
+                'Insuffisant': { 
+                    min: 0, 
+                    max: 9, 
+                    color: 'var(--mention-weak)',
+                    bgColor: 'var(--mention-weak-light)',
+                    icon: 'fas fa-exclamation-circle',
+                    description: 'Difficultés importantes'
+                }
+            }
+        };
+
+        // ===== ÉTAT DE L'APPLICATION =====
+        let appState = {
+            config: {
+                seuilReussite: APP_CONFIG.DEFAULT_THRESHOLD,
+                decimalPrecision: 0.5,
+                autoSave: true,
+                alertNotesBasses: true,
+                alertProgres: true
+            },
+            enseignant: {
+                nom: '',
+                prenom: '',
+                classe: '',
+                anneeScolaire: '2023-2024'
+            },
+            eleves: [],
+            evaluations: {},
+            historique: [],
+            lastSave: null
+        };
+
+        // ===== RÉFÉRENCES AUX ÉLÉMENTS DOM =====
+        const elements = {
+            // Loader
+            loader: document.getElementById('loader'),
+            loaderText: document.getElementById('loaderText'),
+
+            // Configuration
+            seuilReussite: document.getElementById('seuilReussite'),
+            thresholdValue: document.getElementById('thresholdValue'),
+            decimalPrecision: document.getElementById('decimalPrecision'),
+            autoSave: document.getElementById('autoSave'),
+            alertNotesBasses: document.getElementById('alertNotesBasses'),
+            alertProgres: document.getElementById('alertProgres'),
+            btnSaveConfig: document.getElementById('btnSaveConfig'),
+
+            // Enseignant
+            nomEnseignant: document.getElementById('nomEnseignant'),
+            prenomEnseignant: document.getElementById('prenomEnseignant'),
+            classeEnseignant: document.getElementById('classeEnseignant'),
+            anneeScolaire: document.getElementById('anneeScolaire'),
+
+            // Élèves
+            inputEleve: document.getElementById('inputEleve'),
+            btnAjouter: document.getElementById('btnAjouter'),
+            listeEleves: document.getElementById('listeEleves'),
+            selectEleve: document.getElementById('selectEleve'),
+
+            // Évaluations
+            notesForm: document.getElementById('notesForm'),
+            commentaire: document.getElementById('commentaire'),
+            btnSauvegarder: document.getElementById('btnSauvegarder'),
+            btnCalculerMoyenne: document.getElementById('btnCalculerMoyenne'),
+            btnGenererCommentaire: document.getElementById('btnGenererCommentaire'),
+            btnEffacer: document.getElementById('btnEffacer'),
+
+            // Statistiques élève
+            studentStatsPanel: document.getElementById('studentStatsPanel'),
+            statMoyenneEleve: document.getElementById('statMoyenneEleve'),
+            statMentionEleve: document.getElementById('statMentionEleve'),
+            statReussiteEleve: document.getElementById('statReussiteEleve'),
+            statPositionEleve: document.getElementById('statPositionEleve'),
+
+            // Statistiques générales
+            statTotalEleves: document.getElementById('statTotalEleves'),
+            statEvaluations: document.getElementById('statEvaluations'),
+            statMoyenneClasse: document.getElementById('statMoyenneClasse'),
+            statTauxReussite: document.getElementById('statTauxReussite'),
+            statSeuil: document.getElementById('statSeuil'),
+
+            // Statistiques détaillées
+            statElevesTotal: document.getElementById('statElevesTotal'),
+            statEvaluationsTotal: document.getElementById('statEvaluationsTotal'),
+            statMoyenneGenerale: document.getElementById('statMoyenneGenerale'),
+            statTauxReussiteDetail: document.getElementById('statTauxReussiteDetail'),
+            statSeuilDetail: document.getElementById('statSeuilDetail'),
+
+            // Mentions
+            mentionCounts: document.querySelectorAll('.mention-count'),
+
+            // Classement
+            classementBody: document.getElementById('classementBody'),
+
+            // Activity log
+            activityLog: document.getElementById('activityLog'),
+
+            // Preview
+            previewContent: document.getElementById('previewContent'),
+
+            // Backup
+            btnBackup: document.getElementById('btnBackup'),
+            btnRestore: document.getElementById('btnRestore'),
+            btnReset: document.getElementById('btnReset'),
+            restoreFile: document.getElementById('restoreFile'),
+
+            // Export
+            btnExportJSON: document.getElementById('btnExportJSON'),
+            btnExportPDF: document.getElementById('btnExportPDF'),
+            btnExportWord: document.getElementById('btnExportWord'),
+            btnExportExcel: document.getElementById('btnExportExcel'),
+            btnExportEmail: document.getElementById('btnExportEmail'),
+            btnExportPrint: document.getElementById('btnExportPrint'),
+            btnEmailIndividuel: document.getElementById('btnEmailIndividuel'),
+
+            // Quick actions
+            btnQuickAdd: document.getElementById('btnQuickAdd'),
+            btnQuickEval: document.getElementById('btnQuickEval'),
+            btnQuickExport: document.getElementById('btnQuickExport'),
+            btnQuickStats: document.getElementById('btnQuickStats'),
+
+            // Info
+            lastSave: document.getElementById('lastSave'),
+            dataInfo: document.getElementById('dataInfo'),
+
+            // Modal Email
+            emailModal: document.getElementById('emailModal'),
+            emailClose: document.getElementById('emailClose'),
+            emailEleve: document.getElementById('emailEleve'),
+            emailParent: document.getElementById('emailParent'),
+            emailMessage: document.getElementById('emailMessage'),
+            btnSendEmail: document.getElementById('btnSendEmail'),
+            btnCancelEmail: document.getElementById('btnCancelEmail'),
+            includeNotes: document.getElementById('includeNotes'),
+            includeCommentaire: document.getElementById('includeCommentaire'),
+            includeStats: document.getElementById('includeStats')
+        };
+
+        // ===== FONCTIONS UTILITAIRES =====
+        function showLoader(text = 'Chargement...') {
+            elements.loaderText.textContent = text;
+            elements.loader.classList.remove('hidden');
+        }
+
+        function hideLoader() {
+            elements.loader.classList.add('hidden');
+        }
+
+        function showToast(message, type = 'success', duration = 4000) {
+            const backgroundColor = {
+                success: 'linear-gradient(135deg, #4ade80, #22c55e)',
+                error: 'linear-gradient(135deg, #ef4444, #dc2626)',
+                warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
+                info: 'linear-gradient(135deg, #06b6d4, #0891b2)'
+            }[type];
+
+            Toastify({
+                text: message,
+                duration: duration,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background: backgroundColor,
+                    borderRadius: '12px',
+                    boxShadow: 'var(--shadow-lg)',
+                    fontFamily: 'var(--font-body)',
+                    fontSize: '14px'
+                }
+            }).showToast();
+        }
+
+        function formatNote(value) {
+            if (value === '' || value === null || value === undefined) return '';
+            
+            const num = parseFloat(value);
+            if (isNaN(num)) return '';
+            
+            const step = appState.config.decimalPrecision;
+            if (step === 0) return Math.round(num).toString();
+            if (step === 0.5) return (Math.round(num * 2) / 2).toFixed(1);
+            if (step === 0.25) return (Math.round(num * 4) / 4).toFixed(2);
+            if (step === 0.1) return (Math.round(num * 10) / 10).toFixed(1);
+            
+            return num.toString();
+        }
+
+        function calculateMoyenne(notes) {
+            const notesValides = Object.values(notes)
+                .map(v => parseFloat(v))
+                .filter(v => !isNaN(v) && v !== null);
+            
+            if (notesValides.length === 0) return null;
+            
+            const sum = notesValides.reduce((a, b) => a + b, 0);
+            return sum / notesValides.length;
+        }
+
+        function getMention(moyenne) {
+            if (moyenne === null) return null;
+            
+            for (const [mention, config] of Object.entries(APP_CONFIG.MENTIONS)) {
+                if (moyenne >= config.min && moyenne <= config.max) {
+                    return mention;
+                }
+            }
+            return null;
+        }
+
+        function getMentionInfo(mention) {
+            return APP_CONFIG.MENTIONS[mention] || null;
+        }
+
+        function isReussi(moyenne) {
+            return moyenne !== null && moyenne >= appState.config.seuilReussite;
+        }
+
+        function addToHistory(action, details) {
+            const entry = {
+                timestamp: new Date().toISOString(),
+                action: action,
+                details: details
+            };
+            
+            appState.historique.unshift(entry);
+            if (appState.historique.length > 50) {
+                appState.historique.pop();
+            }
+            
+            updateActivityLog();
+        }
+
+        // ===== GESTION DES DONNÉES =====
+        function saveState() {
+            try {
+                // Mettre à jour les données avant sauvegarde
+                appState.enseignant = {
+                    nom: elements.nomEnseignant.value.trim(),
+                    prenom: elements.prenomEnseignant.value.trim(),
+                    classe: elements.classeEnseignant.value,
+                    anneeScolaire: elements.anneeScolaire.value.trim()
+                };
+                
+                appState.lastSave = new Date().toISOString();
+                
+                localStorage.setItem(APP_CONFIG.STORAGE_KEY, JSON.stringify(appState));
+                
+                // Mettre à jour l'affichage de la dernière sauvegarde
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                elements.lastSave.textContent = `Dernière sauvegarde: ${timeString}`;
+                
+                return true;
+            } catch (error) {
+                console.error('Erreur lors de la sauvegarde:', error);
+                showToast('Erreur lors de la sauvegarde', 'error');
+                return false;
+            }
+        }
+
+        function loadState() {
+            try {
+                const saved = localStorage.getItem(APP_CONFIG.STORAGE_KEY);
+                if (saved) {
+                    appState = JSON.parse(saved);
+                    
+                    // Appliquer la configuration
+                    applyConfig();
+                    
+                    // Mettre à jour l'interface
+                    updateUI();
+                    
+                    // Mettre à jour la dernière sauvegarde
+                    if (appState.lastSave) {
+                        const lastSaveDate = new Date(appState.lastSave);
+                        const timeString = lastSaveDate.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                        const dateString = lastSaveDate.toLocaleDateString('fr-FR');
+                        elements.lastSave.textContent = `Dernière sauvegarde: ${dateString} à ${timeString}`;
+                    }
+                    
+                    showToast('Données chargées avec succès', 'success');
+                    return true;
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement:', error);
+                showToast('Erreur lors du chargement des données', 'error');
+            }
+            
+            // Charger des données d'exemple si aucune donnée n'existe
+            loadSampleData();
+            return false;
+        }
+
+        function loadSampleData() {
+            appState.eleves = ['Marie Curie', 'Albert Einstein', 'Léonard de Vinci'];
+            
+            appState.evaluations = {
+                'Marie Curie': {
+                    notes: {
+                        lecture: '18.5',
+                        'expression-ecrite': '17.0',
+                        dictee: '19.0',
+                        es: '18.0',
+                        est: '17.5',
+                        mathematiques: '19.5',
+                        'ea-dessin': '16.0',
+                        'ea-poesie-chant-conte': '18.0',
+                        eps: '17.0',
+                        'art-oratoire': '18.5',
+                        anglais: '17.5',
+                        musique: '16.5',
+                        danse: '15.5',
+                        jardinage: '17.0'
+                    },
+                    commentaire: 'Excellente élève, très curieuse et rigoureuse dans son travail.',
+                    date: new Date().toISOString()
+                },
+                'Albert Einstein': {
+                    notes: {
+                        lecture: '16.0',
+                        'expression-ecrite': '15.5',
+                        dictee: '14.5',
+                        es: '20.0',
+                        est: '19.5',
+                        mathematiques: '20.0',
+                        'ea-dessin': '12.0',
+                        'ea-poesie-chant-conte': '13.5',
+                        eps: '14.0',
+                        'art-oratoire': '15.0',
+                        anglais: '15.5',
+                        musique: '13.0',
+                        danse: '12.5',
+                        jardinage: '14.0'
+                    },
+                    commentaire: 'Génie des mathématiques et des sciences, mais moins à l\'aise dans les matières artistiques.',
+                    date: new Date().toISOString()
+                },
+                'Léonard de Vinci': {
+                    notes: {
+                        lecture: '15.0',
+                        'expression-ecrite': '16.5',
+                        dictee: '14.0',
+                        es: '16.0',
+                        est: '17.0',
+                        mathematiques: '14.5',
+                        'ea-dessin': '20.0',
+                        'ea-poesie-chant-conte': '19.5',
+                        eps: '15.5',
+                        'art-oratoire': '18.0',
+                        anglais: '16.0',
+                        musique: '19.0',
+                        danse: '18.5',
+                        jardinage: '17.5'
+                    },
+                    commentaire: 'Très créatif et artistique, excellent dans les matières pratiques.',
+                    date: new Date().toISOString()
+                }
+            };
+            
+            appState.enseignant = {
+                nom: 'Dupont',
+                prenom: 'Marie',
+                classe: 'CM1',
+                anneeScolaire: '2023-2024'
+            };
+            
+            applyConfig();
+            updateUI();
+            showToast('Données d\'exemple chargées', 'info');
+        }
+
+        function applyConfig() {
+            // Configuration
+            elements.seuilReussite.value = appState.config.seuilReussite;
+            elements.thresholdValue.textContent = appState.config.seuilReussite.toFixed(1);
+            elements.decimalPrecision.value = appState.config.decimalPrecision;
+            elements.autoSave.checked = appState.config.autoSave;
+            elements.alertNotesBasses.checked = appState.config.alertNotesBasses;
+            elements.alertProgres.checked = appState.config.alertProgres;
+            
+            // Mettre à jour les seuils dans l'interface
+            elements.statSeuil.textContent = appState.config.seuilReussite.toFixed(1);
+            elements.statSeuilDetail.textContent = appState.config.seuilReussite.toFixed(1);
+            
+            // Enseignant
+            elements.nomEnseignant.value = appState.enseignant.nom || '';
+            elements.prenomEnseignant.value = appState.enseignant.prenom || '';
+            elements.classeEnseignant.value = appState.enseignant.classe || '';
+            elements.anneeScolaire.value = appState.enseignant.anneeScolaire || '2023-2024';
+        }
+
+        function autoSave() {
+            if (appState.config.autoSave) {
+                saveState();
+            }
+        }
+
+        // ===== GESTION DE L'INTERFACE =====
+        function updateUI() {
+            updateElevesList();
+            updateSelectEleve();
+            updateStats();
+            updateClassement();
+            updateMentions();
+        }
+
+        function updateElevesList() {
+            const container = elements.listeEleves;
+            
+            if (appState.eleves.length === 0) {
+                container.innerHTML = `
+                    <div class="no-students">
+                        <i class="fas fa-users-slash"></i>
+                        <p>Aucun élève n'a été ajouté pour le moment</p>
+                        <p style="margin-top: var(--space-sm); font-size: 0.9rem; opacity: 0.7;">
+                            Commencez par ajouter vos élèves en utilisant le formulaire ci-dessus
+                        </p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            appState.eleves.forEach(eleve => {
+                const evalData = appState.evaluations[eleve];
+                const moyenne = evalData ? calculateMoyenne(evalData.notes) : null;
+                const mention = getMention(moyenne);
+                const mentionInfo = getMentionInfo(mention);
+                const reussi = isReussi(moyenne);
+                
+                // Calculer les initiales pour l'avatar
+                const initiales = eleve.split(' ')
+                    .map(nom => nom[0])
+                    .join('')
+                    .toUpperCase()
+                    .substring(0, 2);
+                
+                // Déterminer la classe CSS pour le statut
+                const statusClass = moyenne === null ? '' : (reussi ? 'reussi' : 'echec');
+                
+                html += `
+                    <div class="student-card ${statusClass}" data-eleve="${eleve}">
+                        <div class="student-info">
+                            <div class="student-avatar">${initiales}</div>
+                            <div class="student-details">
+                                <div class="student-name">${eleve}</div>
+                                <div class="student-stats">
+                                    ${moyenne !== null ? `
+                                        <span class="student-moyenne">${moyenne.toFixed(1)}/20</span>
+                                        <span class="student-mention ${mention ? 'mention-' + mention.toLowerCase().replace(' ', '-') : ''}">
+                                            ${mention || 'Non évalué'}
+                                        </span>
+                                    ` : `
+                                        <span style="color: var(--text-light); font-style: italic;">
+                                            <i class="fas fa-clock"></i> Non évalué
+                                        </span>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="student-actions">
+                            <button class="btn btn-info btn-small" onclick="openEmailModal('${eleve.replace(/'/g, "\\'")}')">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                            <button class="btn btn-outline btn-small" onclick="editEleve('${eleve.replace(/'/g, "\\'")}')">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn btn-error btn-small" onclick="deleteEleve('${eleve.replace(/'/g, "\\'")}')">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateSelectEleve() {
+            const select = elements.selectEleve;
+            const currentValue = select.value;
+            
+            select.innerHTML = '<option value="">Choisir un élève</option>';
+            
+            appState.eleves.forEach(eleve => {
+                const option = document.createElement('option');
+                option.value = eleve;
+                option.textContent = eleve;
+                
+                const evalData = appState.evaluations[eleve];
+                if (evalData) {
+                    const moyenne = calculateMoyenne(evalData.notes);
+                    if (moyenne !== null) {
+                        option.textContent += ` (${moyenne.toFixed(1)}/20)`;
+                    }
+                }
+                
+                select.appendChild(option);
+            });
+            
+            select.value = currentValue;
+            onEleveSelectionChange();
+        }
+
+        function onEleveSelectionChange() {
+            const eleve = elements.selectEleve.value;
+            
+            if (!eleve) {
+                elements.notesForm.style.display = 'none';
+                elements.studentStatsPanel.style.display = 'none';
+                return;
+            }
+            
+            elements.notesForm.style.display = 'block';
+            elements.studentStatsPanel.style.display = 'grid';
+            
+            const evalData = appState.evaluations[eleve];
+            if (evalData) {
+                // Charger les notes existantes
+                document.querySelectorAll('.note-input').forEach(input => {
+                    const matiere = input.dataset.matiere;
+                    const note = evalData.notes[matiere];
+                    input.value = note || '';
+                    updateNoteStyle(input);
+                });
+                
+                // Charger le commentaire
+                elements.commentaire.value = evalData.commentaire || '';
+                
+                // Mettre à jour les statistiques de l'élève
+                updateEleveStats(eleve, evalData);
+            } else {
+                // Effacer le formulaire
+                document.querySelectorAll('.note-input').forEach(input => {
+                    input.value = '';
+                    input.className = 'note-input';
+                });
+                elements.commentaire.value = '';
+                resetEleveStats();
+            }
+        }
+
+        function updateNoteStyle(input) {
+            const value = parseFloat(input.value);
+            if (isNaN(value)) {
+                input.className = 'note-input';
+                return;
+            }
+            
+            const statusIcon = input.parentElement.querySelector('.note-status');
+            
+            if (value >= appState.config.seuilReussite) {
+                input.className = 'note-input success';
+                statusIcon.className = 'note-status success';
+                statusIcon.innerHTML = '<i class="fas fa-check"></i>';
+            } else if (value >= appState.config.seuilReussite * 0.7) {
+                input.className = 'note-input warning';
+                statusIcon.className = 'note-status warning';
+                statusIcon.innerHTML = '<i class="fas fa-exclamation"></i>';
+            } else {
+                input.className = 'note-input error';
+                statusIcon.className = 'note-status error';
+                statusIcon.innerHTML = '<i class="fas fa-times"></i>';
+            }
+        }
+
+        function updateEleveStats(eleve, evalData) {
+            const moyenne = calculateMoyenne(evalData.notes);
+            const mention = getMention(moyenne);
+            const mentionInfo = getMentionInfo(mention);
+            const reussi = isReussi(moyenne);
+            
+            // Mettre à jour la moyenne
+            elements.statMoyenneEleve.textContent = moyenne !== null ? moyenne.toFixed(1) : '-';
+            elements.statMoyenneEleve.className = `stat-value ${reussi ? 'high' : 'low'}`;
+            
+            // Mettre à jour la mention
+            if (mention && mentionInfo) {
+                elements.statMentionEleve.textContent = mention;
+                elements.statMentionEleve.style.color = mentionInfo.color;
+            } else {
+                elements.statMentionEleve.textContent = '-';
+                elements.statMentionEleve.style.color = 'var(--text-light)';
+            }
+            
+            // Mettre à jour le statut
+            if (moyenne !== null) {
+                elements.statReussiteEleve.textContent = reussi ? '✓' : '✗';
+                elements.statReussiteEleve.style.color = reussi ? 'var(--success)' : 'var(--error)';
+            } else {
+                elements.statReussiteEleve.textContent = '-';
+                elements.statReussiteEleve.style.color = 'var(--text-light)';
+            }
+            
+            // Calculer la position
+            const positions = calculateClassement();
+            const position = positions.findIndex(p => p.eleve === eleve) + 1;
+            if (position > 0) {
+                elements.statPositionEleve.textContent = `#${position}`;
+            } else {
+                elements.statPositionEleve.textContent = '-';
+            }
+        }
+
+        function resetEleveStats() {
+            elements.statMoyenneEleve.textContent = '-';
+            elements.statMoyenneEleve.className = 'stat-value';
+            elements.statMentionEleve.textContent = '-';
+            elements.statMentionEleve.style.color = 'var(--primary)';
+            elements.statReussiteEleve.textContent = '✓';
+            elements.statReussiteEleve.style.color = 'var(--success)';
+            elements.statPositionEleve.textContent = '-';
+        }
+
+        function updateStats() {
+            // Statistiques générales
+            const totalEleves = appState.eleves.length;
+            const totalEvaluations = Object.keys(appState.evaluations).length;
+            
+            elements.statTotalEleves.textContent = totalEleves;
+            elements.statEvaluations.textContent = totalEvaluations;
+            elements.statElevesTotal.textContent = totalEleves;
+            elements.statEvaluationsTotal.textContent = totalEvaluations;
+            
+            // Calculer la moyenne de classe
+            let sommeMoyennes = 0;
+            let nombreMoyennes = 0;
+            
+            Object.values(appState.evaluations).forEach(evalData => {
+                const moyenne = calculateMoyenne(evalData.notes);
+                if (moyenne !== null) {
+                    sommeMoyennes += moyenne;
+                    nombreMoyennes++;
+                }
+            });
+            
+            const moyenneClasse = nombreMoyennes > 0 ? sommeMoyennes / nombreMoyennes : 0;
+            
+            elements.statMoyenneClasse.textContent = moyenneClasse.toFixed(1);
+            elements.statMoyenneGenerale.textContent = moyenneClasse.toFixed(1);
+            
+            // Calculer le taux de réussite
+            let reussis = 0;
+            let totalAvecNotes = 0;
+            
+            Object.values(appState.evaluations).forEach(evalData => {
+                const moyenne = calculateMoyenne(evalData.notes);
+                if (moyenne !== null) {
+                    totalAvecNotes++;
+                    if (isReussi(moyenne)) {
+                        reussis++;
+                    }
+                }
+            });
+            
+            const tauxReussite = totalAvecNotes > 0 ? Math.round((reussis / totalAvecNotes) * 100) : 0;
+            
+            elements.statTauxReussite.textContent = `${tauxReussite}%`;
+            elements.statTauxReussiteDetail.textContent = `${tauxReussite}%`;
+            
+            // Mettre à jour les classes pour l'animation
+            ['statTotalEleves', 'statEvaluations', 'statMoyenneClasse', 'statTauxReussite'].forEach(id => {
+                const element = document.getElementById(id);
+                element.classList.add('counting');
+                setTimeout(() => element.classList.remove('counting'), 800);
+            });
+        }
+
+        function calculateClassement() {
+            const classement = [];
+            
+            appState.eleves.forEach(eleve => {
+                const evalData = appState.evaluations[eleve];
+                if (evalData) {
+                    const moyenne = calculateMoyenne(evalData.notes);
+                    if (moyenne !== null) {
+                        classement.push({
+                            eleve: eleve,
+                            moyenne: moyenne,
+                            mention: getMention(moyenne),
+                            reussi: isReussi(moyenne)
+                        });
+                    }
+                }
+            });
+            
+            // Trier par moyenne décroissante
+            classement.sort((a, b) => b.moyenne - a.moyenne);
+            
+            return classement;
+        }
+
+        function updateClassement() {
+            const classement = calculateClassement();
+            const tbody = elements.classementBody;
+            
+            if (classement.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="6" style="padding: var(--space-xl); text-align: center; color: var(--text-light);">
+                            <i class="fas fa-info-circle"></i> Aucune donnée disponible
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            classement.forEach((item, index) => {
+                const mentionInfo = getMentionInfo(item.mention);
+                const positionClass = index < 3 ? `class="pulse"` : '';
+                
+                html += `
+                    <tr ${positionClass}>
+                        <td style="padding: var(--space-md); font-weight: 700; color: var(--dark);">
+                            ${index + 1}
+                        </td>
+                        <td style="padding: var(--space-md); font-weight: 600; color: var(--dark);">
+                            ${item.eleve}
+                        </td>
+                        <td style="padding: var(--space-md); font-weight: 700; color: var(--primary);">
+                            ${item.moyenne.toFixed(1)}/20
+                        </td>
+                        <td style="padding: var(--space-md);">
+                            <span class="student-mention ${item.mention ? 'mention-' + item.mention.toLowerCase().replace(' ', '-') : ''}" 
+                                  style="display: inline-block;">
+                                ${item.mention}
+                            </span>
+                        </td>
+                        <td style="padding: var(--space-md);">
+                            ${item.reussi ? 
+                                '<span style="color: var(--success); font-weight: 600;"><i class="fas fa-check"></i> Réussi</span>' :
+                                '<span style="color: var(--error); font-weight: 600;"><i class="fas fa-times"></i> À améliorer</span>'
+                            }
+                        </td>
+                        <td style="padding: var(--space-md);">
+                            <button class="btn btn-info btn-small" onclick="openEmailModal('${item.eleve.replace(/'/g, "\\'")}')">
+                                <i class="fas fa-envelope"></i> Email
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+        }
+
+        function updateMentions() {
+            const distribution = {
+                'Très Satisfaisant': 0,
+                'Satisfaisant': 0,
+                'Peu Satisfaisant': 0,
+                'Insuffisant': 0
+            };
+            
+            Object.values(appState.evaluations).forEach(evalData => {
+                const moyenne = calculateMoyenne(evalData.notes);
+                if (moyenne !== null) {
+                    const mention = getMention(moyenne);
+                    if (distribution.hasOwnProperty(mention)) {
+                        distribution[mention]++;
+                    }
+                }
+            });
+            
+            // Mettre à jour les compteurs
+            const mentionCards = document.querySelectorAll('.mention-card');
+            mentionCards.forEach((card, index) => {
+                const mentionName = card.querySelector('.mention-name').textContent;
+                const countElement = card.querySelector('.mention-count');
+                
+                if (countElement && distribution.hasOwnProperty(mentionName)) {
+                    countElement.textContent = distribution[mentionName];
+                    countElement.classList.add('counting');
+                    setTimeout(() => countElement.classList.remove('counting'), 800);
+                }
+            });
+        }
+
+        function updateActivityLog() {
+            const container = elements.activityLog;
+            
+            if (appState.historique.length === 0) {
+                container.innerHTML = `
+                    <p style="color: var(--text-light); text-align: center; padding: var(--space-lg);">
+                        <i class="fas fa-info-circle"></i> Aucune activité récente
+                    </p>
+                `;
+                return;
+            }
+            
+            let html = '<div style="display: flex; flex-direction: column; gap: var(--space-sm);">';
+            
+            appState.historique.slice(0, 5).forEach(entry => {
+                const date = new Date(entry.timestamp);
+                const timeString = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                
+                let icon = 'fas fa-info-circle';
+                let color = 'var(--info)';
+                
+                if (entry.action.includes('ajout')) icon = 'fas fa-user-plus';
+                else if (entry.action.includes('supprim')) icon = 'fas fa-user-minus';
+                else if (entry.action.includes('sauvegarde')) icon = 'fas fa-save';
+                else if (entry.action.includes('export')) icon = 'fas fa-download';
+                else if (entry.action.includes('email')) icon = 'fas fa-envelope';
+                
+                html += `
+                    <div style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm); 
+                                background: white; border-radius: var(--radius-md); border-left: 4px solid ${color};">
+                        <i class="${icon}" style="color: ${color};"></i>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600; color: var(--dark); font-size: 0.9rem;">
+                                ${entry.action}
+                            </div>
+                            <div style="color: var(--text-light); font-size: 0.85rem;">
+                                ${entry.details}
+                            </div>
+                        </div>
+                        <div style="color: var(--text-light); font-size: 0.8rem;">
+                            ${timeString}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // ===== GESTION DES ÉLÈVES =====
+        function addEleve() {
+            const nom = elements.inputEleve.value.trim();
+            
+            if (!nom) {
+                showToast('Veuillez entrer un nom d\'élève', 'warning');
+                return;
+            }
+            
+            if (appState.eleves.includes(nom)) {
+                showToast('Cet élève existe déjà', 'warning');
+                return;
+            }
+            
+            appState.eleves.push(nom);
+            elements.inputEleve.value = '';
+            
+            addToHistory('Élève ajouté', nom);
+            
+            autoSave();
+            updateUI();
+            
+            showToast(`Élève "${nom}" ajouté avec succès`, 'success');
+        }
+
+        function editEleve(nom) {
+            const nouveauNom = prompt('Modifier le nom de l\'élève :', nom);
+            
+            if (nouveauNom && nouveauNom.trim() && nouveauNom !== nom) {
+                const index = appState.eleves.indexOf(nom);
+                if (index !== -1) {
+                    appState.eleves[index] = nouveauNom.trim();
+                    
+                    // Mettre à jour les évaluations si elles existent
+                    if (appState.evaluations[nom]) {
+                        appState.evaluations[nouveauNom.trim()] = appState.evaluations[nom];
+                        delete appState.evaluations[nom];
+                    }
+                    
+                    addToHistory('Élève modifié', `${nom} → ${nouveauNom.trim()}`);
+                    
+                    autoSave();
+                    updateUI();
+                    
+                    showToast('Élève modifié avec succès', 'success');
+                }
+            }
+        }
+
+        function deleteEleve(nom) {
+            if (!confirm(`Êtes-vous sûr de vouloir supprimer l'élève "${nom}" ?`)) {
+                return;
+            }
+            
+            // Supprimer l'élève de la liste
+            appState.eleves = appState.eleves.filter(e => e !== nom);
+            
+            // Supprimer ses évaluations
+            delete appState.evaluations[nom];
+            
+            addToHistory('Élève supprimé', nom);
+            
+            autoSave();
+            updateUI();
+            
+            showToast(`Élève "${nom}" supprimé`, 'success');
+        }
+
+        // ===== GESTION DES ÉVALUATIONS =====
+        function saveEvaluation() {
+            const eleve = elements.selectEleve.value;
+            
+            if (!eleve) {
+                showToast('Veuillez sélectionner un élève', 'warning');
+                return;
+            }
+            
+            // Collecter les notes
+            const notes = {};
+            let hasNotes = false;
+            
+            document.querySelectorAll('.note-input').forEach(input => {
+                const value = input.value.trim();
+                const matiere = input.dataset.matiere;
+                
+                if (value !== '') {
+                    notes[matiere] = formatNote(value);
+                    hasNotes = true;
+                } else {
+                    notes[matiere] = '';
+                }
+            });
+            
+            if (!hasNotes) {
+                showToast('Veuillez saisir au moins une note', 'warning');
+                return;
+            }
+            
+            // Créer ou mettre à jour l'évaluation
+            appState.evaluations[eleve] = {
+                notes: notes,
+                commentaire: elements.commentaire.value.trim(),
+                date: new Date().toISOString(),
+                moyenne: calculateMoyenne(notes),
+                mention: getMention(calculateMoyenne(notes)),
+                reussi: isReussi(calculateMoyenne(notes))
+            };
+            
+            addToHistory('Évaluation sauvegardée', `${eleve} - ${calculateMoyenne(notes)?.toFixed(1)}/20`);
+            
+            autoSave();
+            updateEleveStats(eleve, appState.evaluations[eleve]);
+            updateUI();
+            
+            showToast(`Évaluation de ${eleve} sauvegardée avec succès`, 'success');
+        }
+
+        function calculateCurrentMoyenne() {
+            const notes = {};
+            
+            document.querySelectorAll('.note-input').forEach(input => {
+                const value = input.value.trim();
+                const matiere = input.dataset.matiere;
+                
+                if (value !== '') {
+                    notes[matiere] = formatNote(value);
+                }
+            });
+            
+            const moyenne = calculateMoyenne(notes);
+            if (moyenne !== null) {
+                const mention = getMention(moyenne);
+                const mentionInfo = getMentionInfo(mention);
+                
+                let message = `Moyenne actuelle : ${moyenne.toFixed(1)}/20`;
+                if (mention) {
+                    message += ` (${mention})`;
+                }
+                
+                showToast(message, 'info');
+                
+                // Mettre à jour le style des notes
+                document.querySelectorAll('.note-input').forEach(input => {
+                    updateNoteStyle(input);
+                });
+            } else {
+                showToast('Aucune note valide pour calculer la moyenne', 'warning');
+            }
+        }
+
+        function generateCommentaire() {
+            const notes = {};
+            let noteCount = 0;
+            let sum = 0;
+            
+            document.querySelectorAll('.note-input').forEach(input => {
+                const value = parseFloat(input.value);
+                if (!isNaN(value)) {
+                    const matiere = input.dataset.matiere;
+                    notes[matiere] = value;
+                    sum += value;
+                    noteCount++;
+                }
+            });
+            
+            if (noteCount === 0) {
+                showToast('Aucune note pour générer un commentaire', 'warning');
+                return;
+            }
+            
+            const moyenne = sum / noteCount;
+            const mention = getMention(moyenne);
+            
+            let commentaire = '';
+            
+            if (moyenne >= 18) {
+                commentaire = `Excellente performance ! L'élève démontre une maîtrise exceptionnelle dans toutes les matières. Continue sur cette lancée !`;
+            } else if (moyenne >= 14) {
+                commentaire = `Très bon travail ! L'élève montre une bonne compréhension des concepts. Quelques efforts supplémentaires permettront d'atteindre l'excellence.`;
+            } else if (moyenne >= 10) {
+                commentaire = `Des efforts sont nécessaires. L'élève a besoin de renforcer certaines compétences. Un travail régulier portera ses fruits.`;
+            } else {
+                commentaire = `Des difficultés importantes sont rencontrées. Il est essentiel que l'élève bénéficie d'un soutien supplémentaire et d'un suivi rapproché.`;
+            }
+            
+            elements.commentaire.value = commentaire;
+            showToast('Commentaire généré avec succès', 'success');
+        }
+
+        function clearForm() {
+            if (!confirm('Voulez-vous effacer toutes les notes et commentaires ?')) {
+                return;
+            }
+            
+            document.querySelectorAll('.note-input').forEach(input => {
+                input.value = '';
+                input.className = 'note-input';
+            });
+            
+            elements.commentaire.value = '';
+            resetEleveStats();
+            
+            showToast('Formulaire effacé', 'success');
+        }
+
+        // ===== GESTION EMAIL INDIVIDUEL =====
+        let currentEmailEleve = '';
+
+        function openEmailModal(eleve) {
+            currentEmailEleve = eleve;
+            const evalData = appState.evaluations[eleve];
+            
+            if (!evalData) {
+                showToast('Cet élève n\'a pas d\'évaluation', 'warning');
+                return;
+            }
+            
+            // Remplir les champs
+            elements.emailEleve.value = eleve;
+            elements.emailParent.value = `parent.${eleve.toLowerCase().replace(/\s+/g, '.')}@exemple.fr`;
+            
+            // Générer un message par défaut
+            const moyenne = calculateMoyenne(evalData.notes);
+            const mention = getMention(moyenne);
+            const position = getPosition(eleve);
+            
+            let message = `Bonjour,\n\n`;
+            message += `Voici le bulletin scolaire de ${eleve} pour la période en cours :\n\n`;
+            message += `Élève : ${eleve}\n`;
+            message += `Classe : ${appState.enseignant.classe}\n`;
+            message += `Enseignant : ${appState.enseignant.prenom} ${appState.enseignant.nom}\n`;
+            message += `Date : ${new Date().toLocaleDateString('fr-FR')}\n\n`;
+            
+            if (elements.includeStats.checked) {
+                message += `=== STATISTIQUES ===\n`;
+                message += `Moyenne générale : ${moyenne.toFixed(1)}/20\n`;
+                message += `Mention : ${mention}\n`;
+                message += `Position dans la classe : ${position}ème\n`;
+                message += `Seuil de réussite : ${appState.config.seuilReussite}/20\n`;
+                message += `Statut : ${isReussi(moyenne) ? 'Réussi ✓' : 'À améliorer ✗'}\n\n`;
+            }
+            
+            if (elements.includeCommentaire.checked && evalData.commentaire) {
+                message += `=== COMMENTAIRE ===\n`;
+                message += `${evalData.commentaire}\n\n`;
+            }
+            
+            if (elements.includeNotes.checked) {
+                message += `=== NOTES DÉTAILLÉES ===\n`;
+                Object.entries(evalData.notes).forEach(([matiere, note]) => {
+                    if (note !== '') {
+                        const nomMatiere = matiere.split('-').map(word => 
+                            word.charAt(0).toUpperCase() + word.slice(1)
+                        ).join(' ');
+                        message += `${nomMatiere} : ${note}/20\n`;
+                    }
+                });
+                message += `\n`;
+            }
+            
+            message += `Cordialement,\n`;
+            message += `${appState.enseignant.prenom} ${appState.enseignant.nom}\n`;
+            message += `Enseignant(e) - ${appState.enseignant.classe}`;
+            
+            elements.emailMessage.value = message;
+            elements.emailModal.classList.add('active');
+        }
+
+        function closeEmailModal() {
+            elements.emailModal.classList.remove('active');
+            currentEmailEleve = '';
+        }
+
+        function sendIndividualEmail() {
+            const email = elements.emailParent.value.trim();
+            const message = elements.emailMessage.value.trim();
+            
+            if (!email) {
+                showToast('Veuillez saisir un email', 'warning');
+                return;
+            }
+            
+            if (!validateEmail(email)) {
+                showToast('Email invalide', 'error');
+                return;
+            }
+            
+            // Préparer le sujet
+            const sujet = `Bulletin scolaire - ${currentEmailEleve} - ${appState.enseignant.classe} - ${new Date().toLocaleDateString('fr-FR')}`;
+            
+            // Ouvrir le client email
+            const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(sujet)}&body=${encodeURIComponent(message)}`;
+            window.open(mailtoLink, '_blank');
+            
+            addToHistory('Email envoyé', `Bulletin de ${currentEmailEleve} à ${email}`);
+            closeEmailModal();
+            showToast('Email préparé dans votre client de messagerie', 'success');
+        }
+
+        function getPosition(eleve) {
+            const classement = calculateClassement();
+            const position = classement.findIndex(p => p.eleve === eleve) + 1;
+            return position > 0 ? position : 'N/A';
+        }
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        // ===== GESTION DE L'EXPORT =====
+        function exportJSON() {
+            if (Object.keys(appState.evaluations).length === 0) {
+                showToast('Aucune évaluation à exporter', 'warning');
+                return;
+            }
+            
+            const exportData = {
+                meta: {
+                    application: "Les Bulles de Joie",
+                    version: APP_CONFIG.VERSION,
+                    dateExport: new Date().toISOString(),
+                    config: appState.config
+                },
+                enseignant: appState.enseignant,
+                eleves: appState.eleves,
+                evaluations: appState.evaluations,
+                statistiques: {
+                    totalEleves: appState.eleves.length,
+                    totalEvaluations: Object.keys(appState.evaluations).length,
+                    seuilReussite: appState.config.seuilReussite
+                }
+            };
+            
+            const blob = new Blob([JSON.stringify(exportData, null, 2)], { 
+                type: 'application/json;charset=utf-8' 
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `evaluations_${appState.enseignant.classe}_${new Date().toISOString().slice(0,10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            addToHistory('Export JSON', `${Object.keys(appState.evaluations).length} évaluations`);
+            showToast('Export JSON réalisé avec succès', 'success');
+        }
+
+        function exportPDF() {
+            if (Object.keys(appState.evaluations).length === 0) {
+                showToast('Aucune évaluation à exporter', 'warning');
+                return;
+            }
+            
+            showLoader('Génération du PDF en cours...');
+            
+            // Simulation de génération PDF
+            setTimeout(() => {
+                hideLoader();
+                
+                // Créer une nouvelle fenêtre pour l'impression
+                const printWindow = window.open('', '_blank');
+                let content = `
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Évaluations - ${appState.enseignant.classe}</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; margin: 20px; }
+                            h1 { color: #4361ee; text-align: center; margin-bottom: 30px; }
+                            h2 { color: #3a56d4; border-bottom: 2px solid #3a56d4; padding-bottom: 5px; margin-top: 30px; }
+                            h3 { color: #2c3e50; margin-top: 20px; }
+                            .header { text-align: center; margin-bottom: 30px; }
+                            .info { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
+                            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+                            th { background: #4361ee; color: white; padding: 10px; text-align: left; }
+                            td { padding: 10px; border: 1px solid #ddd; }
+                            tr:nth-child(even) { background: #f8f9fa; }
+                            .mention { font-weight: bold; padding: 3px 8px; border-radius: 3px; display: inline-block; }
+                            .mention-excellent { background: #d1fae5; color: #065f46; }
+                            .mention-good { background: #dbeafe; color: #1e40af; }
+                            .mention-average { background: #fef3c7; color: #92400e; }
+                            .mention-weak { background: #fee2e2; color: #991b1b; }
+                            .footer { margin-top: 40px; text-align: center; color: #666; font-size: 0.9em; }
+                            @media print {
+                                body { margin: 0; padding: 10px; }
+                                .no-print { display: none; }
+                            }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>ÉVALUATIONS SCOLAIRES - LES BULLES DE JOIE</h1>
+                            <div class="info">
+                                <strong>Classe :</strong> ${appState.enseignant.classe}<br>
+                                <strong>Enseignant :</strong> ${appState.enseignant.prenom} ${appState.enseignant.nom}<br>
+                                <strong>Année scolaire :</strong> ${appState.enseignant.anneeScolaire}<br>
+                                <strong>Date :</strong> ${new Date().toLocaleDateString('fr-FR')}<br>
+                                <strong>Seuil de réussite :</strong> ${appState.config.seuilReussite}/20
+                            </div>
+                        </div>
+                        
+                        <div class="no-print">
+                            <button onclick="window.print()" style="padding: 10px 20px; background: #4361ee; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                                Imprimer ce rapport
+                            </button>
+                            <hr>
+                        </div>
+                `;
+                
+                // Résumé statistique
+                content += `<h2>Résumé Statistique</h2>`;
+                content += `<div class="info">`;
+                content += `<strong>Nombre d'élèves :</strong> ${appState.eleves.length}<br>`;
+                content += `<strong>Évaluations complétées :</strong> ${Object.keys(appState.evaluations).length}<br>`;
+                
+                // Calcul des statistiques
+                let totalMoyennes = 0;
+                let countMoyennes = 0;
+                let reussis = 0;
+                
+                Object.entries(appState.evaluations).forEach(([eleve, evalData]) => {
+                    const moyenne = calculateMoyenne(evalData.notes);
+                    if (moyenne !== null) {
+                        totalMoyennes += moyenne;
+                        countMoyennes++;
+                        
+                        if (isReussi(moyenne)) reussis++;
+                    }
+                });
+                
+                if (countMoyennes > 0) {
+                    const moyenneClasse = totalMoyennes / countMoyennes;
+                    const tauxReussite = Math.round((reussis / countMoyennes) * 100);
+                    
+                    content += `<strong>Moyenne de la classe :</strong> ${moyenneClasse.toFixed(2)}/20<br>`;
+                    content += `<strong>Taux de réussite :</strong> ${tauxReussite}%<br>`;
+                }
+                
+                content += `</div>`;
+                
+                // Détail par élève
+                content += `<h2>Détail par Élève</h2>`;
+                
+                appState.eleves.forEach(eleve => {
+                    const evalData = appState.evaluations[eleve];
+                    if (!evalData) return;
+                    
+                    const moyenne = calculateMoyenne(evalData.notes);
+                    if (moyenne === null) return;
+                    
+                    const mention = getMention(moyenne);
+                    const mentionClass = mention.toLowerCase().replace(' ', '-');
+                    
+                    content += `<h3>${eleve}</h3>`;
+                    content += `<table>`;
+                    content += `<tr><th>Matière</th><th>Note</th></tr>`;
+                    
+                    Object.entries(evalData.notes).forEach(([matiere, note]) => {
+                        if (note !== '') {
+                            content += `<tr>
+                                <td>${matiere.replace(/-/g, ' ')}</td>
+                                <td>${note}/20</td>
+                            </tr>`;
+                        }
+                    });
+                    
+                    content += `</table>`;
+                    content += `<p><strong>Moyenne :</strong> ${moyenne.toFixed(2)}/20</p>`;
+                    content += `<p><strong>Mention :</strong> <span class="mention mention-${mentionClass}">${mention}</span></p>`;
+                    content += `<p><strong>Commentaire :</strong> ${evalData.commentaire || 'Aucun'}</p>`;
+                    content += `<hr>`;
+                });
+                
+                content += `
+                        <div class="footer">
+                            Document généré par Les Bulles de Joie - Plateforme Pédagogique<br>
+                            ${new Date().toLocaleString('fr-FR')}
+                        </div>
+                    </body>
+                    </html>
+                `;
+                
+                printWindow.document.write(content);
+                printWindow.document.close();
+                
+                addToHistory('Export PDF', `${Object.keys(appState.evaluations).length} évaluations`);
+                showToast('PDF généré avec succès', 'success');
+            }, 1500);
+        }
+
+        function exportWord() {
+            showToast('Export Word - Fonctionnalité en développement', 'info');
+        }
+
+        function exportExcel() {
+            showToast('Export Excel - Fonctionnalité en développement', 'info');
+        }
+
+        function sendEmailGroup() {
+            if (Object.keys(appState.evaluations).length === 0) {
+                showToast('Aucune évaluation à envoyer', 'warning');
+                return;
+            }
+            
+            let body = `Bonjour,\n\n`;
+            body += `Voici le rapport des évaluations pour la classe ${appState.enseignant.classe} :\n\n`;
+            body += `Enseignant : ${appState.enseignant.prenom} ${appState.enseignant.nom}\n`;
+            body += `Année scolaire : ${appState.enseignant.anneeScolaire}\n`;
+            body += `Date : ${new Date().toLocaleDateString('fr-FR')}\n`;
+            body += `Seuil de réussite : ${appState.config.seuilReussite}/20\n\n`;
+            
+            body += `=== RÉSUMÉ ===\n`;
+            body += `Nombre d'élèves : ${appState.eleves.length}\n`;
+            body += `Évaluations complétées : ${Object.keys(appState.evaluations).length}\n\n`;
+            
+            // Calcul des statistiques
+            let totalMoyennes = 0;
+            let countMoyennes = 0;
+            let reussis = 0;
+            
+            Object.entries(appState.evaluations).forEach(([eleve, evalData]) => {
+                const moyenne = calculateMoyenne(evalData.notes);
+                if (moyenne !== null) {
+                    totalMoyennes += moyenne;
+                    countMoyennes++;
+                    if (isReussi(moyenne)) reussis++;
+                }
+            });
+            
+            if (countMoyennes > 0) {
+                const moyenneClasse = totalMoyennes / countMoyennes;
+                const tauxReussite = Math.round((reussis / countMoyennes) * 100);
+                
+                body += `Moyenne de la classe : ${moyenneClasse.toFixed(2)}/20\n`;
+                body += `Taux de réussite : ${tauxReussite}%\n\n`;
+            }
+            
+            const subject = encodeURIComponent(`Évaluations - ${appState.enseignant.classe} - ${new Date().toLocaleDateString('fr-FR')}`);
+            const bodyEncoded = encodeURIComponent(body);
+            const mailto = `mailto:?subject=${subject}&body=${bodyEncoded}`;
+            
+            window.open(mailto, '_blank');
+            
+            addToHistory('Email préparé', 'Rapport des évaluations');
+            showToast('Email préparé avec succès', 'success');
+        }
+
+        function printReport() {
+            if (Object.keys(appState.evaluations).length === 0) {
+                showToast('Aucune évaluation à imprimer', 'warning');
+                return;
+            }
+            
+            const printWindow = window.open('', '_blank');
+            let content = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>Évaluations - ${appState.enseignant.classe}</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; margin: 20px; }
+                        h1 { color: #000; text-align: center; }
+                        h2 { border-bottom: 1px solid #000; padding-bottom: 5px; }
+                        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+                        th, td { border: 1px solid #000; padding: 5px; }
+                        th { background: #f0f0f0; }
+                        .page-break { page-break-after: always; }
+                        @media print {
+                            body { margin: 0; padding: 10px; font-size: 12pt; }
+                            button { display: none; }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <button onclick="window.print()" style="padding: 10px; margin: 10px;">
+                        Imprimer
+                    </button>
+                    
+                    <h1>Les Bulles de Joie</h1>
+                    <h2>Évaluations - ${appState.enseignant.classe}</h2>
+                    <p>Enseignant : ${appState.enseignant.prenom} ${appState.enseignant.nom}</p>
+                    <p>Année scolaire : ${appState.enseignant.anneeScolaire}</p>
+                    <p>Date : ${new Date().toLocaleDateString('fr-FR')}</p>
+                    <p>Seuil de réussite : ${appState.config.seuilReussite}/20</p>
+                    
+                    <h2>Liste des Élèves</h2>
+            `;
+            
+            appState.eleves.forEach((eleve, index) => {
+                const evalData = appState.evaluations[eleve];
+                
+                if (index > 0 && index % 5 === 0) {
+                    content += `<div class="page-break"></div>`;
+                }
+                
+                content += `<h3>${eleve}</h3>`;
+                
+                if (evalData) {
+                    content += `<table>`;
+                    content += `<tr><th>Matière</th><th>Note</th></tr>`;
+                    
+                    Object.entries(evalData.notes).forEach(([matiere, note]) => {
+                        if (note !== '') {
+                            content += `<tr>
+                                <td>${matiere.replace(/-/g, ' ')}</td>
+                                <td>${note}/20</td>
+                            </tr>`;
+                        }
+                    });
+                    
+                    content += `</table>`;
+                    
+                    const moyenne = calculateMoyenne(evalData.notes);
+                    if (moyenne !== null) {
+                        content += `<p><strong>Moyenne :</strong> ${moyenne.toFixed(2)}/20</p>`;
+                        content += `<p><strong>Mention :</strong> ${getMention(moyenne)}</p>`;
+                    }
+                    
+                    content += `<p><strong>Commentaire :</strong> ${evalData.commentaire || 'Aucun'}</p>`;
+                } else {
+                    content += `<p><em>Aucune évaluation</em></p>`;
+                }
+                
+                content += `<hr>`;
+            });
+            
+            content += `
+                    <div style="margin-top: 50px; text-align: center; font-size: 0.9em;">
+                        Document généré par Les Bulles de Joie<br>
+                        ${new Date().toLocaleString('fr-FR')}
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            printWindow.document.write(content);
+            printWindow.document.close();
+            
+            addToHistory('Impression', 'Rapport des évaluations');
+            showToast('Document prêt pour impression', 'success');
+        }
+
+        // ===== GESTION DE LA CONFIGURATION =====
+        function saveConfiguration() {
+            appState.config = {
+                seuilReussite: parseFloat(elements.seuilReussite.value),
+                decimalPrecision: parseFloat(elements.decimalPrecision.value),
+                autoSave: elements.autoSave.checked,
+                alertNotesBasses: elements.alertNotesBasses.checked,
+                alertProgres: elements.alertProgres.checked
+            };
+            
+            // Mettre à jour l'affichage des seuils
+            elements.thresholdValue.textContent = appState.config.seuilReussite.toFixed(1);
+            elements.statSeuil.textContent = appState.config.seuilReussite.toFixed(1);
+            elements.statSeuilDetail.textContent = appState.config.seuilReussite.toFixed(1);
+            
+            saveState();
+            
+            addToHistory('Configuration sauvegardée', 'Paramètres mis à jour');
+            showToast('Configuration sauvegardée avec succès', 'success');
+        }
+
+        function backupData() {
+            const backupData = {
+                meta: {
+                    type: 'backup',
+                    application: "Les Bulles de Joie",
+                    version: APP_CONFIG.VERSION,
+                    dateBackup: new Date().toISOString()
+                },
+                data: appState
+            };
+            
+            const blob = new Blob([JSON.stringify(backupData, null, 2)], { 
+                type: 'application/json;charset=utf-8' 
+            });
+            
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `backup_bullesdejoie_${new Date().toISOString().slice(0,10)}.json`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            addToHistory('Sauvegarde des données', 'Backup complet');
+            showToast('Sauvegarde des données réalisée', 'success');
+        }
+
+        function restoreData() {
+            elements.restoreFile.click();
+        }
+
+        function handleRestoreFile(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            
+            reader.onload = function(e) {
+                try {
+                    const backupData = JSON.parse(e.target.result);
+                    
+                    if (backupData.meta && backupData.meta.type === 'backup' && backupData.data) {
+                        if (confirm('Voulez-vous restaurer ces données ? Cette action écrasera les données actuelles.')) {
+                            appState = backupData.data;
+                            applyConfig();
+                            updateUI();
+                            saveState();
+                            
+                            addToHistory('Restauration des données', 'Données restaurées depuis backup');
+                            showToast('Données restaurées avec succès', 'success');
+                        }
+                    } else {
+                        showToast('Fichier de sauvegarde invalide', 'error');
+                    }
+                } catch (error) {
+                    console.error('Erreur lors de la restauration:', error);
+                    showToast('Erreur lors de la restauration des données', 'error');
+                }
+            };
+            
+            reader.readAsText(file);
+            event.target.value = '';
+        }
+
+        function resetData() {
+            if (confirm('Êtes-vous sûr de vouloir réinitialiser toutes les données ? Cette action est irréversible.')) {
+                appState = {
+                    config: {
+                        seuilReussite: APP_CONFIG.DEFAULT_THRESHOLD,
+                        decimalPrecision: 0.5,
+                        autoSave: true,
+                        alertNotesBasses: true,
+                        alertProgres: true
+                    },
+                    enseignant: {
+                        nom: '',
+                        prenom: '',
+                        classe: '',
+                        anneeScolaire: '2023-2024'
+                    },
+                    eleves: [],
+                    evaluations: {},
+                    historique: [],
+                    lastSave: null
+                };
+                
+                applyConfig();
+                updateUI();
+                saveState();
+                
+                addToHistory('Réinitialisation', 'Toutes les données ont été réinitialisées');
+                showToast('Données réinitialisées avec succès', 'success');
+            }
+        }
+
+        // ===== PRÉVISUALISATION =====
+        function updatePreview(type = 'json') {
+            let content = '';
+            
+            switch(type) {
+                case 'json':
+                    const previewData = {
+                        meta: {
+                            application: "Les Bulles de Joie",
+                            version: APP_CONFIG.VERSION,
+                            datePreview: new Date().toISOString(),
+                            config: appState.config
+                        },
+                        enseignant: appState.enseignant,
+                        eleves: appState.eleves,
+                        evaluations: appState.evaluations
+                    };
+                    content = JSON.stringify(previewData, null, 2);
+                    break;
+                    
+                case 'stats':
+                    content = "=== STATISTIQUES DE LA CLASSE ===\n\n";
+                    content += `Classe: ${appState.enseignant.classe || 'Non définie'}\n`;
+                    content += `Enseignant: ${appState.enseignant.prenom} ${appState.enseignant.nom}\n`;
+                    content += `Année scolaire: ${appState.enseignant.anneeScolaire}\n`;
+                    content += `Date: ${new Date().toLocaleDateString('fr-FR')}\n\n`;
+                    
+                    content += `Nombre d'élèves: ${appState.eleves.length}\n`;
+                    content += `Évaluations complétées: ${Object.keys(appState.evaluations).length}\n\n`;
+                    
+                    // Calcul des statistiques détaillées
+                    let totalMoyennes = 0;
+                    let countMoyennes = 0;
+                    let reussis = 0;
+                    
+                    Object.entries(appState.evaluations).forEach(([eleve, evalData]) => {
+                        const moyenne = calculateMoyenne(evalData.notes);
+                        if (moyenne !== null) {
+                            totalMoyennes += moyenne;
+                            countMoyennes++;
+                            if (isReussi(moyenne)) reussis++;
+                        }
+                    });
+                    
+                    if (countMoyennes > 0) {
+                        const moyenneClasse = totalMoyennes / countMoyennes;
+                        const tauxReussite = Math.round((reussis / countMoyennes) * 100);
+                        
+                        content += `Moyenne de classe: ${moyenneClasse.toFixed(2)}/20\n`;
+                        content += `Taux de réussite: ${tauxReussite}%\n`;
+                        content += `Seuil de réussite: ${appState.config.seuilReussite}/20\n\n`;
+                    }
+                    break;
+                    
+                case 'bulletin':
+                    content = "=== MODÈLE DE BULLETIN ===\n\n";
+                    content += "ÉCOLE : LES BULLES DE JOIE\n";
+                    content += `CLASSE : ${appState.enseignant.classe || '[Classe]'}\n`;
+                    content += `ENSEIGNANT : ${appState.enseignant.prenom || '[Prénom]'} ${appState.enseignant.nom || '[Nom]'}\n`;
+                    content += `ANNÉE SCOLAIRE : ${appState.enseignant.anneeScolaire}\n`;
+                    content += `PÉRIODE : ${new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}\n\n`;
+                    
+                    content += "┌─────────────────────────────────────────────────────┐\n";
+                    content += "│                    BULLETIN SCOLAIRE                 │\n";
+                    content += "├─────────────────────────────────────────────────────┤\n";
+                    content += "│ Élève : [Nom Prénom de l'élève]                     │\n";
+                    content += "├─────────────────────────────────────────────────────┤\n";
+                    content += "│ MATIÈRES                    NOTE   APPRÉCIATION     │\n";
+                    content += "├─────────────────────────────────────────────────────┤\n";
+                    
+                    const matieres = [
+                        { nom: 'Lecture', code: 'lecture' },
+                        { nom: 'Expression écrite', code: 'expression-ecrite' },
+                        { nom: 'Dictée', code: 'dictee' },
+                        { nom: 'Éveil Scientifique', code: 'es' },
+                        { nom: 'Éveil Socio-Temporel', code: 'est' },
+                        { nom: 'Mathématiques', code: 'mathematiques' },
+                        { nom: 'EA Dessin', code: 'ea-dessin' },
+                        { nom: 'EA Poésie/Chant/Conte', code: 'ea-poesie-chant-conte' },
+                        { nom: 'EPS', code: 'eps' },
+                        { nom: 'Art Oratoire', code: 'art-oratoire' },
+                        { nom: 'Anglais', code: 'anglais' },
+                        { nom: 'Musique', code: 'musique' },
+                        { nom: 'Danse', code: 'danse' },
+                        { nom: 'Jardinage', code: 'jardinage' }
+                    ];
+                    
+                    matieres.forEach(matiere => {
+                        const nom = matiere.nom.padEnd(25);
+                        const note = '[Note]'.padEnd(7);
+                        const appreciation = '[Appréciation]';
+                        content += `│ ${nom} ${note} ${appreciation} │\n`;
+                    });
+                    
+                    content += "├─────────────────────────────────────────────────────┤\n";
+                    content += `│ MOYENNE GÉNÉRALE : [Moyenne]/20                     │\n`;
+                    content += `│ MENTION : [Mention]                                 │\n`;
+                    content += "├─────────────────────────────────────────────────────┤\n";
+                    content += "│ APPRÉCIATION GÉNÉRALE :                             │\n";
+                    content += "│ [Commentaire personnalisé]                          │\n";
+                    content += "└─────────────────────────────────────────────────────┘\n\n";
+                    
+                    content += "Signature de l'enseignant : _________________________\n";
+                    content += "Date : ______________________________________________\n";
+                    break;
+                    
+                case 'raw':
+                    content = JSON.stringify(appState, null, 2);
+                    break;
+            }
+            
+            elements.previewContent.textContent = content;
+        }
+
+        // ===== INITIALISATION =====
+        function initializeApp() {
+            // Charger les données
+            loadState();
+            
+            // Configuration du seuil
+            elements.seuilReussite.addEventListener('input', () => {
+                elements.thresholdValue.textContent = parseFloat(elements.seuilReussite.value).toFixed(1);
+            });
+            
+            // Gestion des onglets
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                    
+                    tab.classList.add('active');
+                    document.getElementById(tab.dataset.tab).classList.add('active');
+                    
+                    if (tab.dataset.tab === 'export') {
+                        updatePreview('json');
+                    }
+                });
+            });
+            
+            // Gestion des onglets de prévisualisation
+            document.querySelectorAll('.preview-tab').forEach(tab => {
+                tab.addEventListener('click', () => {
+                    document.querySelectorAll('.preview-tab').forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    updatePreview(tab.dataset.preview);
+                });
+            });
+            
+            // Configuration
+            elements.btnSaveConfig.addEventListener('click', saveConfiguration);
+            
+            // Élèves
+            elements.btnAjouter.addEventListener('click', addEleve);
+            elements.inputEleve.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') addEleve();
+            });
+            
+            // Évaluations
+            elements.selectEleve.addEventListener('change', onEleveSelectionChange);
+            elements.btnSauvegarder.addEventListener('click', saveEvaluation);
+            elements.btnCalculerMoyenne.addEventListener('click', calculateCurrentMoyenne);
+            elements.btnGenererCommentaire.addEventListener('click', generateCommentaire);
+            elements.btnEffacer.addEventListener('click', clearForm);
+            
+            // Auto-sauvegarde sur modification
+            elements.nomEnseignant.addEventListener('input', autoSave);
+            elements.prenomEnseignant.addEventListener('input', autoSave);
+            elements.classeEnseignant.addEventListener('change', autoSave);
+            elements.anneeScolaire.addEventListener('input', autoSave);
+            
+            // Mise à jour du style des notes
+            document.querySelectorAll('.note-input').forEach(input => {
+                input.addEventListener('input', () => updateNoteStyle(input));
+            });
+            
+            // Export
+            elements.btnExportJSON.addEventListener('click', exportJSON);
+            elements.btnExportPDF.addEventListener('click', exportPDF);
+            elements.btnExportWord.addEventListener('click', exportWord);
+            elements.btnExportExcel.addEventListener('click', exportExcel);
+            elements.btnExportEmail.addEventListener('click', sendEmailGroup);
+            elements.btnExportPrint.addEventListener('click', printReport);
+            elements.btnEmailIndividuel.addEventListener('click', () => {
+                showToast('Utilisez les boutons "Email" à côté de chaque élève', 'info');
+            });
+            
+            // Quick actions
+            elements.btnQuickAdd.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                document.querySelector('[data-tab="eleves"]').classList.add('active');
+                document.getElementById('eleves').classList.add('active');
+                
+                elements.inputEleve.focus();
+            });
+            
+            elements.btnQuickEval.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                document.querySelector('[data-tab="evaluations"]').classList.add('active');
+                document.getElementById('evaluations').classList.add('active');
+            });
+            
+            elements.btnQuickExport.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                document.querySelector('[data-tab="export"]').classList.add('active');
+                document.getElementById('export').classList.add('active');
+            });
+            
+            elements.btnQuickStats.addEventListener('click', () => {
+                document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+                
+                document.querySelector('[data-tab="statistiques"]').classList.add('active');
+                document.getElementById('statistiques').classList.add('active');
+            });
+            
+            // Backup
+            elements.btnBackup.addEventListener('click', backupData);
+            elements.btnRestore.addEventListener('click', restoreData);
+            elements.btnReset.addEventListener('click', resetData);
+            elements.restoreFile.addEventListener('change', handleRestoreFile);
+            
+            // Modal Email
+            elements.emailClose.addEventListener('click', closeEmailModal);
+            elements.btnCancelEmail.addEventListener('click', closeEmailModal);
+            elements.btnSendEmail.addEventListener('click', sendIndividualEmail);
+            
+            // Fermer modal avec ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && elements.emailModal.classList.contains('active')) {
+                    closeEmailModal();
+                }
+            });
+            
+            // Mise à jour automatique du message email
+            [elements.includeNotes, elements.includeCommentaire, elements.includeStats].forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (currentEmailEleve) {
+                        openEmailModal(currentEmailEleve);
+                    }
+                });
+            });
+            
+            // Notification de démarrage
+            setTimeout(() => {
+                showToast('Application chargée avec succès !', 'success');
+            }, 1000);
+        }
+
+        // Démarrer l'application
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
+</body>
+</html>
