@@ -10,102 +10,104 @@
     <style>
         /* ===== VARIABLES GLOBALES ===== */
         :root {
-            /* Palette de couleurs principale */
-            --primary: #4361ee;
-            --primary-dark: #3a56d4;
-            --primary-light: #4895ef;
-            --primary-extra-light: #e0f2fe;
+            /* Nouvelle palette rose fushia, vert citron et blanc */
+            --primary: #FF4D94; /* Rose fushia */
+            --primary-dark: #E83A7D;
+            --primary-light: #FF7AB3;
+            --primary-extra-light: #FFE4F1;
             
-            --secondary: #7209b7;
-            --secondary-dark: #560bad;
-            --secondary-light: #9d4edd;
+            --secondary: #9DEE82; /* Vert citron */
+            --secondary-dark: #7CD968;
+            --secondary-light: #C2F5B0;
             
-            --accent: #f72585;
-            --accent-dark: #e01e76;
-            --accent-light: #f857a6;
+            --accent: #FFB347; /* Orange doré */
+            --accent-dark: #FF9A1F;
+            --accent-light: #FFD085;
             
             /* Couleurs de mentions */
-            --mention-excellent: #10b981;
-            --mention-excellent-light: #d1fae5;
-            --mention-good: #3b82f6;
-            --mention-good-light: #dbeafe;
-            --mention-average: #f59e0b;
-            --mention-average-light: #fef3c7;
-            --mention-weak: #ef4444;
-            --mention-weak-light: #fee2e2;
+            --mention-excellent: #9DEE82;
+            --mention-excellent-light: #E8FFE0;
+            --mention-good: #4CD964;
+            --mention-good-light: #D5FFDD;
+            --mention-average: #FFD166;
+            --mention-average-light: #FFF4D6;
+            --mention-weak: #FF6B6B;
+            --mention-weak-light: #FFE6E6;
             
             /* Couleurs fonctionnelles */
-            --success: #4ade80;
-            --success-dark: #22c55e;
-            --warning: #f59e0b;
-            --warning-dark: #d97706;
-            --error: #ef4444;
-            --error-dark: #dc2626;
-            --info: #06b6d4;
-            --info-dark: #0891b2;
+            --success: #9DEE82;
+            --success-dark: #7CD968;
+            --warning: #FFD166;
+            --warning-dark: #FFB347;
+            --error: #FF6B6B;
+            --error-dark: #FF4D4D;
+            --info: #4D94FF;
+            --info-dark: #2E7AFF;
             
             /* Couleurs neutres */
-            --light: #ffffff;
-            --light-gray: #f8fafc;
-            --medium-gray: #e2e8f0;
-            --dark-gray: #94a3b8;
-            --dark: #1e293b;
-            --text: #334155;
-            --text-light: #64748b;
+            --light: #FFFFFF;
+            --light-gray: #F8F9FA;
+            --medium-gray: #E9ECEF;
+            --dark-gray: #ADB5BD;
+            --dark: #212529;
+            --text: #343A40;
+            --text-light: #6C757D;
             
-            /* Dégradés */
+            /* Dégradés modernes */
             --gradient-primary: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             --gradient-secondary: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
             --gradient-accent: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
-            --gradient-success: linear-gradient(135deg, var(--success) 0%, #22c55e 100%);
-            --gradient-warning: linear-gradient(135deg, var(--warning) 0%, #fbbf24 100%);
-            --gradient-error: linear-gradient(135deg, var(--error) 0%, #f87171 100%);
-            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
-            --gradient-info: linear-gradient(135deg, var(--info) 0%, var(--info-dark) 100%);
+            --gradient-success: linear-gradient(135deg, var(--success) 0%, var(--secondary) 100%);
+            --gradient-warning: linear-gradient(135deg, var(--warning) 0%, var(--accent) 100%);
+            --gradient-error: linear-gradient(135deg, var(--error) 0%, #FF8A8A 100%);
+            --gradient-dark: linear-gradient(135deg, var(--dark) 0%, #495057 100%);
+            --gradient-info: linear-gradient(135deg, var(--info) 0%, #6BA3FF 100%);
             
             /* Dégradés spéciaux */
-            --gradient-bg: linear-gradient(135deg, #e0f2fe 0%, #f5f3ff 30%, #f0fdf4 70%, #fef3c7 100%);
-            --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%);
-            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.4) 100%);
-            --gradient-sunset: linear-gradient(135deg, #f72585 0%, #7209b7 50%, #4361ee 100%);
+            --gradient-bg: linear-gradient(135deg, #FFE4F1 0%, #F0FFF0 50%, #FFF9F0 100%);
+            --gradient-card: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 100%);
+            --gradient-glass: linear-gradient(135deg, rgba(255,255,255,0.85) 0%, rgba(255,255,255,0.65) 100%);
+            --gradient-hero: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            --gradient-sunset: linear-gradient(135deg, #FF4D94 0%, #9DEE82 50%, #FFB347 100%);
             
-            /* Ombres */
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
-            --shadow-md: 0 8px 30px rgba(0,0,0,0.12);
-            --shadow-lg: 0 20px 50px rgba(0,0,0,0.15);
-            --shadow-xl: 0 25px 60px rgba(0,0,0,0.18);
-            --shadow-soft: 0 8px 32px rgba(0,0,0,0.08);
-            --shadow-border: 0 0 0 1px rgba(0,0,0,0.1);
-            --shadow-glow: 0 0 20px rgba(67, 97, 238, 0.15);
+            /* Ombres modernes */
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 12px 40px rgba(0,0,0,0.08);
+            --shadow-lg: 0 24px 60px rgba(0,0,0,0.12);
+            --shadow-xl: 0 32px 80px rgba(0,0,0,0.15);
+            --shadow-soft: 0 12px 40px rgba(0,0,0,0.05);
+            --shadow-border: 0 0 0 1px rgba(0,0,0,0.08);
+            --shadow-glow: 0 0 30px rgba(255, 77, 148, 0.25);
+            --shadow-neon: 0 0 20px rgba(157, 238, 130, 0.3);
             
             /* Rayons */
-            --radius-sm: 8px;
-            --radius-md: 12px;
-            --radius-lg: 16px;
-            --radius-xl: 20px;
-            --radius-2xl: 24px;
+            --radius-sm: 12px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --radius-xl: 32px;
+            --radius-2xl: 40px;
             --radius-full: 9999px;
             --radius-pill: 100px;
             
-            /* Transitions */
-            --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            /* Transitions améliorées */
+            --transition-fast: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             
             /* Espacements */
-            --space-xs: 4px;
-            --space-sm: 8px;
-            --space-md: 16px;
-            --space-lg: 24px;
-            --space-xl: 32px;
-            --space-2xl: 48px;
-            --space-3xl: 64px;
+            --space-xs: 6px;
+            --space-sm: 12px;
+            --space-md: 20px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-2xl: 64px;
+            --space-3xl: 80px;
             
             /* Typographie */
             --font-heading: 'Montserrat', 'Poppins', sans-serif;
             --font-body: 'Inter', 'Segoe UI', sans-serif;
-            --font-mono: 'Courier New', 'Fira Code', monospace;
+            --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
         }
 
         /* ===== RÉINITIALISATION ===== */
@@ -125,42 +127,65 @@
         body {
             background: var(--gradient-bg);
             background-size: 400% 400%;
-            animation: gradientShift 25s ease infinite;
+            animation: gradientShift 30s ease infinite;
             min-height: 100vh;
             color: var(--text);
             overflow-x: hidden;
-            line-height: 1.6;
+            line-height: 1.7;
             padding: var(--space-md);
             position: relative;
         }
 
-        /* ===== ANIMATIONS ===== */
+        /* ===== ANIMATIONS MODERNES ===== */
         @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0% { background-position: 0% 0%; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0% 0%; }
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg) scale(1); }
-            33% { transform: translateY(-40px) translateX(20px) rotate(120deg) scale(1.05); }
-            66% { transform: translateY(20px) translateX(-15px) rotate(240deg) scale(0.95); }
+            0%, 100% { 
+                transform: translateY(0) translateX(0) rotate(0deg) scale(1); 
+                filter: blur(0px);
+            }
+            33% { 
+                transform: translateY(-60px) translateX(30px) rotate(120deg) scale(1.1); 
+                filter: blur(2px);
+            }
+            66% { 
+                transform: translateY(40px) translateX(-25px) rotate(240deg) scale(0.9); 
+                filter: blur(1px);
+            }
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(30px) scale(0.95); 
+                filter: blur(10px);
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+                filter: blur(0);
+            }
         }
 
         @keyframes slideInRight {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+            from { 
+                transform: translateX(120%) rotate(10deg); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateX(0) rotate(0); 
+                opacity: 1; 
+            }
         }
 
         @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.08); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         @keyframes spin {
@@ -169,11 +194,27 @@
         }
 
         @keyframes countUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(20px) scale(0.8); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0) scale(1); 
+            }
         }
 
-        /* ===== BULLES FLOTTANTES ===== */
+        @keyframes shimmer {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 148, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(157, 238, 130, 0.5); }
+        }
+
+        /* ===== BULLES FLOTTANTES MODERNES ===== */
         .floating-bubbles {
             position: fixed;
             top: 0;
@@ -188,199 +229,350 @@
         .bubble {
             position: absolute;
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: float 30s infinite ease-in-out;
-            box-shadow: var(--shadow-soft);
-            opacity: 0.7;
-            filter: brightness(1.2);
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 255, 255, 0.4), 
+                rgba(255, 255, 255, 0.1));
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: float 40s infinite ease-in-out;
+            box-shadow: var(--shadow-lg);
+            opacity: 0.8;
+            filter: brightness(1.3) saturate(1.5);
+            mix-blend-mode: overlay;
         }
 
-        .bubble:nth-child(1) { width: 120px; height: 120px; top: 10%; left: 5%; animation-delay: 0s; }
-        .bubble:nth-child(2) { width: 180px; height: 180px; top: 65%; left: 80%; animation-delay: 5s; }
-        .bubble:nth-child(3) { width: 90px; height: 90px; top: 30%; left: 90%; animation-delay: 10s; }
-        .bubble:nth-child(4) { width: 140px; height: 140px; top: 80%; left: 10%; animation-delay: 15s; }
-        .bubble:nth-child(5) { width: 100px; height: 100px; top: 40%; left: 70%; animation-delay: 7s; }
-        .bubble:nth-child(6) { width: 160px; height: 160px; top: 15%; left: 60%; animation-delay: 12s; }
+        .bubble:nth-child(1) { 
+            width: 180px; height: 180px; 
+            top: 10%; left: 5%; 
+            animation-delay: 0s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 77, 148, 0.3), 
+                rgba(255, 77, 148, 0.1));
+        }
+        .bubble:nth-child(2) { 
+            width: 240px; height: 240px; 
+            top: 65%; left: 80%; 
+            animation-delay: 8s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(157, 238, 130, 0.3), 
+                rgba(157, 238, 130, 0.1));
+        }
+        .bubble:nth-child(3) { 
+            width: 120px; height: 120px; 
+            top: 30%; left: 90%; 
+            animation-delay: 15s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 179, 71, 0.3), 
+                rgba(255, 179, 71, 0.1));
+        }
+        .bubble:nth-child(4) { 
+            width: 200px; height: 200px; 
+            top: 80%; left: 10%; 
+            animation-delay: 22s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 77, 148, 0.3), 
+                rgba(255, 77, 148, 0.1));
+        }
+        .bubble:nth-child(5) { 
+            width: 140px; height: 140px; 
+            top: 40%; left: 70%; 
+            animation-delay: 12s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(157, 238, 130, 0.3), 
+                rgba(157, 238, 130, 0.1));
+        }
+        .bubble:nth-child(6) { 
+            width: 160px; height: 160px; 
+            top: 15%; left: 60%; 
+            animation-delay: 18s; 
+            background: radial-gradient(circle at 30% 30%, 
+                rgba(255, 179, 71, 0.3), 
+                rgba(255, 179, 71, 0.1));
+        }
 
         /* ===== CONTAINER PRINCIPAL ===== */
         .container {
-            max-width: 1400px;
+            max-width: 1600px;
             margin: 0 auto;
             position: relative;
-            animation: fadeIn 0.8s ease;
+            animation: fadeIn 0.9s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         }
 
-        /* ===== HEADER AMÉLIORÉ ===== */
-        .header {
-            text-align: center;
-            padding: var(--space-xl) var(--space-2xl);
-            background: var(--gradient-glass);
-            backdrop-filter: blur(30px);
-            border-radius: var(--radius-2xl);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: var(--shadow-md);
-            margin-bottom: var(--space-xl);
+        /* ===== HERO FUSIONNÉ (Header + Hero) ===== */
+        .hero-section {
             position: relative;
+            padding: var(--space-3xl) var(--space-2xl);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(40px);
+            border-radius: var(--radius-2xl);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: var(--shadow-xl);
+            margin-bottom: var(--space-2xl);
             overflow: hidden;
-            animation: fadeIn 0.6s ease;
+            min-height: 500px;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 400px;
+            animation: fadeIn 0.8s ease, glow 4s infinite alternate;
         }
 
-        .header::before {
+        .hero-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 6px;
+            height: 8px;
             background: var(--gradient-sunset);
             border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+            animation: shimmer 3s infinite linear;
+            background-size: 200% 100%;
         }
 
-        .header::after {
+        .hero-section::after {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(67, 97, 238, 0.1) 0%, transparent 70%);
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 77, 148, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(157, 238, 130, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 179, 71, 0.1) 0%, transparent 50%);
             z-index: -1;
+            pointer-events: none;
         }
 
-        .school-logo-container {
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--space-2xl);
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-lg);
+        }
+
+        .logo-wrapper {
+            width: 180px;
+            height: 180px;
+            border-radius: var(--radius-2xl);
+            background: var(--gradient-hero);
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-            width: 100%;
-        }
-
-        .school-logo {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            border: 4px solid white;
+            box-shadow: var(--shadow-xl);
+            border: 6px solid white;
             overflow: hidden;
             position: relative;
+            transform: rotate(-5deg);
+            transition: var(--transition-bounce);
         }
 
-        .school-logo img {
+        .logo-wrapper:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: var(--shadow-glow), var(--shadow-neon);
+        }
+
+        .logo-wrapper img {
+            width: 85%;
+            height: 85%;
+            object-fit: contain;
+            border-radius: var(--radius-lg);
+            padding: var(--space-sm);
+            background: white;
+        }
+
+        .logo-fallback {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-        }
-
-        .school-logo i {
-            font-size: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: white;
+            font-size: 2.5rem;
+            gap: var(--space-sm);
         }
 
-        .school-title-container {
-            flex: 1;
-            max-width: 800px;
+        .logo-fallback i {
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
         }
 
         .school-name {
-            font-size: 4rem;
+            font-size: 4.5rem;
             background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             font-weight: 900;
-            margin-bottom: var(--space-sm);
-            letter-spacing: -0.5px;
-            font-family: var(--font-heading);
-            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
             line-height: 1.1;
-            text-align: center;
+            font-family: var(--font-heading);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            letter-spacing: -0.5px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .school-name::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100px;
+            height: 6px;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-pill);
+            animation: shimmer 2s infinite linear;
+            background-size: 200% 100%;
         }
 
         .subtitle {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             color: var(--primary-dark);
-            font-weight: 600;
-            margin-bottom: var(--space-lg);
-            opacity: 0.9;
-            text-align: center;
+            font-weight: 700;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
+            animation: shimmer 3s infinite linear;
+            background-size: 200% 100%;
         }
 
         .hero-description {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--text);
-            max-width: 800px;
-            margin: 0 auto var(--space-xl);
             line-height: 1.8;
-            text-align: center;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            border-left: 6px solid var(--secondary);
+            box-shadow: var(--shadow-sm);
+            backdrop-filter: blur(10px);
         }
 
-        .header-stats {
-            display: flex;
-            justify-content: center;
-            gap: var(--space-xl);
-            flex-wrap: wrap;
-            margin-top: var(--space-lg);
-            animation: fadeIn 0.8s ease 0.3s both;
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            animation: fadeIn 1s ease 0.4s both;
         }
 
-        .stat-badge {
+        .stat-card-hero {
+            background: var(--gradient-glass);
+            backdrop-filter: blur(20px);
+            padding: var(--space-lg);
+            border-radius: var(--radius-xl);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-bounce);
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
-            padding: var(--space-md) var(--space-xl);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius-pill);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            min-width: 200px;
+            gap: var(--space-md);
+            position: relative;
+            overflow: hidden;
         }
 
-        .stat-badge:hover {
-            transform: translateY(-3px);
+        .stat-card-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition-slow);
+        }
+
+        .stat-card-hero:hover::before {
+            left: 100%;
+        }
+
+        .stat-card-hero:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .stat-icon-hero {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-lg);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            flex-shrink: 0;
             box-shadow: var(--shadow-md);
         }
 
-        .stat-badge i {
-            font-size: 1.8rem;
-            color: var(--primary);
+        .stat-text-hero {
+            flex: 1;
         }
 
-        .stat-badge span {
+        .stat-label-hero {
+            font-size: 0.9rem;
+            color: var(--text-light);
             font-weight: 600;
-            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        /* ===== NAVIGATION ===== */
+        .stat-value-hero {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        /* ===== NAVIGATION MODERNE ===== */
         .nav-container {
             display: flex;
             justify-content: center;
-            margin-bottom: var(--space-xl);
-            animation: fadeIn 0.8s ease 0.4s both;
+            margin-bottom: var(--space-2xl);
+            animation: fadeIn 0.8s ease 0.6s both;
         }
 
         .nav-tabs {
             display: inline-flex;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(30px);
             padding: var(--space-sm);
             border-radius: var(--radius-pill);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: var(--shadow-sm);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: var(--shadow-xl);
             gap: var(--space-xs);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tabs::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 77, 148, 0.1), 
+                rgba(157, 238, 130, 0.1));
+            z-index: -1;
         }
 
         .nav-tab {
@@ -388,9 +580,9 @@
             background: transparent;
             border: none;
             border-radius: var(--radius-pill);
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             display: flex;
             align-items: center;
             gap: var(--space-sm);
@@ -399,16 +591,15 @@
             position: relative;
             overflow: hidden;
             white-space: nowrap;
+            z-index: 1;
         }
 
         .nav-tab::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
+            inset: 0;
+            background: var(--gradient-sunset);
+            opacity: 0;
             transition: var(--transition);
             z-index: -1;
             border-radius: var(--radius-pill);
@@ -416,46 +607,51 @@
 
         .nav-tab.active {
             color: white;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
         }
 
         .nav-tab.active::before {
-            left: 0;
+            opacity: 1;
         }
 
         .nav-tab:hover:not(.active) {
             background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-tab i {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .nav-tab.active i {
+            transform: scale(1.2) rotate(10deg);
         }
 
         /* ===== CONTENU DES ONGLETS ===== */
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease;
         }
 
         .tab-content.active {
             display: block;
         }
 
-        /* ===== CARTES ===== */
+        /* ===== CARTES MODERNES ===== */
         .card {
             background: var(--gradient-card);
-            backdrop-filter: blur(30px);
+            backdrop-filter: blur(40px);
             border-radius: var(--radius-2xl);
-            padding: var(--space-xl);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: var(--shadow-md);
-            margin-bottom: var(--space-lg);
-            transition: var(--transition);
+            padding: var(--space-2xl);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            box-shadow: var(--shadow-xl);
+            margin-bottom: var(--space-xl);
+            transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
-            animation: fadeIn 0.6s ease;
-        }
-
-        .card:hover {
-            box-shadow: var(--shadow-lg);
-            transform: translateY(-3px);
+            animation: fadeIn 0.7s ease;
         }
 
         .card::before {
@@ -463,52 +659,78 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 8px;
+            width: 10px;
             height: 100%;
-            background: var(--gradient-primary);
+            background: var(--gradient-sunset);
             border-radius: var(--radius-2xl) 0 0 var(--radius-2xl);
+            animation: shimmer 4s infinite linear;
+            background-size: 200% 100%;
+        }
+
+        .card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, 
+                rgba(255, 77, 148, 0.05), 
+                rgba(157, 238, 130, 0.05));
+            pointer-events: none;
+        }
+
+        .card:hover {
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            transform: translateY(-5px) scale(1.005);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .card-title {
-            font-size: 1.8rem;
-            background: var(--gradient-primary);
+            font-size: 2.2rem;
+            background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-xl);
             display: flex;
             align-items: center;
             gap: var(--space-md);
-            font-weight: 700;
+            font-weight: 800;
             font-family: var(--font-heading);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
         .card-title i {
-            font-size: 2rem;
-            background: var(--gradient-primary);
+            font-size: 2.5rem;
+            background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            filter: drop-shadow(0 2px 8px rgba(0,0,0,0.2));
         }
 
         /* ===== CONFIGURATION ===== */
         .config-section {
-            background: rgba(255, 255, 255, 0.9);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
+            background: var(--gradient-glass);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-2xl);
             margin-bottom: var(--space-xl);
-            border-left: 6px solid var(--accent);
-            box-shadow: var(--shadow-sm);
+            border-left: 8px solid var(--primary);
+            box-shadow: var(--shadow-lg);
             transition: var(--transition);
+            position: relative;
+            overflow: hidden;
         }
 
         .config-section:hover {
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
         }
 
         .config-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: var(--space-xl);
             align-items: start;
         }
@@ -516,39 +738,43 @@
         .threshold-container {
             background: var(--gradient-glass);
             padding: var(--space-xl);
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-xl);
             text-align: center;
-            border: 2px solid var(--primary-extra-light);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            position: relative;
+            overflow: hidden;
         }
 
         .threshold-display {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-            padding: var(--space-lg);
-            background: white;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+            padding: var(--space-xl);
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+            backdrop-filter: blur(10px);
         }
 
         .threshold-value {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 900;
-            background: var(--gradient-primary);
+            background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            min-width: 80px;
+            min-width: 100px;
             text-align: center;
             line-height: 1;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
         .threshold-label {
-            font-size: 1.2rem;
-            color: var(--text-light);
-            font-weight: 600;
+            font-size: 1.4rem;
+            color: var(--text);
+            font-weight: 700;
         }
 
         .threshold-slider {
@@ -556,64 +782,69 @@
             margin: var(--space-xl) 0;
             -webkit-appearance: none;
             appearance: none;
-            height: 12px;
-            background: linear-gradient(to right, var(--mention-weak), var(--mention-average), var(--mention-good), var(--mention-excellent));
+            height: 16px;
+            background: linear-gradient(to right, 
+                var(--mention-weak), 
+                var(--mention-average), 
+                var(--mention-good), 
+                var(--mention-excellent));
             border-radius: var(--radius-pill);
             outline: none;
+            border: 3px solid white;
+            box-shadow: var(--shadow-md);
         }
 
         .threshold-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
-            background: var(--primary);
+            background: var(--gradient-primary);
             cursor: pointer;
             border: 4px solid white;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            transition: var(--transition-bounce);
         }
 
         .threshold-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.1);
-            box-shadow: var(--shadow-glow);
+            transform: scale(1.2);
+            box-shadow: var(--shadow-xl), 0 0 30px var(--primary);
         }
 
         /* ===== MENTIONS ===== */
         .mentions-container {
             background: var(--gradient-glass);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-2xl);
             margin-top: var(--space-xl);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+            position: relative;
+            overflow: hidden;
         }
 
         .mentions-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
         }
 
         .mention-card {
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            border-radius: var(--radius-xl);
             text-align: center;
             color: white;
             display: flex;
             flex-direction: column;
-            gap: var(--space-sm);
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
+            gap: var(--space-md);
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-lg);
             position: relative;
             overflow: hidden;
-            min-height: 120px;
+            min-height: 140px;
             justify-content: center;
-        }
-
-        .mention-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
         .mention-card::before {
@@ -623,388 +854,88 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
             z-index: 1;
+        }
+
+        .mention-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: var(--shadow-xl), 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .mention-card.excellent {
-            background: var(--mention-excellent);
+            background: linear-gradient(135deg, var(--mention-excellent), #7CD968);
         }
 
         .mention-card.good {
-            background: var(--mention-good);
+            background: linear-gradient(135deg, var(--mention-good), #3DC240);
         }
 
         .mention-card.average {
-            background: var(--mention-average);
+            ge);
         }
-
-        .mention-card.weak {
-            background: var(--mention-weak);
+        .mention-weak { 
+            background: var(--mention-weak-light); 
+            color: var(--mention-weak); 
+            border: 2px solid var(--mention-weak);
         }
-
-        .mention-name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-        }
-
-        .mention-range {
-            font-size: 1.1rem;
-            opacity: 0.95;
-            position: relative;
-            z-index: 2;
-            font-weight: 500;
-        }
-
-        .mention-icon {
-            position: absolute;
-            top: var(--space-md);
-            right: var(--space-md);
-            font-size: 1.8rem;
-            opacity: 0.3;
-            z-index: 1;
-        }
-
-        /* ===== FORMULAIRES ===== */
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        label {
-            font-weight: 600;
-            color: var(--dark);
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: var(--space-xs);
-        }
-
-        label.required::after {
-            content: '*';
-            color: var(--error);
-            margin-left: 4px;
-        }
-
-        input, select, textarea {
-            padding: 16px 18px;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid var(--medium-gray);
-            border-radius: var(--radius-md);
-            font-size: 1rem;
-            transition: var(--transition);
-            font-family: var(--font-body);
-            color: var(--text);
-        }
-
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.15);
-            background: white;
-        }
-
-        /* ===== GESTION DES ÉLÈVES ===== */
-        .add-student {
-            display: flex;
-            gap: var(--space-sm);
-            align-items: end;
-            flex-wrap: wrap;
-        }
-
-        .students-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
-
-        .student-card {
-            background: white;
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .student-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--primary-extra-light);
-        }
-
-        .student-card.reussi {
-            border-left: 6px solid var(--success);
-        }
-
-        .student-card.echec {
-            border-left: 6px solid var(--error);
-        }
-
-        .student-info {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-        }
-
-        .student-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 1.3rem;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .student-details {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .student-name {
-            font-weight: 700;
-            color: var(--dark);
-            font-size: 1.1rem;
-        }
-
-        .student-stats {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        .student-moyenne {
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .student-mention {
-            font-weight: 600;
-            padding: 2px 8px;
-            border-radius: var(--radius-pill);
-            font-size: 0.85rem;
-        }
-
-        .mention-excellent { background: var(--mention-excellent-light); color: var(--mention-excellent); }
-        .mention-good { background: var(--mention-good-light); color: var(--mention-good); }
-        .mention-average { background: var(--mention-average-light); color: var(--mention-average); }
-        .mention-weak { background: var(--mention-weak-light); color: var(--mention-weak); }
 
         .student-actions {
-            display: flex;
-            gap: var(--space-xs);
-        }
-
-        .no-students {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: var(--space-3xl);
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .no-students i {
-            font-size: 4rem;
-            margin-bottom: var(--space-lg);
-            opacity: 0.3;
-        }
-
-        /* ===== SAISIE DES NOTES ===== */
-        .student-selector {
-            background: rgba(255, 255, 255, 0.9);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            margin-bottom: var(--space-xl);
-            border: 2px solid var(--medium-gray);
-            position: relative;
-        }
-
-        .student-selector select {
-            width: 100%;
-            max-width: 400px;
-            font-size: 1.1rem;
-        }
-
-        .student-stats-panel {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-md);
-            margin-top: var(--space-lg);
-        }
-
-        .stat-box {
-            background: white;
-            padding: var(--space-lg);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-            border-top: 4px solid var(--primary);
-        }
-
-        .stat-box:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 900;
-            margin-bottom: var(--space-xs);
-            line-height: 1;
-        }
-
-        .stat-value.high { color: var(--success); }
-        .stat-value.medium { color: var(--warning); }
-        .stat-value.low { color: var(--error); }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            font-weight: 600;
-        }
-
-        /* ===== MATIÈRES ===== */
-        .matiere-section {
-            background: white;
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
-            margin-bottom: var(--space-xl);
-            border-left: 6px solid var(--primary);
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
-        }
-
-        .matiere-section:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-lg);
-        }
-
-        .section-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-lg);
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            font-weight: 700;
-            font-family: var(--font-heading);
-        }
-
-        .notes-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-lg);
-        }
-
-        .note-item {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-sm);
-        }
-
-        .note-label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .note-input-container {
-            position: relative;
-        }
-
-        .note-input {
-            width: 100%;
-            text-align: center;
-            padding: 16px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: var(--transition);
-        }
-
-        .note-input.success {
-            border-color: var(--success);
-            background: rgba(74, 222, 128, 0.05);
+            7, 238, 130, 0.2);
         }
 
         .note-input.warning {
             border-color: var(--warning);
-            background: rgba(245, 158, 11, 0.05);
+            background: rgba(255, 209, 102, 0.1);
+            box-shadow: 0 0 20px rgba(255, 209, 102, 0.2);
         }
 
         .note-input.error {
             border-color: var(--error);
-            background: rgba(239, 68, 68, 0.05);
+            background: rgba(255, 107, 107, 0.1);
+            box-shadow: 0 0 20px rgba(255, 107, 107, 0.2);
         }
 
         .note-status {
             position: absolute;
-            right: 12px;
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
-        .note-status.success { color: var(--success); }
-        .note-status.warning { color: var(--warning); }
-        .note-status.error { color: var(--error); }
+        .note-status.success { 
+            color: var(--success); 
+            filter: drop-shadow(0 0 8px rgba(157, 238, 130, 0.5));
+        }
+        .note-status.warning { 
+            color: var(--warning); 
+            filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.5));
+        }
+        .note-status.error { 
+            color: var(--error); 
+            filter: drop-shadow(0 0 8px rgba(255, 107, 107, 0.5));
+        }
 
-        /* ===== BOUTONS ===== */
+        /* ===== BOUTONS MODERNES ===== */
         .btn {
-            padding: 16px 28px;
+            padding: 20px 32px;
             border: none;
-            border-radius: var(--radius-lg);
-            font-weight: 600;
+            border-radius: var(--radius-xl);
+            font-weight: 800;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: var(--space-sm);
-            transition: var(--transition);
-            font-size: 1rem;
-            box-shadow: var(--shadow-sm);
-            font-family: var(--font-body);
+            gap: var(--space-md);
+            transition: var(--transition-bounce);
+            font-size: 1.1rem;
+            box-shadow: var(--shadow-lg);
+            font-family: var(--font-heading);
             position: relative;
             overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .btn::before {
@@ -1014,7 +945,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
             transition: var(--transition-slow);
         }
 
@@ -1023,12 +954,12 @@
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
         }
 
         .btn:active {
-            transform: translateY(-1px);
+            transform: translateY(-2px) scale(1.02);
         }
 
         .btn-primary {
@@ -1069,47 +1000,52 @@
         .btn-outline {
             background: transparent;
             color: var(--primary);
-            border: 2px solid var(--primary);
+            border: 3px solid var(--primary);
+            font-weight: 800;
         }
 
         .btn-outline:hover {
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
         }
 
         .btn-small {
-            padding: 10px 16px;
-            font-size: 0.9rem;
+            padding: 14px 22px;
+            font-size: 1rem;
+            border-radius: var(--radius-lg);
         }
 
         /* ===== STATISTIQUES ===== */
         .stats-container {
             background: var(--gradient-glass);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-2xl);
             margin-bottom: var(--space-xl);
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-lg);
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: var(--space-xl);
         }
 
         .stat-card {
-            background: white;
-            padding: var(--space-xl);
-            border-radius: var(--radius-lg);
+            background: var(--gradient-glass);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
             text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition-bounce);
             position: relative;
             overflow: hidden;
+            border: 3px solid transparent;
         }
 
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: var(--shadow-xl);
+            border-color: rgba(255, 255, 255, 0.8);
         }
 
         .stat-card::before {
@@ -1118,70 +1054,77 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 6px;
-            background: var(--gradient-primary);
+            height: 8px;
+            background: var(--gradient-sunset);
+            animation: shimmer 4s infinite linear;
+            background-size: 200% 100%;
         }
 
         .stat-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
-            background: var(--gradient-primary);
+            background: var(--gradient-sunset);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             line-height: 1;
             margin-bottom: var(--space-sm);
+            text-shadow: 0 2px 15px rgba(0,0,0,0.1);
         }
 
         .stat-text {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text);
-            font-weight: 600;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .stat-subtext {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--text-light);
-            margin-top: 4px;
+            margin-top: 6px;
         }
 
         /* ===== EXPORT ===== */
         .export-section {
             background: var(--gradient-glass);
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-2xl);
             margin-bottom: var(--space-xl);
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .export-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: var(--space-lg);
-            margin: var(--space-xl) 0;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: var(--space-xl);
+            margin: var(--space-2xl) 0;
         }
 
         .export-card {
             background: white;
-            padding: var(--space-xl);
-            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
             text-align: center;
             color: white;
             display: flex;
             flex-direction: column;
-            gap: var(--space-md);
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
+            gap: var(--space-lg);
+            transition: var(--transition-bounce);
+            box-shadow: var(--shadow-lg);
             cursor: pointer;
-            min-height: 160px;
+            min-height: 180px;
             justify-content: center;
             align-items: center;
             position: relative;
             overflow: hidden;
+            border: 3px solid rgba(255, 255, 255, 0.3);
         }
 
         .export-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: var(--shadow-xl), 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .export-card::before {
@@ -1191,7 +1134,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0.1));
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
         }
 
         .export-card.json { background: var(--gradient-primary); }
@@ -1203,39 +1146,45 @@
         .export-card.email-individuel { background: var(--gradient-info); }
 
         .export-icon {
-            font-size: 2.5rem;
+            font-size: 3rem;
             position: relative;
             z-index: 2;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
         }
 
         .export-title {
-            font-size: 1.3rem;
-            font-weight: 700;
+            font-size: 1.5rem;
+            font-weight: 800;
             position: relative;
             z-index: 2;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .export-desc {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            opacity: 0.95;
             position: relative;
             z-index: 2;
+            max-width: 200px;
         }
 
         /* ===== PRÉVISUALISATION ===== */
         .preview-container {
-            background: white;
-            padding: var(--space-xl);
-            border-radius: var(--radius-xl);
+            background: var(--gradient-glass);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-2xl);
             margin-top: var(--space-xl);
-            box-shadow: var(--shadow-sm);
+            box-shadow: var(--shadow-lg);
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         .preview-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+            gap: var(--space-lg);
         }
 
         .preview-tabs {
@@ -1245,35 +1194,41 @@
         }
 
         .preview-tab {
-            padding: var(--space-sm) var(--space-lg);
-            background: var(--light-gray);
-            border: none;
+            padding: var(--space-sm) var(--space-xl);
+            background: var(--gradient-glass);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             border-radius: var(--radius-pill);
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
-            transition: var(--transition);
+            transition: var(--transition-bounce);
             color: var(--text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .preview-tab.active {
-            background: var(--primary);
+            background: var(--gradient-primary);
             color: white;
+            border-color: transparent;
+            box-shadow: var(--shadow-md);
         }
 
         .preview-tab:hover:not(.active) {
-            background: var(--medium-gray);
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-3px);
         }
 
         .preview-content {
-            background: #f8fafc;
-            padding: var(--space-xl);
-            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.9);
+            padding: var(--space-2xl);
+            border-radius: var(--radius-xl);
             max-height: 500px;
             overflow-y: auto;
             font-family: var(--font-mono);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+            font-size: 1rem;
+            line-height: 1.6;
+            box-shadow: inset 0 4px 20px rgba(0,0,0,0.05);
+            border: 2px solid rgba(255, 255, 255, 0.6);
         }
 
         /* ===== MODAL EMAIL ===== */
@@ -1284,13 +1239,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(4px);
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(10px);
             z-index: 1000;
             justify-content: center;
             align-items: center;
             padding: var(--space-md);
-            animation: fadeIn 0.3s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .modal-overlay.active {
@@ -1298,59 +1253,66 @@
         }
 
         .modal-content {
-            background: white;
+            background: var(--gradient-glass);
+            backdrop-filter: blur(30px);
             width: 100%;
-            max-width: 500px;
-            border-radius: var(--radius-xl);
-            padding: var(--space-xl);
-            box-shadow: var(--shadow-xl);
-            animation: slideUp 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            max-width: 600px;
+            border-radius: var(--radius-2xl);
+            padding: var(--space-2xl);
+            box-shadow: var(--shadow-xl), var(--shadow-glow);
+            animation: slideInRight 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             position: relative;
+            border: 3px solid rgba(255, 255, 255, 0.6);
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 24px;
+            right: 24px;
             background: none;
             border: none;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--text-light);
             cursor: pointer;
-            transition: var(--transition);
-            width: 32px;
-            height: 32px;
+            transition: var(--transition-bounce);
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: var(--shadow-sm);
         }
 
         .modal-close:hover {
-            background: var(--light-gray);
-            color: var(--error);
+            background: var(--error);
+            color: white;
+            transform: rotate(90deg) scale(1.1);
         }
 
         .modal-title {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             color: var(--primary-dark);
-            margin-bottom: var(--space-lg);
+            margin-bottom: var(--space-xl);
             display: flex;
             align-items: center;
-            gap: var(--space-sm);
+            gap: var(--space-md);
+            font-weight: 800;
         }
 
         /* ===== FOOTER ===== */
         .footer {
             text-align: center;
-            padding: var(--space-xl);
+            padding: var(--space-2xl);
             margin-top: var(--space-3xl);
-            color: var(--text-light);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(0,0,0,0.1);
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: var(--radius-xl);
+            color: var(--text);
+            font-size: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.8);
+            background: var(--gradient-glass);
+            backdrop-filter: blur(30px);
+            border-radius: var(--radius-2xl);
+            box-shadow: var(--shadow-lg);
         }
 
         /* ===== LOADER ===== */
@@ -1361,69 +1323,78 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 9999;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: var(--space-lg);
+            gap: var(--space-xl);
         }
 
         .loader-spinner {
-            width: 60px;
-            height: 60px;
-            border: 6px solid var(--light-gray);
-            border-top: 6px solid var(--primary);
+            width: 80px;
+            height: 80px;
+            border: 8px solid var(--light-gray);
+            border-top: 8px solid var(--primary);
             border-radius: 50%;
             animation: spin 1s linear infinite;
+            box-shadow: var(--shadow-lg);
         }
 
         .loader-text {
-            font-size: 1.2rem;
-            color: var(--primary);
-            font-weight: 600;
+            font-size: 1.4rem;
+            background: var(--gradient-sunset);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* ===== RESPONSIVE ===== */
-        @media (max-width: 1200px) {
-            .school-name { font-size: 3rem; }
-            .container { max-width: 95%; }
+        @media (max-width: 1400px) {
+            .hero-content {
+                grid-template-columns: 1fr 3fr;
+            }
+            .school-name { font-size: 3.8rem; }
         }
 
-        @media (max-width: 768px) {
-            body { padding: 12px; }
-            .school-name { font-size: 2.5rem; }
-            .subtitle { font-size: 1.4rem; }
-            .header { 
-                padding: var(--space-lg);
-                min-height: 300px;
+        @media (max-width: 1200px) {
+            .container { max-width: 95%; }
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: var(--space-xl);
             }
-            
-            .school-logo-container {
-                flex-direction: column;
-                gap: var(--space-lg);
+            .logo-wrapper {
+                margin: 0 auto;
             }
-            
-            .school-logo {
-                width: 100px;
-                height: 100px;
+            .school-name::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
-            
+        }
+
+        @media (max-width: 992px) {
+            body { padding: var(--space-sm); }
+            .school-name { font-size: 3.2rem; }
+            .subtitle { font-size: 1.8rem; }
+            .hero-section { 
+                padding: var(--space-2xl) var(--space-xl);
+                min-height: auto;
+            }
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
             .nav-tabs {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .nav-tab {
-                width: 100%;
+                flex-wrap: wrap;
                 justify-content: center;
             }
-            
-            .card { padding: var(--space-lg); }
-            .card-title { font-size: 1.6rem; }
-            
+            .card { padding: var(--space-xl); }
+            .card-title { font-size: 1.8rem; }
             .config-grid,
             .form-grid,
             .notes-grid,
@@ -1432,67 +1403,85 @@
             .mentions-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .students-list {
-                grid-template-columns: 1fr;
-            }
-            
-            .add-student {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .student-selector select {
-                max-width: 100%;
-            }
-            
-            .btn { padding: 14px 20px; }
         }
 
-        @media (max-width: 480px) {
-            .school-name { font-size: 2rem; }
-            .subtitle { font-size: 1.2rem; }
-            .card-title { font-size: 1.4rem; }
-            .threshold-value { font-size: 2.5rem; }
-            .stat-number { font-size: 2.5rem; }
-            
-            .header-stats {
-                flex-direction: column;
-                align-items: center;
+        @media (max-width: 768px) {
+            .school-name { font-size: 2.8rem; }
+            .subtitle { font-size: 1.6rem; }
+            .hero-stats {
+                grid-template-columns: 1fr;
             }
-            
-            .stat-badge {
+            .stat-card-hero {
+                flex-direction: column;
+                text-align: center;
+                gap: var(--space-sm);
+            }
+            .nav-tabs {
+                width: 100%;
+                border-radius: var(--radius-xl);
+            }
+            .nav-tab {
                 width: 100%;
                 justify-content: center;
             }
-            
+            .preview-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
             .preview-tabs {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .school-name { font-size: 2.4rem; }
+            .subtitle { font-size: 1.4rem; }
+            .hero-description { font-size: 1.1rem; }
+            .card-title { font-size: 1.6rem; }
+            .threshold-value { font-size: 3rem; }
+            .stat-number { font-size: 2.8rem; }
+            .btn {
+                padding: 18px 24px;
+                font-size: 1rem;
+                width: 100%;
+                justify-content: center;
+            }
+            .add-student {
                 flex-direction: column;
             }
-            
-            .preview-tab {
-                width: 100%;
-                text-align: center;
+            .student-selector select {
+                max-width: 100%;
             }
         }
 
         /* ===== UTILITAIRES ===== */
         .hidden { display: none !important; }
-        .counting { animation: countUp 0.8s ease-out; }
-        .pulse { animation: pulse 2s infinite; }
-        .slide-in { animation: slideInRight 0.5s ease; }
+        .counting { animation: countUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); }
+        .pulse { animation: pulse 2s infinite ease-in-out; }
+        .slide-in { animation: slideInRight 0.6s ease; }
         
         .toastify {
             font-family: var(--font-body);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-lg) !important;
-            padding: var(--space-md) var(--space-lg) !important;
+            border-radius: var(--radius-xl) !important;
+            box-shadow: var(--shadow-xl) !important;
+            padding: var(--space-lg) var(--space-xl) !important;
+            font-weight: 600;
+            backdrop-filter: blur(20px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
-        .success-bg { background: var(--success) !important; }
-        .error-bg { background: var(--error) !important; }
-        .warning-bg { background: var(--warning) !important; }
-        .info-bg { background: var(--info) !important; }
+        .success-bg { 
+            background: linear-gradient(135deg, var(--success), var(--secondary)) !important; 
+        }
+        .error-bg { 
+            background: linear-gradient(135deg, var(--error), #FF8A8A) !important; 
+        }
+        .warning-bg { 
+            background: linear-gradient(135deg, var(--warning), var(--accent)) !important; 
+        }
+        .info-bg { 
+            background: linear-gradient(135deg, var(--info), #6BA3FF) !important; 
+        }
     </style>
 </head>
 <body>
@@ -1550,7 +1539,7 @@
                 </label>
             </div>
             
-            <div style="display: flex; gap: var(--space-md); margin-top: var(--space-xl);">
+            <div style="display: flex; gap: var(--space-lg); margin-top: var(--space-2xl);">
                 <button class="btn btn-info" id="btnSendEmail" style="flex: 1;">
                     <i class="fas fa-paper-plane"></i> Envoyer l'email
                 </button>
@@ -1563,43 +1552,30 @@
 
     <!-- Container principal -->
     <div class="container">
-        <!-- Header amélioré -->
-        <header class="header">
-            <div class="school-logo-container">
-                <div class="school-logo">
-                    <!-- Remplacez le chemin ci-dessous par celui de votre logo -->
-                    <!-- <img src="chemin/vers/votre-logo.png" alt="Logo Les Bulles de Joie"> -->
-                    <i class="fas fa-graduation-cap"></i>
+        <!-- Hero Section fusionnée -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="logo-container">
+                    <div class="logo-wrapper">
+                        <!-- Logo de l'école -->
+                        <img src="assets/images/logo.png" alt="Logo Les Bulles de Joie" 
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                        <div class="logo-fallback" style="display: none;">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span style="font-size: 1.5rem;">Les Bulles de Joie</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="school-title-container">
+                
+                <div class="hero-text">
                     <h1 class="school-name">Les Bulles de Joie</h1>
                     <p class="subtitle">Plateforme Pédagogique Professionnelle</p>
                     <p class="hero-description">
-                        Système complet de gestion des évaluations scolaires. Suivez les progrès de vos élèves, 
-                        générez des statistiques détaillées et exportez les bulletins en un clic.
-                    </p>
+                        Système complet de gestion des évaluations scolaires</p>
+                    </div>
                 </div>
             </div>
-            
-            <div class="header-stats">
-                <div class="stat-badge">
-                    <i class="fas fa-chalkboard-teacher"></i>
-                    <span>Gestion des Évaluations</span>
-                </div>
-                <div class="stat-badge">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Statistiques Avancées</span>
-                </div>
-                <div class="stat-badge">
-                    <i class="fas fa-file-export"></i>
-                    <span>Export Multi-formats</span>
-                </div>
-                <div class="stat-badge">
-                    <i class="fas fa-envelope"></i>
-                    <span>Envoi par Email</span>
-                </div>
-            </div>
-        </header>
+        </section>
 
         <!-- Navigation -->
         <div class="nav-container">
@@ -1642,7 +1618,7 @@
                         <div class="stat-subtext">Saisies complètes</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-number" id="statMoyenneClasse">0.0</div>
+                        <div class="stat-number" id="statMoyenneClasse">0.00</div>
                         <div class="stat-text">Moyenne Classe</div>
                         <div class="stat-subtext">/20 points</div>
                     </div>
@@ -1653,11 +1629,11 @@
                     </div>
                 </div>
 
-                <div class="quick-actions" style="margin-top: var(--space-xl);">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                <div class="quick-actions" style="margin-top: var(--space-2xl);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-bolt"></i> Actions Rapides
                     </h3>
-                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                    <div style="display: flex; gap: var(--space-lg); flex-wrap: wrap;">
                         <button class="btn btn-primary" id="btnQuickAdd">
                             <i class="fas fa-user-plus"></i> Ajouter un élève
                         </button>
@@ -1673,12 +1649,12 @@
                     </div>
                 </div>
 
-                <div class="recent-activity" style="margin-top: var(--space-xl);">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                <div class="recent-activity" style="margin-top: var(--space-2xl);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-history"></i> Activité Récente
                     </h3>
-                    <div id="activityLog" style="background: var(--light-gray); padding: var(--space-lg); border-radius: var(--radius-lg); min-height: 100px;">
-                        <p style="color: var(--text-light); text-align: center; padding: var(--space-lg);">
+                    <div id="activityLog" style="background: var(--gradient-glass); padding: var(--space-xl); border-radius: var(--radius-xl); min-height: 120px; border: 2px solid rgba(255, 255, 255, 0.4);">
+                        <p style="color: var(--text-light); text-align: center; padding: var(--space-xl);">
                             <i class="fas fa-info-circle"></i> Aucune activité récente
                         </p>
                     </div>
@@ -1731,9 +1707,9 @@
                     </div>
                 </div>
 
-                <div class="students-filters" style="margin-top: var(--space-lg);">
-                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center;">
-                        <span style="font-weight: 600; color: var(--dark);">Filtrer :</span>
+                <div class="students-filters" style="margin-top: var(--space-xl);">
+                    <div style="display: flex; gap: var(--space-lg); flex-wrap: wrap; align-items: center;">
+                        <span style="font-weight: 800; color: var(--dark); text-transform: uppercase;">Filtrer :</span>
                         <button class="btn btn-outline btn-small active" data-filter="all">Tous</button>
                         <button class="btn btn-outline btn-small" data-filter="reussi">Réussite</button>
                         <button class="btn btn-outline btn-small" data-filter="echec">À améliorer</button>
@@ -1741,11 +1717,11 @@
                     </div>
                 </div>
 
-                <div id="listeEleves" class="students-list" style="margin-top: var(--space-lg);">
+                <div id="listeEleves" class="students-list" style="margin-top: var(--space-xl);">
                     <div class="no-students">
                         <i class="fas fa-users-slash"></i>
                         <p>Aucun élève n'a été ajouté pour le moment</p>
-                        <p style="margin-top: var(--space-sm); font-size: 0.9rem; opacity: 0.7;">
+                        <p style="margin-top: var(--space-sm); font-size: 1rem; opacity: 0.7;">
                             Commencez par ajouter vos élèves en utilisant le formulaire ci-dessus
                         </p>
                     </div>
@@ -1770,16 +1746,16 @@
                             <div class="stat-label">Moyenne /20</div>
                         </div>
                         <div class="stat-box">
+                            <div id="statTotalNotesEleve" style="font-size: 2.5rem; font-weight: 900; background: linear-gradient(135deg, var(--accent), var(--warning)); -webkit-background-clip: text; background-clip: text; color: transparent;">-</div>
+                            <div class="stat-label">Total des notes</div>
+                        </div>
+                        <div class="stat-box">
                             <div id="statMentionEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--primary);">-</div>
                             <div class="stat-label">Mention</div>
                         </div>
                         <div class="stat-box">
                             <div id="statReussiteEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--success);">✓</div>
                             <div class="stat-label">Statut</div>
-                        </div>
-                        <div class="stat-box">
-                            <div id="statPositionEleve" style="font-size: 1.8rem; font-weight: 900; color: var(--primary);">-</div>
-                            <div class="stat-label">Position</div>
                         </div>
                     </div>
                 </div>
@@ -1793,7 +1769,7 @@
                             </div>
                             <div>
                                 <h3 class="section-title">Matières Fondamentales</h3>
-                                <p style="color: var(--text-light);">Compétences académiques de base</p>
+                                <p style="color: var(--text-light); font-size: 1.1rem;">Compétences académiques de base</p>
                             </div>
                         </div>
                         
@@ -1804,7 +1780,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="lecture" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="lecture" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1814,7 +1790,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="expression-ecrite" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="expression-ecrite" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1824,7 +1800,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="dictee" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="dictee" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1834,7 +1810,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="es" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="es" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1844,7 +1820,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="est" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="est" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1854,7 +1830,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="mathematiques" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="mathematiques" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1864,7 +1840,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="ea-dessin" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="ea-dessin" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1874,7 +1850,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="ea-poesie-chant-conte" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="ea-poesie-chant-conte" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1884,7 +1860,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="ea-poesie-chant-conte" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="creativite" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1894,7 +1870,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="eps" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="eps" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1909,7 +1885,7 @@
                             </div>
                             <div>
                                 <h3 class="section-title">Matières Artistiques et Pratiques</h3>
-                                <p style="color: var(--text-light);">Compétences créatives et pratiques</p>
+                                <p style="color: var(--text-light); font-size: 1.1rem;">Compétences créatives et pratiques</p>
                             </div>
                         </div>
                         
@@ -1920,7 +1896,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="art-oratoire" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="art-oratoire" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1930,7 +1906,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="anglais" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="anglais" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1940,7 +1916,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="musique" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="musique" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1950,7 +1926,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="danse" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="danse" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1960,7 +1936,7 @@
                                     <span class="note-max">/20</span>
                                 </div>
                                 <div class="note-input-container">
-                                    <input type="number" class="note-input" min="0" max="20" step="0.5" data-matiere="jardinage" placeholder="00.0">
+                                    <input type="number" class="note-input" min="0" max="20" step="0.25" data-matiere="jardinage" placeholder="00.00">
                                     <div class="note-status"></div>
                                 </div>
                             </div>
@@ -1968,20 +1944,17 @@
                     </div>
 
                     <!-- Commentaire et sauvegarde -->
-                    <div class="form-group" style="margin-top: var(--space-xl);">
+                    <div class="form-group" style="margin-top: var(--space-2xl);">
                         <label for="commentaire">Commentaire personnalisé :</label>
                         <textarea id="commentaire" rows="4" placeholder="Observations, points forts, axes d'amélioration..."></textarea>
                     </div>
 
-                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap; margin-top: var(--space-xl);">
+                    <div style="display: flex; gap: var(--space-lg); flex-wrap: wrap; margin-top: var(--space-2xl);">
                         <button class="btn btn-success" id="btnSauvegarder">
                             <i class="fas fa-save"></i> Sauvegarder l'évaluation
                         </button>
                         <button class="btn btn-primary" id="btnCalculerMoyenne">
                             <i class="fas fa-calculator"></i> Calculer la moyenne
-                        </button>
-                        <button class="btn btn-warning" id="btnGenererCommentaire">
-                            <i class="fas fa-robot"></i> Générer un commentaire
                         </button>
                         <button class="btn btn-error" id="btnEffacer">
                             <i class="fas fa-eraser"></i> Effacer
@@ -2009,7 +1982,7 @@
                             <div class="stat-subtext">Saisies complètes</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-number" id="statMoyenneGenerale">0.0</div>
+                            <div class="stat-number" id="statMoyenneGenerale">0.00</div>
                             <div class="stat-text">Moyenne Générale</div>
                             <div class="stat-subtext">/20 points</div>
                         </div>
@@ -2021,8 +1994,8 @@
                     </div>
                 </div>
 
-                <div class="mentions-container" style="margin-top: var(--space-xl);">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                <div class="mentions-container" style="margin-top: var(--space-2xl);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-medal"></i> Distribution des Mentions
                     </h3>
                     <div class="mentions-grid">
@@ -2030,48 +2003,48 @@
                             <div class="mention-icon"><i class="fas fa-trophy"></i></div>
                             <div class="mention-name">Très Satisfaisant</div>
                             <div class="mention-range">18 à 20 / 20</div>
-                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                            <div class="mention-count" style="font-size: 2.5rem; font-weight: 900; margin-top: 8px;">0</div>
                         </div>
                         <div class="mention-card good">
                             <div class="mention-icon"><i class="fas fa-award"></i></div>
                             <div class="mention-name">Satisfaisant</div>
                             <div class="mention-range">14 à 17 / 20</div>
-                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                            <div class="mention-count" style="font-size: 2.5rem; font-weight: 900; margin-top: 8px;">0</div>
                         </div>
                         <div class="mention-card average">
                             <div class="mention-icon"><i class="fas fa-check-circle"></i></div>
                             <div class="mention-name">Peu Satisfaisant</div>
                             <div class="mention-range">10 à 13 / 20</div>
-                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                            <div class="mention-count" style="font-size: 2.5rem; font-weight: 900; margin-top: 8px;">0</div>
                         </div>
                         <div class="mention-card weak">
                             <div class="mention-icon"><i class="fas fa-exclamation-circle"></i></div>
                             <div class="mention-name">Insuffisant</div>
                             <div class="mention-range">0 à 9 / 20</div>
-                            <div class="mention-count" style="font-size: 2rem; font-weight: 900; margin-top: 8px;">0</div>
+                            <div class="mention-count" style="font-size: 2.5rem; font-weight: 900; margin-top: 8px;">0</div>
                         </div>
                     </div>
                 </div>
 
-                <div class="classement-container" style="margin-top: var(--space-xl);">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                <div class="classement-container" style="margin-top: var(--space-2xl);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-list-ol"></i> Classement des Élèves
                     </h3>
-                    <div id="classementTable" style="background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-sm);">
+                    <div id="classementTable" style="background: var(--gradient-glass); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-lg); border: 2px solid rgba(255, 255, 255, 0.6);">
                         <table style="width: 100%; border-collapse: collapse;">
                             <thead>
-                                <tr style="background: var(--light-gray);">
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Position</th>
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Élève</th>
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Moyenne</th>
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Mention</th>
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Statut</th>
-                                    <th style="padding: var(--space-md); text-align: left; font-weight: 600; color: var(--dark);">Actions</th>
+                                <tr style="background: linear-gradient(135deg, rgba(255, 77, 148, 0.1), rgba(157, 238, 130, 0.1));">
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Position</th>
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Élève</th>
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Moyenne</th>
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Mention</th>
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Statut</th>
+                                    <th style="padding: var(--space-lg); text-align: left; font-weight: 800; color: var(--dark); text-transform: uppercase;">Actions</th>
                                 </tr>
                             </thead>
                             <tbody id="classementBody">
                                 <tr>
-                                    <td colspan="6" style="padding: var(--space-xl); text-align: center; color: var(--text-light);">
+                                    <td colspan="6" style="padding: var(--space-2xl); text-align: center; color: var(--text-light);">
                                         <i class="fas fa-info-circle"></i> Aucune donnée disponible
                                     </td>
                                 </tr>
@@ -2129,7 +2102,7 @@
 
                 <div class="preview-container">
                     <div class="preview-header">
-                        <h3 style="color: var(--primary-dark);">
+                        <h3 style="color: var(--primary-dark); font-size: 1.5rem;">
                             <i class="fas fa-eye"></i> Aperçu des Données
                         </h3>
                         <div class="preview-tabs">
@@ -2152,16 +2125,16 @@
                 <h2 class="card-title"><i class="fas fa-sliders-h"></i> Configuration du Système</h2>
                 
                 <div class="config-section">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-bullseye"></i> Paramètres d'Évaluation
                     </h3>
                     
                     <div class="config-grid">
                         <div class="threshold-container">
-                            <h4 style="margin-bottom: var(--space-md); color: var(--dark);">
+                            <h4 style="margin-bottom: var(--space-md); color: var(--dark); font-size: 1.3rem;">
                                 Seuil de Réussite
                             </h4>
-                            <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
+                            <p style="color: var(--text-light); margin-bottom: var(--space-xl);">
                                 Définissez la note minimale requise pour considérer qu'un élève a réussi
                             </p>
                             
@@ -2174,33 +2147,33 @@
                         </div>
                         
                         <div class="precision-container">
-                            <h4 style="margin-bottom: var(--space-md); color: var(--dark);">
+                            <h4 style="margin-bottom: var(--space-md); color: var(--dark); font-size: 1.3rem;">
                                 Notes Libres
                             </h4>
-                            <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
-                                L'enseignant peut saisir les notes telles qu'il le souhaite (17, 14, 12.5, etc.)
+                            <p style="color: var(--text-light); margin-bottom: var(--space-xl);">
+                                L'enseignant peut saisir les notes telles qu'il le souhaite (17, 14.5, 12.75, etc.)
                             </p>
                             
-                            <div style="padding: var(--space-lg); background: var(--light-gray); border-radius: var(--radius-lg); text-align: center;">
-                                <i class="fas fa-edit" style="font-size: 2rem; color: var(--primary); margin-bottom: var(--space-md);"></i>
-                                <p style="color: var(--text); font-weight: 600;">
+                            <div style="padding: var(--space-xl); background: var(--gradient-glass); border-radius: var(--radius-xl); text-align: center; border: 3px solid rgba(255, 255, 255, 0.6);">
+                                <i class="fas fa-edit" style="font-size: 2.5rem; color: var(--primary); margin-bottom: var(--space-lg);"></i>
+                                <p style="color: var(--text); font-weight: 800; font-size: 1.2rem;">
                                     Liberté totale de saisie des notes
                                 </p>
-                                <p style="color: var(--text-light); margin-top: var(--space-sm); font-size: 0.9rem;">
+                                <p style="color: var(--text-light); margin-top: var(--space-sm); font-size: 1rem;">
                                     Les notes sont enregistrées exactement comme saisies
                                 </p>
                             </div>
                             
-                            <div class="form-group" style="margin-top: var(--space-lg);">
-                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer;">
+                            <div class="form-group" style="margin-top: var(--space-xl);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; font-size: 1.1rem;">
                                     <input type="checkbox" id="autoSave" checked>
                                     <span>Sauvegarde automatique</span>
                                 </label>
-                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm); font-size: 1.1rem;">
                                     <input type="checkbox" id="alertNotesBasses" checked>
                                     <span>Alerter pour les notes sous le seuil</span>
                                 </label>
-                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm);">
+                                <label style="display: flex; align-items: center; gap: var(--space-sm); cursor: pointer; margin-top: var(--space-sm); font-size: 1.1rem;">
                                     <input type="checkbox" id="alertProgres" checked>
                                     <span>Afficher les progrès des élèves</span>
                                 </label>
@@ -2210,10 +2183,10 @@
                 </div>
 
                 <div class="mentions-container">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-medal"></i> Système de Mentions
                     </h3>
-                    <p style="color: var(--text-light); margin-bottom: var(--space-lg);">
+                    <p style="color: var(--text-light); margin-bottom: var(--space-xl);">
                         Les mentions sont automatiquement attribuées en fonction de la moyenne de l'élève
                     </p>
                     
@@ -2221,40 +2194,40 @@
                         <div class="mention-card excellent">
                             <div class="mention-name">Très Satisfaisant</div>
                             <div class="mention-range">18 à 20 / 20</div>
-                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                            <div class="mention-desc" style="font-size: 1rem; opacity: 0.95; margin-top: 6px; font-weight: 600;">
                                 Excellence académique
                             </div>
                         </div>
                         <div class="mention-card good">
                             <div class="mention-name">Satisfaisant</div>
                             <div class="mention-range">14 à 17 / 20</div>
-                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                            <div class="mention-desc" style="font-size: 1rem; opacity: 0.95; margin-top: 6px; font-weight: 600;">
                                 Bonne maîtrise
                             </div>
                         </div>
                         <div class="mention-card average">
                             <div class="mention-name">Peu Satisfaisant</div>
                             <div class="mention-range">10 à 13 / 20</div>
-                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                            <div class="mention-desc" style="font-size: 1rem; opacity: 0.95; margin-top: 6px; font-weight: 600;">
                                 Maîtrise à renforcer
                             </div>
                         </div>
                         <div class="mention-card weak">
                             <div class="mention-name">Insuffisant</div>
                             <div class="mention-range">0 à 9 / 20</div>
-                            <div class="mention-desc" style="font-size: 0.9rem; opacity: 0.9; margin-top: 4px;">
+                            <div class="mention-desc" style="font-size: 1rem; opacity: 0.95; margin-top: 6px; font-weight: 600;">
                                 Difficultés importantes
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="backup-container" style="margin-top: var(--space-xl);">
-                    <h3 style="margin-bottom: var(--space-lg); color: var(--primary-dark);">
+                <div class="backup-container" style="margin-top: var(--space-2xl);">
+                    <h3 style="margin-bottom: var(--space-xl); color: var(--primary-dark); font-size: 1.5rem;">
                         <i class="fas fa-database"></i> Gestion des Données
                     </h3>
                     
-                    <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+                    <div style="display: flex; gap: var(--space-lg); flex-wrap: wrap;">
                         <button class="btn btn-primary" id="btnBackup">
                             <i class="fas fa-download"></i> Sauvegarder les données
                         </button>
@@ -2266,14 +2239,14 @@
                         </button>
                     </div>
                     
-                    <div style="margin-top: var(--space-lg); padding: var(--space-lg); background: var(--light-gray); border-radius: var(--radius-lg);">
-                        <div style="display: flex; align-items: center; gap: var(--space-md);">
-                            <i class="fas fa-info-circle" style="color: var(--info); font-size: 1.2rem;"></i>
+                    <div style="margin-top: var(--space-xl); padding: var(--space-xl); background: var(--gradient-glass); border-radius: var(--radius-xl); border: 3px solid rgba(255, 255, 255, 0.6);">
+                        <div style="display: flex; align-items: center; gap: var(--space-lg);">
+                            <i class="fas fa-info-circle" style="color: var(--info); font-size: 1.5rem;"></i>
                             <div>
-                                <div style="font-weight: 600; color: var(--dark);">
+                                <div style="font-weight: 800; color: var(--dark); font-size: 1.1rem;">
                                     Informations de stockage
                                 </div>
-                                <div style="color: var(--text-light); font-size: 0.9rem; margin-top: 4px;">
+                                <div style="color: var(--text-light); font-size: 1rem; margin-top: 6px;">
                                     Les données sont stockées localement dans votre navigateur
                                 </div>
                             </div>
@@ -2281,8 +2254,8 @@
                     </div>
                 </div>
 
-                <div style="margin-top: var(--space-xl); text-align: center;">
-                    <button class="btn btn-success" id="btnSaveConfig" style="padding: var(--space-lg) var(--space-2xl);">
+                <div style="margin-top: var(--space-2xl); text-align: center;">
+                    <button class="btn btn-success" id="btnSaveConfig" style="padding: var(--space-xl) var(--space-3xl); font-size: 1.2rem;">
                         <i class="fas fa-save"></i> Enregistrer toutes les configurations
                     </button>
                 </div>
@@ -2292,21 +2265,14 @@
         <!-- Footer -->
         <div class="footer">
             <p>© 2026 Les Bulles de Joie - Plateforme Pédagogique Professionnelle</p>
-            <p style="font-size: 0.85rem; margin-top: var(--space-sm); opacity: 0.7;">
+            <p style="font-size: 0.95rem; margin-top: var(--space-sm); opacity: 0.8;">
                 Version 3.0 • 
                 <span id="dataInfo">Données stockées localement • </span>
                 <span id="lastSave">Dernière sauvegarde: jamais</span>
             </p>
-            <div style="margin-top: var(--space-md); display: flex; gap: var(--space-md); justify-content: center;">
-                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
-                    <i class="fas fa-question-circle"></i> Aide
-                </a>
-                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
-                    <i class="fas fa-book"></i> Documentation
-                </a>
-                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.85rem;">
-                    <i class="fas fa-envelope"></i> Contact
-                </a>
+            <div style="margin-top: var(--space-lg); display: flex; gap: var(--space-lg); justify-content: center; flex-wrap: wrap;">
+                <a href="#" style="color: var(--primary); text-decoration: none; font-size: 0.95rem; font-weight: 600;">
+                    <i class="fas fa-envelope"></i> Contact</a>
             </div>
         </div>
     </div>
@@ -2319,8 +2285,8 @@
     <script>
         // ===== CONFIGURATION GLOBALE =====
         const APP_CONFIG = {
-            VERSION: '3.1',
-            STORAGE_KEY: 'bullesdejoie_pro_v3',
+            VERSION: '3.2',
+            STORAGE_KEY: 'bullesdejoie_pro_v4',
             DEFAULT_THRESHOLD: 10,
             MENTIONS: {
                 'Très Satisfaisant': { 
@@ -2409,15 +2375,14 @@
             commentaire: document.getElementById('commentaire'),
             btnSauvegarder: document.getElementById('btnSauvegarder'),
             btnCalculerMoyenne: document.getElementById('btnCalculerMoyenne'),
-            btnGenererCommentaire: document.getElementById('btnGenererCommentaire'),
             btnEffacer: document.getElementById('btnEffacer'),
 
             // Statistiques élève
             studentStatsPanel: document.getElementById('studentStatsPanel'),
             statMoyenneEleve: document.getElementById('statMoyenneEleve'),
+            statTotalNotesEleve: document.getElementById('statTotalNotesEleve'),
             statMentionEleve: document.getElementById('statMentionEleve'),
             statReussiteEleve: document.getElementById('statReussiteEleve'),
-            statPositionEleve: document.getElementById('statPositionEleve'),
 
             // Statistiques générales
             statTotalEleves: document.getElementById('statTotalEleves'),
@@ -2495,10 +2460,10 @@
 
         function showToast(message, type = 'success', duration = 4000) {
             const backgroundColor = {
-                success: 'linear-gradient(135deg, #4ade80, #22c55e)',
-                error: 'linear-gradient(135deg, #ef4444, #dc2626)',
-                warning: 'linear-gradient(135deg, #f59e0b, #d97706)',
-                info: 'linear-gradient(135deg, #06b6d4, #0891b2)'
+                success: 'linear-gradient(135deg, #9DEE82, #7CD968)',
+                error: 'linear-gradient(135deg, #FF6B6B, #FF4D4D)',
+                warning: 'linear-gradient(135deg, #FFD166, #FFB347)',
+                info: 'linear-gradient(135deg, #4D94FF, #2E7AFF)'
             }[type];
 
             Toastify({
@@ -2509,10 +2474,14 @@
                 stopOnFocus: true,
                 style: {
                     background: backgroundColor,
-                    borderRadius: '12px',
-                    boxShadow: 'var(--shadow-lg)',
+                    borderRadius: 'var(--radius-xl)',
+                    boxShadow: 'var(--shadow-xl)',
                     fontFamily: 'var(--font-body)',
-                    fontSize: '14px'
+                    fontSize: '16px',
+                    fontWeight: '600',
+                    padding: 'var(--space-lg) var(--space-xl)',
+                    border: '2px solid rgba(255,255,255,0.3)',
+                    backdropFilter: 'blur(20px)'
                 }
             }).showToast();
         }
@@ -2523,8 +2492,18 @@
             const num = parseFloat(value);
             if (isNaN(num)) return '';
             
-            // Retourne la note telle quelle sans contrainte de précision
-            return value;
+            // Retourne la note exacte avec jusqu'à 4 décimales
+            return num.toFixed(4).replace(/\.?0+$/, '');
+        }
+
+        function calculateTotalNotes(notes) {
+            const notesValides = Object.values(notes)
+                .map(v => parseFloat(v))
+                .filter(v => !isNaN(v) && v !== null);
+            
+            if (notesValides.length === 0) return null;
+            
+            return notesValides.reduce((a, b) => a + b, 0);
         }
 
         function calculateMoyenne(notes) {
@@ -2535,7 +2514,10 @@
             if (notesValides.length === 0) return null;
             
             const sum = notesValides.reduce((a, b) => a + b, 0);
-            return sum / notesValides.length;
+            const moyenne = sum / notesValides.length;
+            
+            // Retourne la moyenne exacte sans arrondi
+            return moyenne;
         }
 
         function getMention(moyenne) {
@@ -2590,7 +2572,8 @@
                 // Mettre à jour l'affichage de la dernière sauvegarde
                 const now = new Date();
                 const timeString = now.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
-                elements.lastSave.textContent = `Dernière sauvegarde: ${timeString}`;
+                const dateString = now.toLocaleDateString('fr-FR');
+                elements.lastSave.textContent = `Dernière sauvegarde: ${dateString} à ${timeString}`;
                 
                 return true;
             } catch (error) {
@@ -2652,7 +2635,8 @@
                         anglais: '17.5',
                         musique: '16.5',
                         danse: '15.5',
-                        jardinage: '17.0'
+                        jardinage: '17.0',
+                        creativite: '18.5'
                     },
                     commentaire: 'Excellente élève, très curieuse et rigoureuse dans son travail.',
                     date: new Date().toISOString()
@@ -2672,7 +2656,8 @@
                         anglais: '15.5',
                         musique: '13.0',
                         danse: '12.5',
-                        jardinage: '14.0'
+                        jardinage: '14.0',
+                        creativite: '13.5'
                     },
                     commentaire: 'Génie des mathématiques et des sciences, mais moins à l\'aise dans les matières artistiques.',
                     date: new Date().toISOString()
@@ -2692,7 +2677,8 @@
                         anglais: '16.0',
                         musique: '19.0',
                         danse: '18.5',
-                        jardinage: '17.5'
+                        jardinage: '17.5',
+                        creativite: '19.0'
                     },
                     commentaire: 'Très créatif et artistique, excellent dans les matières pratiques.',
                     date: new Date().toISOString()
@@ -2753,7 +2739,7 @@
                     <div class="no-students">
                         <i class="fas fa-users-slash"></i>
                         <p>Aucun élève n'a été ajouté pour le moment</p>
-                        <p style="margin-top: var(--space-sm); font-size: 0.9rem; opacity: 0.7;">
+                        <p style="margin-top: var(--space-sm); font-size: 1rem; opacity: 0.7;">
                             Commencez par ajouter vos élèves en utilisant le formulaire ci-dessus
                         </p>
                     </div>
@@ -2766,6 +2752,7 @@
             appState.eleves.forEach(eleve => {
                 const evalData = appState.evaluations[eleve];
                 const moyenne = evalData ? calculateMoyenne(evalData.notes) : null;
+                const totalNotes = evalData ? calculateTotalNotes(evalData.notes) : null;
                 const mention = getMention(moyenne);
                 const mentionInfo = getMentionInfo(mention);
                 const reussi = isReussi(moyenne);
@@ -2788,7 +2775,8 @@
                                 <div class="student-name">${eleve}</div>
                                 <div class="student-stats">
                                     ${moyenne !== null ? `
-                                        <span class="student-moyenne">${moyenne.toFixed(1)}/20</span>
+                                        <span class="student-moyenne">${moyenne.toFixed(2)}/20</span>
+                                        ${totalNotes !== null ? `<span style="color: var(--text-light);">(Total: ${totalNotes.toFixed(2)})</span>` : ''}
                                         <span class="student-mention ${mention ? 'mention-' + mention.toLowerCase().replace(' ', '-') : ''}">
                                             ${mention || 'Non évalué'}
                                         </span>
@@ -2833,7 +2821,7 @@
                 if (evalData) {
                     const moyenne = calculateMoyenne(evalData.notes);
                     if (moyenne !== null) {
-                        option.textContent += ` (${moyenne.toFixed(1)}/20)`;
+                        option.textContent += ` (${moyenne.toFixed(2)}/20)`;
                     }
                 }
                 
@@ -2908,13 +2896,17 @@
 
         function updateEleveStats(eleve, evalData) {
             const moyenne = calculateMoyenne(evalData.notes);
+            const totalNotes = calculateTotalNotes(evalData.notes);
             const mention = getMention(moyenne);
             const mentionInfo = getMentionInfo(mention);
             const reussi = isReussi(moyenne);
             
             // Mettre à jour la moyenne
-            elements.statMoyenneEleve.textContent = moyenne !== null ? moyenne.toFixed(1) : '-';
+            elements.statMoyenneEleve.textContent = moyenne !== null ? moyenne.toFixed(2) : '-';
             elements.statMoyenneEleve.className = `stat-value ${reussi ? 'high' : 'low'}`;
+            
+            // Mettre à jour le total des notes
+            elements.statTotalNotesEleve.textContent = totalNotes !== null ? totalNotes.toFixed(2) : '-';
             
             // Mettre à jour la mention
             if (mention && mentionInfo) {
@@ -2933,25 +2925,16 @@
                 elements.statReussiteEleve.textContent = '-';
                 elements.statReussiteEleve.style.color = 'var(--text-light)';
             }
-            
-            // Calculer la position
-            const positions = calculateClassement();
-            const position = positions.findIndex(p => p.eleve === eleve) + 1;
-            if (position > 0) {
-                elements.statPositionEleve.textContent = `#${position}`;
-            } else {
-                elements.statPositionEleve.textContent = '-';
-            }
         }
 
         function resetEleveStats() {
             elements.statMoyenneEleve.textContent = '-';
             elements.statMoyenneEleve.className = 'stat-value';
+            elements.statTotalNotesEleve.textContent = '-';
             elements.statMentionEleve.textContent = '-';
             elements.statMentionEleve.style.color = 'var(--primary)';
             elements.statReussiteEleve.textContent = '✓';
             elements.statReussiteEleve.style.color = 'var(--success)';
-            elements.statPositionEleve.textContent = '-';
         }
 
         function updateStats() {
@@ -2967,6 +2950,8 @@
             // Calculer la moyenne de classe
             let sommeMoyennes = 0;
             let nombreMoyennes = 0;
+            let totalToutesNotes = 0;
+            let nombreToutesNotes = 0;
             
             Object.values(appState.evaluations).forEach(evalData => {
                 const moyenne = calculateMoyenne(evalData.notes);
@@ -2974,12 +2959,21 @@
                     sommeMoyennes += moyenne;
                     nombreMoyennes++;
                 }
+                
+                // Calculer le total de toutes les notes
+                Object.values(evalData.notes).forEach(note => {
+                    const noteNum = parseFloat(note);
+                    if (!isNaN(noteNum)) {
+                        totalToutesNotes += noteNum;
+                        nombreToutesNotes++;
+                    }
+                });
             });
             
             const moyenneClasse = nombreMoyennes > 0 ? sommeMoyennes / nombreMoyennes : 0;
             
-            elements.statMoyenneClasse.textContent = moyenneClasse.toFixed(1);
-            elements.statMoyenneGenerale.textContent = moyenneClasse.toFixed(1);
+            elements.statMoyenneClasse.textContent = moyenneClasse.toFixed(2);
+            elements.statMoyenneGenerale.textContent = moyenneClasse.toFixed(2);
             
             // Calculer le taux de réussite
             let reussis = 0;
@@ -3039,7 +3033,7 @@
             if (classement.length === 0) {
                 tbody.innerHTML = `
                     <tr>
-                        <td colspan="6" style="padding: var(--space-xl); text-align: center; color: var(--text-light);">
+                        <td colspan="6" style="padding: var(--space-2xl); text-align: center; color: var(--text-light);">
                             <i class="fas fa-info-circle"></i> Aucune donnée disponible
                         </td>
                     </tr>
@@ -3055,28 +3049,29 @@
                 
                 html += `
                     <tr ${positionClass}>
-                        <td style="padding: var(--space-md); font-weight: 700; color: var(--dark);">
+                        <td style="padding: var(--space-lg); font-weight: 800; color: var(--dark); background: ${index < 3 ? 'rgba(255, 77, 148, 0.1)' : 'transparent'};">
                             ${index + 1}
+                            ${index < 3 ? `<i class="fas fa-crown" style="color: var(--accent); margin-left: 8px;"></i>` : ''}
                         </td>
-                        <td style="padding: var(--space-md); font-weight: 600; color: var(--dark);">
+                        <td style="padding: var(--space-lg); font-weight: 700; color: var(--dark);">
                             ${item.eleve}
                         </td>
-                        <td style="padding: var(--space-md); font-weight: 700; color: var(--primary);">
-                            ${item.moyenne.toFixed(1)}/20
+                        <td style="padding: var(--space-lg); font-weight: 800; color: var(--primary);">
+                            ${item.moyenne.toFixed(2)}/20
                         </td>
-                        <td style="padding: var(--space-md);">
+                        <td style="padding: var(--space-lg);">
                             <span class="student-mention ${item.mention ? 'mention-' + item.mention.toLowerCase().replace(' ', '-') : ''}" 
                                   style="display: inline-block;">
                                 ${item.mention}
                             </span>
                         </td>
-                        <td style="padding: var(--space-md);">
+                        <td style="padding: var(--space-lg);">
                             ${item.reussi ? 
-                                '<span style="color: var(--success); font-weight: 600;"><i class="fas fa-check"></i> Réussi</span>' :
-                                '<span style="color: var(--error); font-weight: 600;"><i class="fas fa-times"></i> À améliorer</span>'
+                                '<span style="color: var(--success); font-weight: 800;"><i class="fas fa-check"></i> Réussi</span>' :
+                                '<span style="color: var(--error); font-weight: 800;"><i class="fas fa-times"></i> À améliorer</span>'
                             }
                         </td>
-                        <td style="padding: var(--space-md);">
+                        <td style="padding: var(--space-lg);">
                             <button class="btn btn-info btn-small" onclick="openEmailModal('${item.eleve.replace(/'/g, "\\'")}')">
                                 <i class="fas fa-envelope"></i> Email
                             </button>
@@ -3125,7 +3120,7 @@
             
             if (appState.historique.length === 0) {
                 container.innerHTML = `
-                    <p style="color: var(--text-light); text-align: center; padding: var(--space-lg);">
+                    <p style="color: var(--text-light); text-align: center; padding: var(--space-xl);">
                         <i class="fas fa-info-circle"></i> Aucune activité récente
                     </p>
                 `;
@@ -3137,30 +3132,37 @@
             appState.historique.slice(0, 5).forEach(entry => {
                 const date = new Date(entry.timestamp);
                 const timeString = date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+                const dateString = date.toLocaleDateString('fr-FR');
                 
                 let icon = 'fas fa-info-circle';
                 let color = 'var(--info)';
                 
-                if (entry.action.includes('ajout')) icon = 'fas fa-user-plus';
-                else if (entry.action.includes('supprim')) icon = 'fas fa-user-minus';
-                else if (entry.action.includes('sauvegarde')) icon = 'fas fa-save';
-                else if (entry.action.includes('export')) icon = 'fas fa-download';
-                else if (entry.action.includes('email')) icon = 'fas fa-envelope';
+                if (entry.action.includes('ajout')) { icon = 'fas fa-user-plus'; color = 'var(--success)'; }
+                else if (entry.action.includes('supprim')) { icon = 'fas fa-user-minus'; color = 'var(--error)'; }
+                else if (entry.action.includes('sauvegarde')) { icon = 'fas fa-save'; color = 'var(--primary)'; }
+                else if (entry.action.includes('export')) { icon = 'fas fa-download'; color = 'var(--secondary)'; }
+                else if (entry.action.includes('email')) { icon = 'fas fa-envelope'; color = 'var(--info)'; }
                 
                 html += `
-                    <div style="display: flex; align-items: center; gap: var(--space-sm); padding: var(--space-sm); 
-                                background: white; border-radius: var(--radius-md); border-left: 4px solid ${color};">
-                        <i class="${icon}" style="color: ${color};"></i>
+                    <div style="display: flex; align-items: center; gap: var(--space-lg); padding: var(--space-lg); 
+                                background: var(--gradient-glass); border-radius: var(--radius-lg); border: 2px solid rgba(255, 255, 255, 0.4); 
+                                border-left: 6px solid ${color}; backdrop-filter: blur(10px);">
+                        <i class="${icon}" style="color: ${color}; font-size: 1.2rem;"></i>
                         <div style="flex: 1;">
-                            <div style="font-weight: 600; color: var(--dark); font-size: 0.9rem;">
+                            <div style="font-weight: 800; color: var(--dark); font-size: 1rem;">
                                 ${entry.action}
                             </div>
-                            <div style="color: var(--text-light); font-size: 0.85rem;">
+                            <div style="color: var(--text-light); font-size: 0.9rem; margin-top: 4px;">
                                 ${entry.details}
                             </div>
                         </div>
-                        <div style="color: var(--text-light); font-size: 0.8rem;">
-                            ${timeString}
+                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+                            <div style="color: var(--text-light); font-size: 0.85rem; font-weight: 600;">
+                                ${timeString}
+                            </div>
+                            <div style="color: var(--text-light); font-size: 0.8rem; margin-top: 2px;">
+                                ${dateString}
+                            </div>
                         </div>
                     </div>
                 `;
@@ -3268,23 +3270,28 @@
                 return;
             }
             
+            // Calculer la moyenne exacte
+            const moyenne = calculateMoyenne(notes);
+            const totalNotes = calculateTotalNotes(notes);
+            
             // Créer ou mettre à jour l'évaluation
             appState.evaluations[eleve] = {
                 notes: notes,
                 commentaire: elements.commentaire.value.trim(),
                 date: new Date().toISOString(),
-                moyenne: calculateMoyenne(notes),
-                mention: getMention(calculateMoyenne(notes)),
-                reussi: isReussi(calculateMoyenne(notes))
+                moyenne: moyenne,
+                totalNotes: totalNotes,
+                mention: getMention(moyenne),
+                reussi: isReussi(moyenne)
             };
             
-            addToHistory('Évaluation sauvegardée', `${eleve} - ${calculateMoyenne(notes)?.toFixed(1)}/20`);
+            addToHistory('Évaluation sauvegardée', `${eleve} - Moyenne: ${moyenne?.toFixed(2)}/20 - Total: ${totalNotes?.toFixed(2)}`);
             
             autoSave();
             updateEleveStats(eleve, appState.evaluations[eleve]);
             updateUI();
             
-            showToast(`Évaluation de ${eleve} sauvegardée avec succès`, 'success');
+            showToast(`Évaluation de ${eleve} sauvegardée avec succès (Moyenne: ${moyenne?.toFixed(2)}/20)`, 'success');
         }
 
         function calculateCurrentMoyenne() {
@@ -3300,13 +3307,15 @@
             });
             
             const moyenne = calculateMoyenne(notes);
+            const totalNotes = calculateTotalNotes(notes);
+            
             if (moyenne !== null) {
                 const mention = getMention(moyenne);
-                const mentionInfo = getMentionInfo(mention);
                 
-                let message = `Moyenne actuelle : ${moyenne.toFixed(1)}/20`;
+                let message = `Moyenne actuelle : ${moyenne.toFixed(2)}/20`;
+                message += ` | Total des notes : ${totalNotes?.toFixed(2) || '0'}`;
                 if (mention) {
-                    message += ` (${mention})`;
+                    message += ` | Mention : ${mention}`;
                 }
                 
                 showToast(message, 'info');
@@ -3318,45 +3327,6 @@
             } else {
                 showToast('Aucune note valide pour calculer la moyenne', 'warning');
             }
-        }
-
-        function generateCommentaire() {
-            const notes = {};
-            let noteCount = 0;
-            let sum = 0;
-            
-            document.querySelectorAll('.note-input').forEach(input => {
-                const value = parseFloat(input.value);
-                if (!isNaN(value)) {
-                    const matiere = input.dataset.matiere;
-                    notes[matiere] = value;
-                    sum += value;
-                    noteCount++;
-                }
-            });
-            
-            if (noteCount === 0) {
-                showToast('Aucune note pour générer un commentaire', 'warning');
-                return;
-            }
-            
-            const moyenne = sum / noteCount;
-            const mention = getMention(moyenne);
-            
-            let commentaire = '';
-            
-            if (moyenne >= 18) {
-                commentaire = `Excellente performance ! L'élève démontre une maîtrise exceptionnelle dans toutes les matières. Continue sur cette lancée !`;
-            } else if (moyenne >= 14) {
-                commentaire = `Très bon travail ! L'élève montre une bonne compréhension des concepts. Quelques efforts supplémentaires permettront d'atteindre l'excellence.`;
-            } else if (moyenne >= 10) {
-                commentaire = `Des efforts sont nécessaires. L'élève a besoin de renforcer certaines compétences. Un travail régulier portera ses fruits.`;
-            } else {
-                commentaire = `Des difficultés importantes sont rencontrées. Il est essentiel que l'élève bénéficie d'un soutien supplémentaire et d'un suivi rapproché.`;
-            }
-            
-            elements.commentaire.value = commentaire;
-            showToast('Commentaire généré avec succès', 'success');
         }
 
         function clearForm() {
@@ -3393,6 +3363,7 @@
             
             // Générer un message par défaut
             const moyenne = calculateMoyenne(evalData.notes);
+            const totalNotes = calculateTotalNotes(evalData.notes);
             const mention = getMention(moyenne);
             const position = getPosition(eleve);
             
@@ -3405,7 +3376,8 @@
             
             if (elements.includeStats.checked) {
                 message += `=== STATISTIQUES ===\n`;
-                message += `Moyenne générale : ${moyenne.toFixed(1)}/20\n`;
+                message += `Total des notes : ${totalNotes?.toFixed(2) || '0'}\n`;
+                message += `Moyenne générale : ${moyenne?.toFixed(2)}/20\n`;
                 message += `Mention : ${mention}\n`;
                 message += `Position dans la classe : ${position}ème\n`;
                 message += `Seuil de réussite : ${appState.config.seuilReussite}/20\n`;
@@ -3541,31 +3513,31 @@
                     <head>
                         <title>Évaluations - ${appState.enseignant.classe}</title>
                         <style>
-                            body { font-family: Arial, sans-serif; margin: 20px; }
-                            h1 { color: #4361ee; text-align: center; margin-bottom: 30px; }
-                            h2 { color: #3a56d4; border-bottom: 2px solid #3a56d4; padding-bottom: 5px; margin-top: 30px; }
-                            h3 { color: #2c3e50; margin-top: 20px; }
-                            .header { text-align: center; margin-bottom: 30px; }
-                            .info { background: #f8f9fa; padding: 15px; border-radius: 5px; margin-bottom: 20px; }
-                            table { width: 100%; border-collapse: collapse; margin: 20px 0; }
-                            th { background: #4361ee; color: white; padding: 10px; text-align: left; }
-                            td { padding: 10px; border: 1px solid #ddd; }
+                            body { font-family: Arial, sans-serif; margin: 30px; background: #f8f9fa; }
+                            h1 { color: #FF4D94; text-align: center; margin-bottom: 40px; font-size: 2.5rem; }
+                            h2 { color: #9DEE82; border-bottom: 3px solid #9DEE82; padding-bottom: 10px; margin-top: 40px; font-size: 1.8rem; }
+                            h3 { color: #212529; margin-top: 30px; font-size: 1.4rem; }
+                            .header { text-align: center; margin-bottom: 40px; }
+                            .info { background: white; padding: 20px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); border-left: 6px solid #FF4D94; }
+                            table { width: 100%; border-collapse: collapse; margin: 25px 0; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+                            th { background: linear-gradient(135deg, #FF4D94, #9DEE82); color: white; padding: 15px; text-align: left; font-weight: bold; }
+                            td { padding: 12px 15px; border: 1px solid #dee2e6; }
                             tr:nth-child(even) { background: #f8f9fa; }
-                            .mention { font-weight: bold; padding: 3px 8px; border-radius: 3px; display: inline-block; }
-                            .mention-excellent { background: #d1fae5; color: #065f46; }
-                            .mention-good { background: #dbeafe; color: #1e40af; }
-                            .mention-average { background: #fef3c7; color: #92400e; }
-                            .mention-weak { background: #fee2e2; color: #991b1b; }
-                            .footer { margin-top: 40px; text-align: center; color: #666; font-size: 0.9em; }
+                            .mention { font-weight: bold; padding: 5px 12px; border-radius: 5px; display: inline-block; }
+                            .mention-excellent { background: #E8FFE0; color: #2e7d32; }
+                            .mention-good { background: #D5FFDD; color: #1e7e34; }
+                            .mention-average { background: #FFF4D6; color: #b85c00; }
+                            .mention-weak { background: #FFE6E6; color: #c62828; }
+                            .footer { margin-top: 50px; text-align: center; color: #6c757d; font-size: 0.9em; padding-top: 20px; border-top: 2px solid #dee2e6; }
                             @media print {
-                                body { margin: 0; padding: 10px; }
+                                body { margin: 0; padding: 15px; background: white; }
                                 .no-print { display: none; }
                             }
                         </style>
                     </head>
                     <body>
                         <div class="header">
-                            <h1>ÉVALUATIONS SCOLAIRES - LES BULLES DE JOIE</h1>
+                            <h1>LES BULLES DE JOIE</h1>
                             <div class="info">
                                 <strong>Classe :</strong> ${appState.enseignant.classe}<br>
                                 <strong>Enseignant :</strong> ${appState.enseignant.prenom} ${appState.enseignant.nom}<br>
@@ -3576,7 +3548,7 @@
                         </div>
                         
                         <div class="no-print">
-                            <button onclick="window.print()" style="padding: 10px 20px; background: #4361ee; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            <button onclick="window.print()" style="padding: 15px 30px; background: linear-gradient(135deg, #FF4D94, #9DEE82); color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; font-size: 16px; margin: 20px 0;">
                                 Imprimer ce rapport
                             </button>
                             <hr>
@@ -3624,6 +3596,7 @@
                     const moyenne = calculateMoyenne(evalData.notes);
                     if (moyenne === null) return;
                     
+                    const totalNotes = calculateTotalNotes(evalData.notes);
                     const mention = getMention(moyenne);
                     const mentionClass = mention.toLowerCase().replace(' ', '-');
                     
@@ -3641,6 +3614,7 @@
                     });
                     
                     content += `</table>`;
+                    content += `<p><strong>Total des notes :</strong> ${totalNotes?.toFixed(2) || '0'}</p>`;
                     content += `<p><strong>Moyenne :</strong> ${moyenne.toFixed(2)}/20</p>`;
                     content += `<p><strong>Mention :</strong> <span class="mention mention-${mentionClass}">${mention}</span></p>`;
                     content += `<p><strong>Commentaire :</strong> ${evalData.commentaire || 'Aucun'}</p>`;
@@ -3734,21 +3708,21 @@
                 <head>
                     <title>Évaluations - ${appState.enseignant.classe}</title>
                     <style>
-                        body { font-family: Arial, sans-serif; margin: 20px; }
-                        h1 { color: #000; text-align: center; }
-                        h2 { border-bottom: 1px solid #000; padding-bottom: 5px; }
-                        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
-                        th, td { border: 1px solid #000; padding: 5px; }
-                        th { background: #f0f0f0; }
+                        body { font-family: Arial, sans-serif; margin: 25px; }
+                        h1 { color: #000; text-align: center; font-size: 2.2rem; margin-bottom: 30px; }
+                        h2 { border-bottom: 2px solid #FF4D94; padding-bottom: 8px; margin-top: 35px; font-size: 1.6rem; }
+                        table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+                        th, td { border: 2px solid #dee2e6; padding: 10px; }
+                        th { background: #f8f9fa; font-weight: bold; }
                         .page-break { page-break-after: always; }
                         @media print {
-                            body { margin: 0; padding: 10px; font-size: 12pt; }
+                            body { margin: 0; padding: 15px; font-size: 12pt; }
                             button { display: none; }
                         }
                     </style>
                 </head>
                 <body>
-                    <button onclick="window.print()" style="padding: 10px; margin: 10px;">
+                    <button onclick="window.print()" style="padding: 12px 24px; margin: 15px; background: #FF4D94; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold;">
                         Imprimer
                     </button>
                     
@@ -3787,7 +3761,9 @@
                     content += `</table>`;
                     
                     const moyenne = calculateMoyenne(evalData.notes);
+                    const totalNotes = calculateTotalNotes(evalData.notes);
                     if (moyenne !== null) {
+                        content += `<p><strong>Total des notes :</strong> ${totalNotes?.toFixed(2) || '0'}</p>`;
                         content += `<p><strong>Moyenne :</strong> ${moyenne.toFixed(2)}/20</p>`;
                         content += `<p><strong>Mention :</strong> ${getMention(moyenne)}</p>`;
                     }
@@ -3801,7 +3777,7 @@
             });
             
             content += `
-                    <div style="margin-top: 50px; text-align: center; font-size: 0.9em;">
+                    <div style="margin-top: 60px; text-align: center; font-size: 0.9em; color: #6c757d;">
                         Document généré par Les Bulles de Joie<br>
                         ${new Date().toLocaleString('fr-FR')}
                     </div>
@@ -3965,6 +3941,8 @@
                     let totalMoyennes = 0;
                     let countMoyennes = 0;
                     let reussis = 0;
+                    let totalToutesNotes = 0;
+                    let nombreToutesNotes = 0;
                     
                     Object.entries(appState.evaluations).forEach(([eleve, evalData]) => {
                         const moyenne = calculateMoyenne(evalData.notes);
@@ -3973,6 +3951,15 @@
                             countMoyennes++;
                             if (isReussi(moyenne)) reussis++;
                         }
+                        
+                        // Calculer le total de toutes les notes
+                        Object.values(evalData.notes).forEach(note => {
+                            const noteNum = parseFloat(note);
+                            if (!isNaN(noteNum)) {
+                                totalToutesNotes += noteNum;
+                                nombreToutesNotes++;
+                            }
+                        });
                     });
                     
                     if (countMoyennes > 0) {
@@ -3980,6 +3967,8 @@
                         const tauxReussite = Math.round((reussis / countMoyennes) * 100);
                         
                         content += `Moyenne de classe: ${moyenneClasse.toFixed(2)}/20\n`;
+                        content += `Total de toutes les notes: ${totalToutesNotes.toFixed(2)}\n`;
+                        content += `Nombre de notes: ${nombreToutesNotes}\n`;
                         content += `Taux de réussite: ${tauxReussite}%\n`;
                         content += `Seuil de réussite: ${appState.config.seuilReussite}/20\n\n`;
                     }
@@ -3993,23 +3982,24 @@
                     content += `ANNÉE SCOLAIRE : ${appState.enseignant.anneeScolaire}\n`;
                     content += `PÉRIODE : ${new Date().toLocaleDateString('fr-FR', { month: 'long', year: 'numeric' })}\n\n`;
                     
-                    content += "┌─────────────────────────────────────────────────────┐\n";
-                    content += "│                    BULLETIN SCOLAIRE                 │\n";
-                    content += "├─────────────────────────────────────────────────────┤\n";
-                    content += "│ Élève : [Nom Prénom de l'élève]                     │\n";
-                    content += "├─────────────────────────────────────────────────────┤\n";
-                    content += "│ MATIÈRES                    NOTE   APPRÉCIATION     │\n";
-                    content += "├─────────────────────────────────────────────────────┤\n";
+                    content += "┌──────────────────────────────────────────────────────────────┐\n";
+                    content += "│                    BULLETIN SCOLAIRE                         │\n";
+                    content += "├──────────────────────────────────────────────────────────────┤\n";
+                    content += "│ Élève : [Nom Prénom de l'élève]                             │\n";
+                    content += "├──────────────────────────────────────────────────────────────┤\n";
+                    content += "│ MATIÈRES                           NOTE   APPRÉCIATION       │\n";
+                    content += "├──────────────────────────────────────────────────────────────┤\n";
                     
                     const matieres = [
                         { nom: 'Lecture', code: 'lecture' },
                         { nom: 'Expression écrite', code: 'expression-ecrite' },
                         { nom: 'Dictée', code: 'dictee' },
-                        { nom: 'Éveil Scientifique', code: 'es' },
-                        { nom: 'Éveil Socio-Temporel', code: 'est' },
+                        { nom: 'Éducation Sociale (ES)', code: 'es' },
+                        { nom: 'Éducation Scientifique et Technologique (EST)', code: 'est' },
                         { nom: 'Mathématiques', code: 'mathematiques' },
                         { nom: 'EA Dessin', code: 'ea-dessin' },
                         { nom: 'EA Poésie/Chant/Conte', code: 'ea-poesie-chant-conte' },
+                        { nom: 'Ateliers de Créativité', code: 'creativite' },
                         { nom: 'EPS', code: 'eps' },
                         { nom: 'Art Oratoire', code: 'art-oratoire' },
                         { nom: 'Anglais', code: 'anglais' },
@@ -4019,19 +4009,20 @@
                     ];
                     
                     matieres.forEach(matiere => {
-                        const nom = matiere.nom.padEnd(25);
-                        const note = '[Note]'.padEnd(7);
+                        const nom = matiere.nom.padEnd(30);
+                        const note = '[Note]'.padEnd(8);
                         const appreciation = '[Appréciation]';
                         content += `│ ${nom} ${note} ${appreciation} │\n`;
                     });
                     
-                    content += "├─────────────────────────────────────────────────────┤\n";
-                    content += `│ MOYENNE GÉNÉRALE : [Moyenne]/20                     │\n`;
-                    content += `│ MENTION : [Mention]                                 │\n`;
-                    content += "├─────────────────────────────────────────────────────┤\n";
-                    content += "│ APPRÉCIATION GÉNÉRALE :                             │\n";
-                    content += "│ [Commentaire personnalisé]                          │\n";
-                    content += "└─────────────────────────────────────────────────────┘\n\n";
+                    content += "├──────────────────────────────────────────────────────────────┤\n";
+                    content += `│ TOTAL DES NOTES : [Total]/20                                │\n`;
+                    content += `│ MOYENNE GÉNÉRALE : [Moyenne]/20                             │\n`;
+                    content += `│ MENTION : [Mention]                                         │\n`;
+                    content += "├──────────────────────────────────────────────────────────────┤\n";
+                    content += "│ APPRÉCIATION GÉNÉRALE :                                     │\n";
+                    content += "│ [Commentaire personnalisé]                                  │\n";
+                    content += "└──────────────────────────────────────────────────────────────┘\n\n";
                     
                     content += "Signature de l'enseignant : _________________________\n";
                     content += "Date : ______________________________________________\n";
@@ -4093,7 +4084,6 @@
             elements.selectEleve.addEventListener('change', onEleveSelectionChange);
             elements.btnSauvegarder.addEventListener('click', saveEvaluation);
             elements.btnCalculerMoyenne.addEventListener('click', calculateCurrentMoyenne);
-            elements.btnGenererCommentaire.addEventListener('click', generateCommentaire);
             elements.btnEffacer.addEventListener('click', clearForm);
             
             // Auto-sauvegarde sur modification
